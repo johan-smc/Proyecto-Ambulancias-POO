@@ -1,16 +1,13 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-=======
 
->>>>>>> origin/master
+
+import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
 import java.util.Set;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
