@@ -6,12 +6,10 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import co.edu.javeriana.ambulancias.negocio.*;
 
-		public class ManejadorArchivos {
-			
+public class ManejadorArchivos {
 			
 			public static void ingresarIPS(String dir, EmpresaAmbulancias empresa)
-			
-			{			
+				{			
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
 					
@@ -39,6 +37,7 @@ import co.edu.javeriana.ambulancias.negocio.*;
 						}
 					
 					input.close();
+					System.out.println("exitoso");
 				}catch(FileNotFoundException e){
 					
 					System.err.println("ERRRRROOOORRRR");

@@ -10,10 +10,14 @@ public class TestAmbulancia {
 
 	public static void main(String[] args) {
 		
-		ManejadorArchivos.ingresarIPS("dir", new EmpresaAmbulancias("juju"));
+		
+		String archivoName;
+		
 		EmpresaAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
 		
 		opc = new Scanner(System.in);
+		
+		Scanner dato1=new Scanner(System.in);
 		
 		int opcion;
 		do{
@@ -23,6 +27,11 @@ public class TestAmbulancia {
 			switch(opcion){
 			
 			case 1:{
+				
+				System.out.println("Ingrese el nombre del archivo (example.txt): ");
+				
+				archivoName=dato1.nextLine();
+				ManejadorArchivos.ingresarIPS(archivoName, empresaAmbulancia);
 			
 				break;
 				}
