@@ -58,9 +58,11 @@ public class Ambulancia {
 		
 		return null;
 	}
-	
-	public GregorianCalendar getHoraPosicion() {
-		return horaPosicion;
+	public String getHoraPosicion() {
+		GregorianCalendar fecha = new GregorianCalendar();
+	 
+		return "" + fecha.get(Calendar.HOUR_OF_DAY) + fecha.get(Calendar.MINUTE)+fecha.get(Calendar.SECOND);
+		
 	}
 	public void setHoraPosicion(GregorianCalendar horaPosicion) {
 		this.horaPosicion = horaPosicion;
