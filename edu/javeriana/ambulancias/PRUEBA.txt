@@ -1,0 +1,4 @@
+#nombre-- tipoAtencion--tipoDireccion(CALLE o CARRERA)---calle---carrera--numero
+Fundacion SantaFe * cardiovascular *CALLE *119 *7 *75
+Clinica del Country * maternidad y general *CARRERA *84 *15 *34
+0
