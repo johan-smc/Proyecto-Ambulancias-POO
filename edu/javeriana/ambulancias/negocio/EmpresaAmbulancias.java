@@ -1,6 +1,8 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class EmpresaAmbulancias {
@@ -17,6 +19,24 @@ public class EmpresaAmbulancias {
 		public void agregarAmbulancia(int codigo,String placa, String tipoDotacion)
 		{
 			ambulancias.add(new Ambulancia(codigo,placa,tipoDotacion));
+		}
+		
+		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
+		{
+			boolean esta=false;
+			for(Ambulancia ambulancia: ambulancias){
+				
+				if(ambulancia.getCodigo()==codigo)
+				{
+					ambulancia.setPosicionCalle(calle);
+					ambulancia.setPosicionCarrera(carrera);
+					ambulancia.sethora();
+					esta=true;
+				}
+				
+			}
+			return esta;
+			
 		}
 		
 		public EmpresaAmbulancias(String nombre) {

@@ -47,6 +47,14 @@ public class TestAmbulancia {
 				int calle=dato2.nextInt();
 				int carrera=dato3.nextInt();
 				
+				boolean exito=empresaAmbulancia.registrarPosAmbulancia( codigo, calle,  carrera);
+				if(exito)
+				{
+					System.out.println("EXITO");
+				}else{
+					
+					System.out.println("ERROR");
+				}
 				
 				/*Registrar la posición actual de una ambulancia
 				Si el usuario escoge esta opción, el sistema debe pedirle el código de la ambulancia que se reporta, la calle y

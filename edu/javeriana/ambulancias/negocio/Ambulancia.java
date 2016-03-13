@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -24,6 +25,17 @@ public class Ambulancia {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+	
+	public void sethora() {
+		 GregorianCalendar fecha = new GregorianCalendar();
+		 
+		this.horaPosicion.set(Calendar.HOUR_OF_DAY, fecha.get(Calendar.HOUR_OF_DAY));
+		this.horaPosicion.set(Calendar.MINUTE, fecha.get(Calendar.MINUTE));
+		this.horaPosicion.set(Calendar.SECOND, fecha.get(Calendar.SECOND));
+		
+		
+	}
+	
 	public String getTipoDotacion() {
 		return tipoDotacion;
 	}
