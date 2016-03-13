@@ -2,6 +2,8 @@ package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.GregorianCalendar;
 
+import co.edu.javeriana.ambulancias.presentacion.Utils;
+
 public class Servicio {
 	private static long CONSECUTIVO;
 	private long codigo;
@@ -22,7 +24,16 @@ public class Servicio {
 		this.telefono=telefono;
 		this.direccion=new Direccion(tipoDireccion,n1,n2,n3);
 		this.estado="NO_ASIGNADO";
+		this.horaSolicitud=Utils.horaSistema();
 		
+	}
+	@Override
+	public String toString() {
+		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+" "+paciente+" "+
+				tipoServicio+" "+telefono+" "+direccion.toString();
+	}
+	public Direccion getDireccion() {
+		return direccion;
 	}
 	public String getPaciente() {
 		return paciente;
@@ -53,6 +64,13 @@ public class Servicio {
 	}
 	public long getCodigo() {
 		return codigo;
+	}
+	public void relacionar(Ambulancia ambulancia, IPS ips) {
+		this.ips=ips;
+		this.ambulancia=ambulancia;
+		ips.relacionarServicio(this);
+		ambulancia.relacionarServicio(this);
+		
 	}
 	
 }

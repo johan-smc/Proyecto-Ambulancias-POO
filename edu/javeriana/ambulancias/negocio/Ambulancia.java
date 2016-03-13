@@ -1,11 +1,13 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 
-import java.util.Calendar;
+
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class Ambulancia {
 	private int codigo;
@@ -37,11 +39,7 @@ public class Ambulancia {
 	}
 	
 	public void sethora() {
-		 GregorianCalendar fecha = new GregorianCalendar();
-		 
-		this.horaPosicion.set(Calendar.HOUR_OF_DAY, fecha.get(Calendar.HOUR_OF_DAY));
-		this.horaPosicion.set(Calendar.MINUTE, fecha.get(Calendar.MINUTE));
-		this.horaPosicion.set(Calendar.SECOND, fecha.get(Calendar.SECOND));
+		 horaPosicion=Utils.horaSistema();
 		
 		
 	}
@@ -64,4 +62,9 @@ public class Ambulancia {
 	public void setPosicionCarrera(int posicionCarrera) {
 		this.posicionCarrera = posicionCarrera;
 	}
+	public void relacionarServicio(Servicio servicio) {
+		this.servicios.add(servicio);
+		
+	}
+	
 }

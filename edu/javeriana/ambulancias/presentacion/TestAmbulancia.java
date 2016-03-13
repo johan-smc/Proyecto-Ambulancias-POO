@@ -11,7 +11,7 @@ public class TestAmbulancia {
 	public static void main(String[] args) {
 		
 		
-		String archivoName;
+
 		
 		EmpresaAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
 		
@@ -50,7 +50,7 @@ public class TestAmbulancia {
 				break;
 				}
 			case 6:{
-				
+				asignarServicioAmbulanciaIPS(opc,empresaAmbulancia);
 				break;
 				}
 			case 7:{
@@ -84,6 +84,17 @@ public class TestAmbulancia {
 	System.out.println("GRACIAS POR PREFERIRNOS");
 		
 	opc.close();
+	}
+	private static void asignarServicioAmbulanciaIPS(Scanner sc, EmpresaAmbulancias empresaAmbulancia) {
+		empresaAmbulancia.reporteServiciosNoAsignadas();
+		System.out.println("--Cual es el codigo del servicio que desea asignar ?:");
+		int codigo=sc.nextInt();
+		if( empresaAmbulancia.verificarCodigoServicio(codigo) )
+		{
+			System.out.println(empresaAmbulancia.relacionarServicio(codigo));
+		}
+		else System.out.println("El codigo que ingreso no existe");
+		
 	}
 	private static void registrarAmbulancia(Scanner sc, EmpresaAmbulancias empresaAmbulancias) {
 		String nombre,tipoServicio,telefono,tipoDireccion;

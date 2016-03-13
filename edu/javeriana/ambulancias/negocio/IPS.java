@@ -19,6 +19,10 @@ public class IPS {
 		this.servicios = new ArrayList<Servicio>();
 	}
 	
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -30,6 +34,11 @@ public class IPS {
 	}
 	public void setTipoAtencion(String tipoAtencion) {
 		this.tipoAtencion = tipoAtencion;
+	}
+
+	public void relacionarServicio(Servicio servicio) {
+		this.servicios.add(servicio);
+		
 	}
 	
 }
