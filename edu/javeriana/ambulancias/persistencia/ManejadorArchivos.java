@@ -27,12 +27,12 @@ public class ManejadorArchivos {
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
 								   
-								   nombre=hola.nextToken();
-							       tipoAtencion=hola.nextToken();
-							       tipoDireccion=hola.nextToken();
-							       calle=Integer.valueOf(hola.nextToken()); 
-							       carrera=Integer.valueOf(hola.nextToken());
-							       numero=Integer.valueOf(hola.nextToken());
+								   nombre=hola.nextToken().trim();
+							       tipoAtencion=hola.nextToken().trim();
+							       tipoDireccion=hola.nextToken().trim();
+							       calle=Integer.valueOf(hola.nextToken().trim()); 
+							       carrera=Integer.valueOf(hola.nextToken().trim());
+							       numero=Integer.valueOf(hola.nextToken().trim());
 							       
 							       empresa.agregarIPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero);
 						       }
@@ -51,7 +51,7 @@ public class ManejadorArchivos {
 				
 				
 			}
-			public void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
+			public static void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
 			{
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
@@ -67,9 +67,9 @@ public class ManejadorArchivos {
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
 								   
-								   codigo=Integer.valueOf(hola.nextToken());
-							       placa=hola.nextToken();
-							       tipoDotacion=hola.nextToken();
+								   codigo=Integer.valueOf(hola.nextToken().trim());
+							       placa=hola.nextToken().trim();
+							       tipoDotacion=hola.nextToken().trim();
 							       empresa.agregarAmbulancia(codigo,placa,tipoDotacion);
 						       }
 								a=input.nextLine();						

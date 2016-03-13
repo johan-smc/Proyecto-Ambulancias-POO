@@ -38,7 +38,10 @@ public class TestAmbulancia {
 				break;
 				}
 			case 2:{
+				System.out.println("Ingrese el nombre del archivo (example.txt): ");
 				
+				archivoName=dato1.nextLine();
+				ManejadorArchivos.ingresarAmbulancia(archivoName, empresaAmbulancia);
 				break;
 				}
 			case 3:{
@@ -56,14 +59,14 @@ public class TestAmbulancia {
 					System.out.println("ERROR");
 				}
 				
-				/*Registrar la posición actual de una ambulancia
-				Si el usuario escoge esta opción, el sistema debe pedirle el código de la ambulancia que se reporta, la calle y
-				la carrera de la posición reportada. El sistema supone que la hora actual es la hora de la posición, por lo cual
+				/*Registrar la posiciï¿½n actual de una ambulancia
+				Si el usuario escoge esta opciï¿½n, el sistema debe pedirle el cï¿½digo de la ambulancia que se reporta, la calle y
+				la carrera de la posiciï¿½n reportada. El sistema supone que la hora actual es la hora de la posiciï¿½n, por lo cual
 				el usuario no tiene que suministrar ninguna hora.
 				Con estos datos se deben actualizar los atributos horaPosicion, posicionCalle y posicionCarrera de la
-				Ambulancia correspondiente al código, suponiendo que la ambulancia ya está registrada en el sistema. El
-				sistema debe informarle al usuario si pudo o no registrar la posición de la ambulancia. A continuación se
-				ilustra la interacción con el usuario:*/
+				Ambulancia correspondiente al cï¿½digo, suponiendo que la ambulancia ya estï¿½ registrada en el sistema. El
+				sistema debe informarle al usuario si pudo o no registrar la posiciï¿½n de la ambulancia. A continuaciï¿½n se
+				ilustra la interacciï¿½n con el usuario:*/
 
 				break;
 				}
