@@ -1,8 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 import java.util.List;
 
 public class EmpresaAmbulancias {
@@ -38,6 +37,29 @@ public class EmpresaAmbulancias {
 			return esta;
 			
 		}
+		public String reporteambul(){
+			
+			String todas="";
+			for(Ambulancia ambulancia : ambulancias)
+			{
+				todas=todas+ambulancia.getCodigo()+"\t";
+				todas=todas+ambulancia.getPlaca()+"\t";
+				todas=todas+ambulancia.getTipoDotacion()+"\t";
+				todas=todas+ambulancia.getHoraPosicion()+"\t";
+				todas=todas+ambulancia.getPosicionCalle()+"\t";
+				todas=todas+ambulancia.getPosicionCarrera()+"\t";
+				if(ambulancia.getServicioAsignado()!=null)
+				{
+					todas=todas+ambulancia.getServicioAsignado()+"\n";
+					
+				}
+				
+				
+			}
+			return todas
+			
+		}
+		
 		
 		public EmpresaAmbulancias(String nombre) {
 			this.nombre=nombre;

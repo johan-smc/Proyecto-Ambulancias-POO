@@ -45,7 +45,26 @@ public class Ambulancia {
 		
 		
 	}
+	public Long getServicioAsignado()
+	{
+		for(Servicio servicio : servicios)
+		{
+			if(servicio.getEstado().equals("ASIGNADO"))
+			{
+				return servicio.getCodigo();
+			}
+			
+		}
+		
+		return null;
+	}
 	
+	public GregorianCalendar getHoraPosicion() {
+		return horaPosicion;
+	}
+	public void setHoraPosicion(GregorianCalendar horaPosicion) {
+		this.horaPosicion = horaPosicion;
+	}
 	public String getTipoDotacion() {
 		return tipoDotacion;
 	}
