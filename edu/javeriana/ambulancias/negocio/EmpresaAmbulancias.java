@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpresaAmbulancias {
@@ -7,8 +8,19 @@ public class EmpresaAmbulancias {
 		private List<IPS> losIPS;
 		private List<Servicio> servicios;
 		private List<Ambulancia> ambulacias;
+		
+		
+			public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
+				
+				losIPS.add(new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
+			}
+		
+		
 		public EmpresaAmbulancias(String nombre) {
 			this.nombre=nombre;
+			this.losIPS=new ArrayList<IPS>();
+			this.servicios=new ArrayList<Servicio>();
+			this.ambulacias=new ArrayList<Ambulancia>();
 		}
 
 		public String getNombre() {

@@ -6,6 +6,15 @@ public class Direccion {
 	private int carrera;
 	private int numero;
 	
+	
+	public Direccion(String tipoDireccion, int calle, int carrera, int numero) {
+		super();
+		this.tipoDireccion = tipoDireccion;
+		this.calle = calle;
+		this.carrera = carrera;
+		this.numero = numero;
+	}
+	
 	public String getTipoDireccion() {
 		return tipoDireccion;
 	}
