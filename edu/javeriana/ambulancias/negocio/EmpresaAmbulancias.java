@@ -53,5 +53,13 @@ public class EmpresaAmbulancias {
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
+		public long agregarServicio(String nombre2, String tipoServicio, String telefono, String tipoDireccion, int n1,
+				int n2, int n3) {
+			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
+			
+			this.servicios.add(temp);
+			return temp.getCodigo();
+			
+		}
 		
 }

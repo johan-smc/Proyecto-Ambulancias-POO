@@ -7,13 +7,23 @@ public class Servicio {
 	private long codigo;
 	private GregorianCalendar horaSolicitud;
 	private String paciente;
-	private String tipoSercivio;
+	private String tipoServicio;
 	private String telefono;
 	private String estado;
 	private Direccion direccion;
 	private IPS ips;
 	private Ambulancia ambulancia;
 	
+	public Servicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1, int n2,
+			int n3) {
+		this.codigo=Servicio.getCONSECUTIVO();
+		this.paciente=nombre;
+		this.tipoServicio=tipoServicio;
+		this.telefono=telefono;
+		this.direccion=new Direccion(tipoDireccion,n1,n2,n3);
+		this.estado="NO_ASIGNADO";
+		
+	}
 	public String getPaciente() {
 		return paciente;
 	}
@@ -21,10 +31,10 @@ public class Servicio {
 		this.paciente = paciente;
 	}
 	public String getTipoSercivio() {
-		return tipoSercivio;
+		return tipoServicio;
 	}
 	public void setTipoSercivio(String tipoSercivio) {
-		this.tipoSercivio = tipoSercivio;
+		this.tipoServicio = tipoSercivio;
 	}
 	public String getTelefono() {
 		return telefono;
@@ -38,8 +48,8 @@ public class Servicio {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public static long getCONSECUTIVO() {
-		return CONSECUTIVO;
+	private static long getCONSECUTIVO() {
+		return CONSECUTIVO++;
 	}
 	public long getCodigo() {
 		return codigo;
