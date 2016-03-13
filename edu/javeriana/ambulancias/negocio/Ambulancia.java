@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -12,6 +13,12 @@ public class Ambulancia {
 	private int posicionCarrera;
 	private List<Servicio> servicios;
 	
+	public Ambulancia(int codigo, String placa, String tipoDotacion) {
+		this.codigo=codigo;
+		this.placa=placa;
+		this.tipoDotacion=tipoDotacion;
+		this.servicios=new ArrayList();
+	}
 	public int getCodigo() {
 		return codigo;
 	}

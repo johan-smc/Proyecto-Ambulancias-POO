@@ -51,7 +51,7 @@ public class ManejadorArchivos {
 				
 				
 			}
-			public void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
+			public static void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
 			{
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
