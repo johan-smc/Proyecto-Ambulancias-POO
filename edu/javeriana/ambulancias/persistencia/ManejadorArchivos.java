@@ -9,9 +9,5 @@ public class ManejadorArchivos {
 	{
 		
 		Scanner sc=new Scanner(new File("./"+direccion));
-		//GAYYYYYYYYYYYYYYYYY
-		// PROVEMOS PUES LOKHA 
-	}
-	
-	
-}
+
+
