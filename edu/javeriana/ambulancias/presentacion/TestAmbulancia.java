@@ -37,7 +37,9 @@ public class TestAmbulancia {
 				break;
 				}
 			case 3:{
+
 				registrarPocicionAmbulancia(opc,empresaAmbulancia);
+
 
 				break;
 				}
@@ -46,6 +48,9 @@ public class TestAmbulancia {
 				break;
 				}
 			case 5:{
+				 
+				reportedeambulancias(opc, empresaAmbulancia); 
+				
 				
 				break;
 				}
@@ -83,6 +88,7 @@ public class TestAmbulancia {
 		
 	System.out.println("GRACIAS POR PREFERIRNOS");
 		
+
 	opc.close();
 	}
 	private static void asignarServicioAmbulanciaIPS(Scanner sc, EmpresaAmbulancias empresaAmbulancia) {
@@ -138,9 +144,19 @@ public class TestAmbulancia {
 		ManejadorArchivos.ingresarIPS(archivoName, empresaAmbulancia);
 	
 		
+
 	}
 	private static void menu(){
 	System.out.println("opcion 1: ingresar las IPS al sistema\nopcion 2: ingresar las ambulancias al sistema\nopcion 3: registrar la posicion actual de una ambulancia\nopcion 4: registrar un servicio\nopcion 5: reporte de ambulancias\nopcion 6: asignar a un servicio una ambulancia y una IPS\nopcion 7: finalizar un servicio\nopcion 8: reporte de servicios con IPS y ambulancias asignados\nopcion 9: reporte de las IPS con servicios asociados\nopcion 10: terminar");
+	}
+	
+	
+	private static void reportedeambulancias(Scanner sc, EmpresaAmbulancias empresaambulancia){
+		
+		System.out.println("codigo placa tipoDotacion horaPosicion posicionCalle posicionCarrera servicio");
+		System.out.println(empresaambulancia.reporteambul());
+		
+		
 	}
 }
 
