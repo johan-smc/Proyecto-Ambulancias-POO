@@ -9,9 +9,13 @@ public class ManejadorArchivos {
 	{
 		
 		Scanner sc=new Scanner(new File("./"+direccion));
-		//GAYYYYYYYYYYYYYYYYY
+		
 		
 	}
-	
+	public void funcion()
+	{
+		
+		//Funcion
+	}
 	/*sadddsasdaasdasddasdasdassadasdasdasdasdas*/
 }
