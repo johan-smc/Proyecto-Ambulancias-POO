@@ -6,12 +6,10 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import co.edu.javeriana.ambulancias.negocio.*;
 
-<<<<<<< HEAD
+
 public class ManejadorArchivos {
-=======
-	public class ManejadorArchivos {
 			
->>>>>>> origin/master
+
 			
 			public static void ingresarIPS(String dir, EmpresaAmbulancias empresa)
 				{			

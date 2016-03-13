@@ -18,6 +18,8 @@ public class TestAmbulancia {
 		opc = new Scanner(System.in);
 		
 		Scanner dato1=new Scanner(System.in);
+		Scanner dato2=new Scanner(System.in);
+		Scanner dato3=new Scanner(System.in);
 		
 		int opcion;
 		do{
@@ -41,6 +43,20 @@ public class TestAmbulancia {
 				}
 			case 3:{
 				
+				int codigo=dato1.nextInt();
+				int calle=dato2.nextInt();
+				int carrera=dato3.nextInt();
+				
+				
+				/*Registrar la posición actual de una ambulancia
+				Si el usuario escoge esta opción, el sistema debe pedirle el código de la ambulancia que se reporta, la calle y
+				la carrera de la posición reportada. El sistema supone que la hora actual es la hora de la posición, por lo cual
+				el usuario no tiene que suministrar ninguna hora.
+				Con estos datos se deben actualizar los atributos horaPosicion, posicionCalle y posicionCarrera de la
+				Ambulancia correspondiente al código, suponiendo que la ambulancia ya está registrada en el sistema. El
+				sistema debe informarle al usuario si pudo o no registrar la posición de la ambulancia. A continuación se
+				ilustra la interacción con el usuario:*/
+
 				break;
 				}
 			case 4:{
@@ -85,7 +101,7 @@ public class TestAmbulancia {
 		
 	System.out.println("GRACIAS POR PREFERIRNOS");
 		
-	
+	dato1.close();
 	}
 	private static void menu(){
 	System.out.println("opcion 1: ingresar las IPS al sistema\nopcion 2: ingresar las ambulancias al sistema\nopcion 3: registrar la posicion actual de una ambulancia\nopcion 4: registrar un servicio\nopcion 5: reporte de ambulancias\nopcion 6: asignar a un servicio una ambulancia y una IPS\nopcion 7: finalizar un servicio\nopcion 8: reporte de servicios con IPS y ambulancias asignados\nopcion 9: reporte de las IPS con servicios asociados\nopcion 10: terminar");
