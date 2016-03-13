@@ -10,4 +10,6 @@ public class ManejadorArchivos {
 		Scanner sc=new Scanner(new File("./"+direccion));
 		
 	}
+	
+	/*sadddsasdaasdasddasdasdassadasdasdasdasdas*/
 }
