@@ -18,6 +18,7 @@ public class Ambulancia {
 		this.placa=placa;
 		this.tipoDotacion=tipoDotacion;
 		this.servicios=new ArrayList();
+		this.horaPosicion=new GregorianCalendar();
 	}
 	public int getCodigo() {
 		return codigo;
