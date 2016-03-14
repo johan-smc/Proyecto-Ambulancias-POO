@@ -14,15 +14,16 @@ public class ManejadorArchivos {
 			public static void ingresarIPS(String dir, EmpresaAmbulancias empresa)
 				{			
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File("."+dir));
 					
 					String a, nombre, tipoAtencion,tipoDireccion; 
 					int calle, carrera, numero;
 					
 					a=input.nextLine();
 					
-					while(a.indexOf("0")==-1)
+					while(!a.equals("0"))
 						{
+								
 								if(a.charAt(0)!='#')
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
@@ -54,21 +55,23 @@ public class ManejadorArchivos {
 			public static void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
 			{
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File("."+dir));
 					
 					String placa,tipoDotacion,a; 
 					int codigo;
 					
 					a=input.nextLine();
 					
-					while(a.indexOf("0")==-1)
+					while(!a.equals("0"))
 						{
+								
 								if(a.charAt(0)!='#')
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
 								   
 								   codigo=Integer.valueOf(hola.nextToken().trim());
-							       placa=hola.nextToken().trim();
+							       
+								   placa=hola.nextToken().trim();
 							       tipoDotacion=hola.nextToken().trim();
 							       empresa.agregarAmbulancia(codigo,placa,tipoDotacion);
 						       }
@@ -76,6 +79,7 @@ public class ManejadorArchivos {
 						}
 					
 					input.close();
+					System.out.println("Lectura completa");
 				}catch(FileNotFoundException e){
 					
 					System.err.println("ERRRRROOOORRRR");

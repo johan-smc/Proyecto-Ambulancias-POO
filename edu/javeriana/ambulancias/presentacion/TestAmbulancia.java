@@ -92,11 +92,12 @@ public class TestAmbulancia {
 	opc.close();
 	}
 	private static void asignarServicioAmbulanciaIPS(Scanner sc, EmpresaAmbulancias empresaAmbulancia) {
-		empresaAmbulancia.reporteServiciosNoAsignadas();
+		System.out.println(empresaAmbulancia.reporteServiciosNoAsignadas());
 		System.out.println("--Cual es el codigo del servicio que desea asignar ?:");
-		int codigo=sc.nextInt();
+		Long codigo=sc.nextLong();
 		if( empresaAmbulancia.verificarCodigoServicio(codigo) )
 		{
+			
 			System.out.println(empresaAmbulancia.relacionarServicio(codigo));
 		}
 		else System.out.println("El codigo que ingreso no existe");
@@ -105,10 +106,16 @@ public class TestAmbulancia {
 	private static void registrarAmbulancia(Scanner sc, EmpresaAmbulancias empresaAmbulancias) {
 		String nombre,tipoServicio,telefono,tipoDireccion;
 		int n1,n2,n3;
-		nombre=sc.next();
+		System.out.println("Ingrese el nombre del paciente");
+		nombre=sc.nextLine();
+		nombre=sc.nextLine();
+		System.out.println("Ingrese el tipo de servicio");
 		tipoServicio=sc.next();
+		System.out.println("Ingrese el telefono");
 		telefono=sc.next();
+		System.out.println("Ingrese el tipo de direccion");
 		tipoDireccion=sc.next();
+		System.out.println("ingrese la calle, carrera y el numero");
 		n1=sc.nextInt();
 		n2=sc.nextInt();
 		n3=sc.nextInt();
@@ -116,7 +123,9 @@ public class TestAmbulancia {
 		System.out.println("El nuevo Servicio tiene codigo "+codigo);
 	}
 	private static void registrarPocicionAmbulancia(Scanner opc2, EmpresaAmbulancias empresaAmbulancia) {
+		System.out.println("Ingrese el codigo de la ambulancia");
 		int codigo=opc.nextInt();
+		System.out.println("Ingrese la calle y la carrera");
 		int calle=opc.nextInt();
 		int carrera=opc.nextInt();
 		
@@ -134,13 +143,15 @@ public class TestAmbulancia {
 		System.out.println("Ingrese el nombre del archivo (example.txt): ");
 		
 		String archivoName=opc2.nextLine();
+		archivoName=opc2.nextLine();
 		ManejadorArchivos.ingresarAmbulancia(archivoName, empresaAmbulancia);
 		
 	}
 	private static void ingresarIPS(Scanner sc,EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el nombre del archivo (example.txt): ");
-		
+		sc.reset();
 		String archivoName=sc.nextLine();
+		archivoName=sc.nextLine();
 		ManejadorArchivos.ingresarIPS(archivoName, empresaAmbulancia);
 	
 		

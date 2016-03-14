@@ -70,6 +70,7 @@ public class Servicio {
 		this.ambulancia=ambulancia;
 		ips.relacionarServicio(this);
 		ambulancia.relacionarServicio(this);
+		this.estado="ASIGNADO";
 		
 	}
 	

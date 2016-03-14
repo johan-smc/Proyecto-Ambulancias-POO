@@ -33,6 +33,7 @@ public class EmpresaAmbulancias {
 			boolean esta=false;
 			for(Ambulancia ambulancia: ambulancias){
 				
+				
 				if(ambulancia.getCodigo()==codigo)
 				{
 					ambulancia.setPosicionCalle(calle);
@@ -83,7 +84,7 @@ public class EmpresaAmbulancias {
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
-		public long agregarServicio(String nombre2, String tipoServicio, String telefono, String tipoDireccion, int n1,
+		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
 				int n2, int n3) {
 			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 			
@@ -105,23 +106,28 @@ public class EmpresaAmbulancias {
 			}
 			return reporte;
 		}
-		public boolean verificarCodigoServicio(int codigo) {
-			return servicios.containsKey(codigo)&&servicios.get(codigo).equals("NO_ASIGNADO");
+		public boolean verificarCodigoServicio(Long codigo) {
+			return servicios.containsKey(codigo);
 		}
-		public String relacionarServicio(int codigo) {
+		public String relacionarServicio(Long codigo) {
+			
 			Servicio servicio=servicios.get(codigo);
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
+			if(ambulancia==null)
+				return "No se encontro ambulancia disponible";
 			IPS ips=ipsMasCercana(servicio);
+			if(ips==null)
+				return "No se encomtro IPS disponible";
 			servicio.relacionar(ambulancia,ips);
-			return "Al servicio "+codigo+" le fue asignada la ambulancia"+ambulancia.getCodigo()+" y la IPS "+ips.getNombre();
+			return "Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo()+" y la IPS "+ips.getNombre();
 		}
 		private IPS ipsMasCercana(Servicio servicio) {
-			int men=99999999,valorT;
+			int men=999999,valorT;
 			IPS menI = null;
 			for(IPS o : losIPS)
 			{
 				valorT=Utils.calcularDistancia(o.getDireccion(),servicio.getDireccion());
-				if(valorT<men)
+				if(valorT<men )
 				{
 					menI=o;
 					men=valorT;
@@ -130,13 +136,18 @@ public class EmpresaAmbulancias {
 			}
 			return menI;
 		}
+		private boolean comrpovarTipoServicio(Servicio servicio,  Ambulancia ambulancia) {
+			if(servicio.getTipoSercivio().equals("EMERGENCIA")&&!ambulancia.getTipoDotacion().equals("ALTA_UCI"))
+				return false;
+			return true;
+		}
 		private Ambulancia ambulanciaMasCercana(Servicio servicio) {
-			int men=99999999,valorT;
+			int men=999999,valorT;
 			Ambulancia menA = null;
 			for(Ambulancia o : ambulancias)
 			{
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
-				if(valorT<men)
+				if(valorT<men&&comrpovarTipoServicio(servicio,o))
 				{
 					menA=o;
 					men=valorT;
