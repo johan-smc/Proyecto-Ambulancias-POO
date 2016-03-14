@@ -30,4 +30,8 @@ public class Utils {
 		return a+b;
 	}
 
+	public static String hora(GregorianCalendar hora) {
+		return hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
+	}
+
 }

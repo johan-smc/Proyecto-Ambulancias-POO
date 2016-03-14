@@ -63,7 +63,7 @@ public class TestAmbulancia {
 				break;
 				}
 			case 8:{
-				
+				reporteServiciosIPSAmbulancia(empresaAmbulancia);
 				break;
 				}
 			case 9:{
@@ -90,6 +90,10 @@ public class TestAmbulancia {
 		
 
 	opc.close();
+	}
+	private static void reporteServiciosIPSAmbulancia(EmpresaAmbulancias empresaAmbulancia) {
+		System.out.println(empresaAmbulancia.reporteServiciosIPSAmbulacia());
+		
 	}
 	private static void asignarServicioAmbulanciaIPS(Scanner sc, EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println(empresaAmbulancia.reporteServiciosNoAsignadas());

@@ -29,8 +29,8 @@ public class Servicio {
 	}
 	@Override
 	public String toString() {
-		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+" "+paciente+" "+
-				tipoServicio+" "+telefono+" "+direccion.toString();
+		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"	"+paciente+" 	"+
+				tipoServicio+" 	"+telefono+" 	"+direccion.toString();
 	}
 	public Direccion getDireccion() {
 		return direccion;
@@ -72,6 +72,27 @@ public class Servicio {
 		ambulancia.relacionarServicio(this);
 		this.estado="ASIGNADO";
 		
+	}
+	public String toString(boolean b) {
+		String ret="SERVICIO\n";
+		ret+="codigo horaSolicitud paciente tipoServicio telefono direccion \n";
+		ret+="--------------------------------------------------------------------------\n";
+		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"	"+paciente+" 	"+
+				tipoServicio+" 	"+telefono+" 	"+direccion.toString()+"\n";
+		if(this.ambulancia!=null && this.ips!=null)
+		{
+			ret+="\tIPS asignada:\n";
+			ret+="\tnombre                tipoAtencion            direccion\n";
+			ret+="\t--------------------------------------------------------------------------------\n";
+			ret+="\t"+ips.toString()+"\n";
+			ret+="\tAmbulancia asignada:\n";
+			ret+="\tcodigo placa   tipoDotacion  horaPosicion  posicionCalle posicionCarrera\n";
+			ret+="\t--------------------------------------------------------------------------------\n";
+			ret+="\t";
+			ret+=ambulancia.toString();
+			
+		}
+		return ret;
 	}
 	
 }

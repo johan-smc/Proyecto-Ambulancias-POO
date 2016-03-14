@@ -63,6 +63,10 @@ public class Ambulancia {
 		return "" + fecha.get(Calendar.HOUR_OF_DAY) + fecha.get(Calendar.MINUTE)+fecha.get(Calendar.SECOND);
 		
 	}
+	@Override
+	public String toString() {
+		return codigo+"\t"+placa+" "+tipoDotacion+"\t\t"+Utils.hora(horaPosicion)+"\t\t"+posicionCalle+"\t\t"+posicionCarrera;
+	}
 	public void setHoraPosicion(GregorianCalendar horaPosicion) {
 		this.horaPosicion = horaPosicion;
 	}

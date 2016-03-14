@@ -40,5 +40,10 @@ public class IPS {
 		this.servicios.add(servicio);
 		
 	}
+
+	@Override
+	public String toString() {
+		return nombre+"     "+tipoAtencion+"     "+direccion.toString();
+	}
 	
 }

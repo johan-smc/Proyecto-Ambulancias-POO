@@ -102,7 +102,7 @@ public class EmpresaAmbulancias {
 			{
 				Servicio temp=servicios.get(key);
 				if(temp.getEstado().equals("NO_ASIGNADO"))
-					reporte+=temp.toString();
+					reporte+=temp.toString()+"\n";
 			}
 			return reporte;
 		}
@@ -155,6 +155,15 @@ public class EmpresaAmbulancias {
 					
 			}
 			return menA;
+		}
+		public String reporteServiciosIPSAmbulacia() {
+			String reporte="--REPORTE DE SERVICIOS CON IPS Y AMBULANCIAS ASOCIADAS\n\n";
+			Set<Long> setKey= servicios.keySet();
+			for(Long key:setKey)
+			{
+				reporte+=servicios.get(key).toString(true)+"\n";
+			}
+			return reporte;
 		}
 
 		
