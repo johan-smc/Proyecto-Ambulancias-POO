@@ -147,7 +147,7 @@ public class EmpresaAmbulancias {
 			for(Ambulancia o : ambulancias)
 			{
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
-				if(valorT<men&&comrpovarTipoServicio(servicio,o))
+				if(valorT<men&&comrpovarTipoServicio(servicio,o)&&!o.isAsignada())
 				{
 					menA=o;
 					men=valorT;
