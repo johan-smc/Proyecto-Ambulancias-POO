@@ -37,7 +37,8 @@ public class IPS {
 	}
 
 	public void relacionarServicio(Servicio servicio) {
-		this.servicios.add(servicio);
+		if(servicio!=null)
+			this.servicios.add(servicio);
 		
 	}
 

@@ -19,10 +19,10 @@ public class EmpresaAmbulancias {
 		private List<Ambulancia> ambulancias;
 		
 		
-			public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
+		public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
 				
 				losIPS.add(new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
-			}
+		}
 		public void agregarAmbulancia(int codigo,String placa, String tipoDotacion)
 		{
 			ambulancias.add(new Ambulancia(codigo,placa,tipoDotacion));
@@ -40,6 +40,7 @@ public class EmpresaAmbulancias {
 					ambulancia.setPosicionCarrera(carrera);
 					ambulancia.sethora();
 					esta=true;
+					break;
 				}
 				
 			}
@@ -86,8 +87,8 @@ public class EmpresaAmbulancias {
 		}
 		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
 				int n2, int n3) {
-			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 			
+			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 			this.servicios.put(temp.getCodigo(), temp);
 			return temp.getCodigo();
 			
@@ -136,7 +137,7 @@ public class EmpresaAmbulancias {
 			}
 			return menI;
 		}
-		private boolean comrpovarTipoServicio(Servicio servicio,  Ambulancia ambulancia) {
+		private boolean comprovarTipoServicio(Servicio servicio,  Ambulancia ambulancia) {
 			if(servicio.getTipoSercivio().equals("EMERGENCIA")&&!ambulancia.getTipoDotacion().equals("ALTA_UCI"))
 				return false;
 			return true;
@@ -147,7 +148,7 @@ public class EmpresaAmbulancias {
 			for(Ambulancia o : ambulancias)
 			{
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
-				if(valorT<men&&comrpovarTipoServicio(servicio,o)&&!o.isAsignada())
+				if(valorT<men&&comprovarTipoServicio(servicio,o)&&!o.isAsignada())
 				{
 					menA=o;
 					men=valorT;

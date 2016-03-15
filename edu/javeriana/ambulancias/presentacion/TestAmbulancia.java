@@ -153,7 +153,6 @@ public class TestAmbulancia {
 	}
 	private static void ingresarIPS(Scanner sc,EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el nombre del archivo (example.txt): ");
-		sc.reset();
 		String archivoName=sc.nextLine();
 		archivoName=sc.nextLine();
 		ManejadorArchivos.ingresarIPS(archivoName, empresaAmbulancia);

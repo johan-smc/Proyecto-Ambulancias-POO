@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class Servicio {
-	private static long CONSECUTIVO;
+	private static long CONSECUTIVO=0;
 	private long codigo;
 	private GregorianCalendar horaSolicitud;
 	private String paciente;
