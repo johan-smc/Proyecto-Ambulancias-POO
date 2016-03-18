@@ -60,10 +60,10 @@ public class EmpresaAmbulancias {
 				todas=todas+ambulancia.getPosicionCarrera()+"\t";
 				if(ambulancia.getServicioAsignado()!=null)
 				{
-					todas=todas+ambulancia.getServicioAsignado()+"\n";
+					todas=todas+ambulancia.getServicioAsignado();
 					
 				}
-				
+				todas+="\n";
 				
 			}
 			return todas;
