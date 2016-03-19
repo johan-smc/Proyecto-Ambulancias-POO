@@ -75,19 +75,19 @@ public class Servicio {
 	}
 	public String toString(boolean b) {
 		String ret="SERVICIO\n";
-		ret+="codigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado\n";
-		ret+="--------------------------------------------------------------------------\n";
+		ret+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\n";
+		ret+="----------------------------------------------------------------------------------------\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
 				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\n";
 		if(this.ambulancia!=null && this.ips!=null)
 		{
 			ret+="\tIPS asignada:\n";
-			ret+="\tnombre                tipoAtencion            direccion\n";
-			ret+="\t--------------------------------------------------------------------------------\n";
+			ret+="\tNombre                TipoAtencion            Direccion\n";
+			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t"+ips.toString()+"\n";
 			ret+="\tAmbulancia asignada:\n";
-			ret+="\tcodigo placa   tipoDotacion  horaPosicion  posicionCalle posicionCarrera\n";
-			ret+="\t--------------------------------------------------------------------------------\n";
+			ret+="\tCodigo Placa   TipoDotacion  HoraPosicion  PosicionCalle PosicionCarrera\n";
+			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t";
 			ret+=ambulancia.toString();
 			

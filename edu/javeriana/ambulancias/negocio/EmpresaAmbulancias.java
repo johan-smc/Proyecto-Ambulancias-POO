@@ -56,9 +56,9 @@ public class EmpresaAmbulancias {
 				todas=todas+ambulancia.getCodigo()+"\t";
 				todas=todas+ambulancia.getPlaca()+"\t";
 				todas=todas+ambulancia.getTipoDotacion()+"\t";
-				todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t";
-				todas=todas+ambulancia.getPosicionCalle()+"\t";
-				todas=todas+ambulancia.getPosicionCarrera()+"\t";
+				todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t\t";
+				todas=todas+ambulancia.getPosicionCalle()+"\t\t";
+				todas=todas+ambulancia.getPosicionCarrera()+"\t\t";
 				if(ambulancia.getServicioAsignado()!=null)
 				{
 					todas=todas+ambulancia.getServicioAsignado();
@@ -96,9 +96,9 @@ public class EmpresaAmbulancias {
 		}
 		public String reporteServiciosNoAsignadas() {
 			String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
-			reporte+="--se muestran los servicios del sistema sin asignar:\n";
-			reporte+="codigo horaSolicitud paciente tipoServicio telefono direccion \n";
-			reporte+="---------------------------------------------------------------------------\n";
+			reporte+="--Se muestran los servicios del sistema sin asignar:\n";
+			reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
+			reporte+="----------------------------------------------------------------------------------------\n";
 			Set<Long> setKey= servicios.keySet();
 			for(Long key:setKey)
 			{
@@ -110,9 +110,9 @@ public class EmpresaAmbulancias {
 		}
 		public String reporteServiciosSiAsignadas() {
 			String reporte="--FINALIZAR UN SERVICIO\n";
-			reporte+="--se muestran los servicios del sistema asignados:\n";
-			reporte+="codigo\tpaciente\tambulancia\tIPS\n";
-			reporte+="---------------------------------------------------------------------------\n";
+			reporte+="--Se muestran los servicios del sistema asignados:\n";
+			reporte+="Codigo\tPaciente\tAmbulancia\tIPS\n";
+			reporte+="----------------------------------------------------------------------------------------\n";
 			Set<Long> setKey= servicios.keySet();
 			for(Long key:setKey)
 			{

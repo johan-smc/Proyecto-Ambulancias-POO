@@ -41,10 +41,10 @@ public class ManejadorArchivos {
 						}
 					
 					input.close();
-					System.out.println("exitoso");
+					System.out.println("EXITOSO!.");
 				}catch(FileNotFoundException e){
 					
-					System.err.println("ERRRRROOOORRRR");
+					System.err.println("ERROR!.");
 				}
 				
 				
@@ -79,10 +79,10 @@ public class ManejadorArchivos {
 						}
 					
 					input.close();
-					System.out.println("Lectura completa");
+					System.out.println("LECTURA CORRECTA!.");
 				}catch(FileNotFoundException e){
 					
-					System.err.println("ERRRRROOOORRRR");
+					System.err.println("ERROR!.");
 				}
 				
 			}

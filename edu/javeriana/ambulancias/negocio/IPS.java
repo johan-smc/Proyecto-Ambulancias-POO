@@ -20,8 +20,8 @@ public class IPS {
 	}
 	public String reporteServicios()
 	{
-		String reporte="\tSERVICIOS:\n\tcodigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado ambul\n"
-						+"\t" +"------------------------------------------------------------------------\n";
+		String reporte="\tSERVICIOS:\n\tCodigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado ambul\n"
+						+"\t" +"-------------------------------------------------------------------------------------------------------\n";
 		for(Servicio servicio:servicios)
 		{
 			reporte+="\t"+servicio.toStringEspecialSupremo()+"\n";

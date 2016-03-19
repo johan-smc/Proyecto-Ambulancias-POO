@@ -26,29 +26,29 @@ public class Utils {
 	}
 	public static String mes(int i) {
 		if(i==0)
-			return "ENE";
+			return "Ene";
 		else if(i==1)
-			return "FEB";
+			return "Feb";
 		else if(i==2)
-			return "MAR";
+			return "Mar";
 		else if(i==3)
-			return "ABR";
+			return "Abr";
 		else if(i==4)
-			return "MAY";
+			return "May";
 		else if(i==5)
-			return "JUN";
+			return "Jun";
 		else if(i==6)
-			return "JUL";
+			return "Jul";
 		else if(i==7)
-			return "AGO";
+			return "Ago";
 		else if(i==8)
-			return "SEP";
+			return "Sep";
 		else if(i==9)
-			return "OCT";
+			return "Oct";
 		else if(i==10)
-			return "NOV";
+			return "Nov";
 		else if(i==11)
-			return "DIC";
+			return "Dic";
 		return "";
 	}
 
@@ -63,8 +63,11 @@ public class Utils {
 			return "";
 		return hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
 	}
-	//recoletado de:
-	//http://lineadecodigo.com/java/validar-si-un-dato-es-numerico-en-java/
+	
+	
+	/*recoletado de:
+	 * http://lineadecodigo.com/java/validar-si-un-dato-es-numerico-en-java/
+	 */
 
 	public static boolean isNumeric(String cadena){
 		try {
