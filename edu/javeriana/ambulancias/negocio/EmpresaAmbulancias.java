@@ -97,13 +97,27 @@ public class EmpresaAmbulancias {
 			String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
 			reporte+="--se muestran los servicios del sistema sin asignar:\n";
 			reporte+="codigo horaSolicitud paciente tipoServicio telefono direccion \n";
-			reporte+="--------------------------------------------------------------------------\n";
+			reporte+="───────────────────────────────────────────────────────────────────────────\n";
 			Set<Long> setKey= servicios.keySet();
 			for(Long key:setKey)
 			{
 				Servicio temp=servicios.get(key);
 				if(temp.getEstado().equals("NO_ASIGNADO"))
 					reporte+=temp.toString()+"\n";
+			}
+			return reporte;
+		}
+		public String reporteServiciosSiAsignadas() {
+			String reporte="--FINALIZAR UN SERVICIO\n";
+			reporte+="--se muestran los servicios del sistema asignados:\n";
+			reporte+="codigo\tpaciente\tambulancia\tIPS\n";
+			reporte+="───────────────────────────────────────────────────────────────────────────\n";
+			Set<Long> setKey= servicios.keySet();
+			for(Long key:setKey)
+			{
+				Servicio temp=servicios.get(key);
+				if(temp.getEstado().equals("ASIGNADO"))
+					reporte+=temp.toStringEspecial()+"\n";
 			}
 			return reporte;
 		}
@@ -165,6 +179,22 @@ public class EmpresaAmbulancias {
 				reporte+=servicios.get(key).toString(true)+"\n";
 			}
 			return reporte;
+		}
+		
+		public boolean finAServicio(long codigo)
+		{
+			
+			if(this.verificarCodigoServicio(codigo))
+			{
+				if(servicios.get(codigo).getEstado().equals("ASIGNADO"))
+				{
+					servicios.get(codigo).setEstado("FINALIZADO");
+					return true;
+				}
+			}
+			return false;
+			
+			
 		}
 
 		

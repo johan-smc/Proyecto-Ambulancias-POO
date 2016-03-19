@@ -94,5 +94,8 @@ public class Servicio {
 		}
 		return ret;
 	}
+	public String toStringEspecial() {
+		return codigo+"\t"+paciente+"\t"+ambulancia.getCodigo()+"\t"+ips.getNombre();
+	}
 	
 }

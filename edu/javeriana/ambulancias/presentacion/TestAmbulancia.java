@@ -49,7 +49,7 @@ public class TestAmbulancia {
 				}
 			case 5:{
 				 
-				reportedeambulancias(opc, empresaAmbulancia); 
+				reportedeambulancias(empresaAmbulancia); 
 				
 				
 				break;
@@ -59,7 +59,7 @@ public class TestAmbulancia {
 				break;
 				}
 			case 7:{
-				
+				finalizarServicio(opc, empresaAmbulancia);
 				break;
 				}
 			case 8:{
@@ -67,13 +67,10 @@ public class TestAmbulancia {
 				break;
 				}
 			case 9:{
-				
+				reporteServiciosIPS(empresaAmbulancia);
 				break;
 				}
-			case 10:{
-				
-				break;
-				}
+
 			default:{
 				System.err.println("NOOO!!! OPCION INCORRECTA");
 			}
@@ -165,12 +162,34 @@ public class TestAmbulancia {
 	}
 	
 	
-	private static void reportedeambulancias(Scanner sc, EmpresaAmbulancias empresaambulancia){
+	private static void reportedeambulancias(EmpresaAmbulancias empresaambulancia){
 		
 		System.out.println("codigo placa tipoDotacion horaPosicion posicionCalle posicionCarrera servicio");
 		System.out.println(empresaambulancia.reporteambul());
 		
 		
 	}
-}
+	private static void finalizarServicio(Scanner opc, EmpresaAmbulancias empresaAmbulancias)
+	{
+		empresaAmbulancias.reporteServiciosSiAsignadas();
+		System.out.println("Ingrese el codigo del servicio a finalizar: ");
+		if(empresaAmbulancias.finAServicio(opc.nextLong()))
+		{
+			System.out.println("EXITO!!!");
+		}
+		else
+		{
+			System.err.println("ERROR U_U");
+		}
+		
+		
+	}
+	private static void reporteServiciosIPS(EmpresaAmbulancias empresaAmbulancia)
+	{
+		
+		
+	}
+	
+	}
+
 
