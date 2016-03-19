@@ -39,6 +39,7 @@ public class EmpresaAmbulancias {
 					ambulancia.setPosicionCalle(calle);
 					ambulancia.setPosicionCarrera(carrera);
 					ambulancia.sethora();
+					ambulancia.setDirModificada(true);
 					esta=true;
 					break;
 				}
@@ -162,7 +163,7 @@ public class EmpresaAmbulancias {
 			for(Ambulancia o : ambulancias)
 			{
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
-				if(valorT<men&&comprovarTipoServicio(servicio,o)&&!o.isAsignada())
+				if(valorT<men&&comprovarTipoServicio(servicio,o)&&!o.isAsignada()&& o.isDirModificada())
 				{
 					menA=o;
 					men=valorT;

@@ -51,8 +51,6 @@ public class TestAmbulancia {
 			case '5':{
 				 
 				reportedeambulancias(empresaAmbulancia); 
-				
-				
 				break;
 				}
 			case '6':{

@@ -18,6 +18,7 @@ public class Ambulancia {
 	private int posicionCarrera;
 	private List<Servicio> servicios;
 	private boolean asignada;
+	private boolean dirModificada;
 	
 	public Ambulancia(int codigo, String placa, String tipoDotacion) {
 		this.codigo=codigo;
@@ -25,7 +26,14 @@ public class Ambulancia {
 		this.tipoDotacion=tipoDotacion;
 		this.servicios=new ArrayList<Servicio>();
 		this.horaPosicion=new GregorianCalendar();
+		this.dirModificada=false;
 		this.asignada=false;
+	}
+	public boolean isDirModificada() {
+		return dirModificada;
+	}
+	public void setDirModificada(boolean dirModificada) {
+		this.dirModificada = dirModificada;
 	}
 	public boolean isAsignada() {
 		return asignada;
