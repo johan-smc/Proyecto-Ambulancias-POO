@@ -10,7 +10,7 @@ public class TestAmbulancia {
 
 	public static void main(String[] args) {
 		
-		System.out.println("\t\t\tBIENVENIDO A BABYSOFT SYSTEM\n");	
+		System.out.println("\t\t\t  //////////////////////////////////\n"+"\t\t\t ///BIENVENIDO A BABYSOFT SYSTEM///\n"+"\t\t\t//////////////////////////////////\n");	
 		
 		EmpresaAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
 		
@@ -115,7 +115,7 @@ public class TestAmbulancia {
 		int n1,n2,n3;
 		System.out.println("Ingrese el nombre del paciente");
 		nombre=sc.nextLine().trim();
-		System.out.println("Ingrese el tipo de servicio");
+		System.out.println("Ingrese el tipo de servicio (URGENCIA o EMERGENCIA)");
 		tipoServicio=sc.nextLine().trim();
 		System.out.println("Ingrese el telefono");
 		telefono=sc.nextLine().trim();
