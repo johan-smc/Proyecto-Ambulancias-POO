@@ -75,7 +75,7 @@ public class Servicio {
 	}
 	public String toString(boolean b) {
 		String ret="SERVICIO\n";
-		ret+="codigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\t\n";
+		ret+="codigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado\n";
 		ret+="--------------------------------------------------------------------------\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
 				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado"\n";
