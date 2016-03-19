@@ -18,12 +18,40 @@ public class Utils {
 
 	public static String fechaSolicitud(GregorianCalendar hora) {
 		String fecha="";
-		fecha+=hora.get(Calendar.MONTH)+" ";
+		fecha+=mes(hora.get(Calendar.MONTH))+" ";
 		fecha+=hora.get(Calendar.DAY_OF_MONTH)+" ";
 		fecha+=hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
 		
 		return fecha;
 	}
+	public static String mes(int i) {
+		if(i==0)
+			return "ENE";
+		else if(i==1)
+			return "FEB";
+		else if(i==2)
+			return "MAR";
+		else if(i==3)
+			return "ABR";
+		else if(i==4)
+			return "MAY";
+		else if(i==5)
+			return "JUN";
+		else if(i==6)
+			return "JUL";
+		else if(i==7)
+			return "AGO";
+		else if(i==8)
+			return "SEP";
+		else if(i==9)
+			return "OCT";
+		else if(i==10)
+			return "NOV";
+		else if(i==11)
+			return "DIC";
+		return "";
+	}
+
 	public static int calcularDistancia(Direccion x ,Direccion y) {
 		int a=Math.abs(y.getCalle()-x.getCalle());
 		int b=Math.abs(y.getCarrera()-x.getCarrera());
