@@ -97,5 +97,16 @@ public class Servicio {
 	public String toStringEspecial() {
 		return codigo+"\t"+paciente+"\t"+ambulancia.getCodigo()+"\t"+ips.getNombre();
 	}
+	public void finalizarServicio(){
+		this.estado="FINALIZADO";
+		this.ambulancia.retirarServicio();
+		
+	}
+	
+	public String toStringEspecialSupremo()
+	{
+		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+"\t"+tipoServicio+"\t"+telefono+"\t"
+				+direccion.toString()+"\t"+estado+"\t"+ambulancia.getCodigo();
+	}
 	
 }

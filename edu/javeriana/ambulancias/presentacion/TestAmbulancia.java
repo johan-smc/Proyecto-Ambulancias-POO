@@ -186,7 +186,7 @@ public class TestAmbulancia {
 	}
 	private static void reporteServiciosIPS(EmpresaAmbulancias empresaAmbulancia)
 	{
-		
+		System.out.println(empresaAmbulancia.reportarIPS());
 		
 	}
 	

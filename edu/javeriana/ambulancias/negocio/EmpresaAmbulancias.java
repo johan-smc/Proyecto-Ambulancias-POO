@@ -188,12 +188,24 @@ public class EmpresaAmbulancias {
 			{
 				if(servicios.get(codigo).getEstado().equals("ASIGNADO"))
 				{
-					servicios.get(codigo).setEstado("FINALIZADO");
+					servicios.get(codigo).finalizarServicio();
 					return true;
 				}
 			}
 			return false;
-			
+		}
+		
+		public String reportarIPS()
+		{
+			String reporte=null;
+			for(IPS ips: losIPS)
+			{
+				reporte+="█████████████████████████████████IPS█████████████████████████████████████████\n"+
+						"Nombre\ttipoAtencion\tdireccion\n───────────────────────────────────────────────────────────────────────────\n"
+						+ips.getNombre()+"\t"+ips.getTipoAtencion()+"\t"+ips.getDireccion().toString()+"\n"
+						+ips.reporteServicios()+"\n";
+			}
+			return reporte;
 			
 		}
 

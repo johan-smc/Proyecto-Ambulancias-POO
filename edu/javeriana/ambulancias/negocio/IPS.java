@@ -18,6 +18,16 @@ public class IPS {
 		this.direccion = new Direccion(tipoDireccion, calle, carrera, numero) ;
 		this.servicios = new ArrayList<Servicio>();
 	}
+	public String reporteServicios()
+	{
+		String reporte="\tSERVICIOS:\n\tcodigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado ambul\n"
+						+ "────────────────────────────────────────────────────────────────────────\n";
+		for(Servicio servicio:servicios)
+		{
+			reporte+="\t"+servicio.toStringEspecialSupremo()+"\n";
+		}
+		return reporte;
+	}
 	
 	public Direccion getDireccion() {
 		return direccion;
