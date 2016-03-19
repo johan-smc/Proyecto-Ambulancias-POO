@@ -20,53 +20,54 @@ public class TestAmbulancia {
 		
 		
 		
-		int opcion;
+		String opcion;
+		char primervalor;
 		do{
 			menu();			
-			opcion=opc.nextInt();
+			opcion=opc.next();
+			primervalor=opcion.charAt(0);
+			switch(primervalor){
 			
-			switch(opcion){
-			
-			case 1:{
+			case '1':{
 				
 				ingresarIPS(opc, empresaAmbulancia);
 				break;
 				}
-			case 2:{
+			case '2':{
 				ingresarAmbulacia(opc,empresaAmbulancia);
 				break;
 				}
-			case 3:{
+			case '3':{
 
 				registrarPocicionAmbulancia(opc,empresaAmbulancia);
 
 
 				break;
 				}
-			case 4:{
+			case '4':{
 				registrarAmbulancia(opc,empresaAmbulancia);
 				break;
 				}
-			case 5:{
+			case '5':{
 				 
 				reportedeambulancias(empresaAmbulancia); 
 				
 				
 				break;
 				}
-			case 6:{
+			case '6':{
 				asignarServicioAmbulanciaIPS(opc,empresaAmbulancia);
 				break;
 				}
-			case 7:{
+			case '7':{
 				finalizarServicio(opc, empresaAmbulancia);
 				break;
 				}
-			case 8:{
+			case '8':{
 				reporteServiciosIPSAmbulancia(empresaAmbulancia);
 				break;
 				}
-			case 9:{
+			case '9':{
 				reporteServiciosIPS(empresaAmbulancia);
 				break;
 				}
@@ -79,7 +80,7 @@ public class TestAmbulancia {
 			}
 		
 		
-		}while(opcion!=10);
+		}while(!opcion.trim().equals("10"));
 		
 		
 		
@@ -101,7 +102,7 @@ public class TestAmbulancia {
 			
 			System.out.println(empresaAmbulancia.relacionarServicio(codigo));
 		}
-		else System.out.println("El codigo que ingreso no existe");
+		else System.err.println("El codigo que ingreso no existe");
 		
 	}
 	private static void registrarAmbulancia(Scanner sc, EmpresaAmbulancias empresaAmbulancias) {
@@ -164,7 +165,7 @@ public class TestAmbulancia {
 	
 	private static void reportedeambulancias(EmpresaAmbulancias empresaambulancia){
 		
-		System.out.println("codigo placa tipoDotacion horaPosicion posicionCalle posicionCarrera servicio");
+		System.out.println("codigo\tplaca\ttipoDotacion\thoraPosicion\tposicionCalle\tposicionCarrera\tservicio");
 		System.out.println(empresaambulancia.reporteambul());
 		
 		

@@ -4,7 +4,6 @@ package co.edu.javeriana.ambulancias.negocio;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -65,10 +64,10 @@ public class Ambulancia {
 		
 		return null;
 	}
-	public String getHoraPosicion() {
-		GregorianCalendar fecha = new GregorianCalendar();
+	public GregorianCalendar getHoraPosicion() {
+		
 	 
-		return "" + fecha.get(Calendar.HOUR_OF_DAY) + fecha.get(Calendar.MINUTE)+fecha.get(Calendar.SECOND);
+		return horaPosicion;
 		
 	}
 	

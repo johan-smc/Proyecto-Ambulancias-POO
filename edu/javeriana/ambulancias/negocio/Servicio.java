@@ -78,7 +78,7 @@ public class Servicio {
 		ret+="codigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado\n";
 		ret+="--------------------------------------------------------------------------\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
-				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado"\n";
+				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\n";
 		if(this.ambulancia!=null && this.ips!=null)
 		{
 			ret+="\tIPS asignada:\n";

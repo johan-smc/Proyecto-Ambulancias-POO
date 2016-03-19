@@ -21,7 +21,7 @@ public class IPS {
 	public String reporteServicios()
 	{
 		String reporte="\tSERVICIOS:\n\tcodigo\thoraSolicitud\tpaciente\ttipoServicio\ttelefono\tdireccion\testado ambul\n"
-						+ "────────────────────────────────────────────────────────────────────────\n";
+						+ "------------------------------------------------------------------------\n";
 		for(Servicio servicio:servicios)
 		{
 			reporte+="\t"+servicio.toStringEspecialSupremo()+"\n";
