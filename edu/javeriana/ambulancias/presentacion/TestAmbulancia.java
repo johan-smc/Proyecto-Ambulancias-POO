@@ -22,12 +22,16 @@ public class TestAmbulancia {
 		
 		String opcion;
 		char primervalor;
-		do{
-			menu();			
-			opcion=opc.next();
-			primervalor=opcion.charAt(0);
-			switch(primervalor){
+		menu();			
+		opcion=opc.nextLine().trim();
+		while(!opcion.trim().equals("10")){
+			primervalor='.';
+			if(opcion.trim().length()>0&&opcion.length()<2)
+				primervalor=opcion.charAt(0);
 			
+				
+			switch(primervalor){
+		
 			case '1':{
 				
 				ingresarIPS(opc, empresaAmbulancia);
@@ -76,13 +80,15 @@ public class TestAmbulancia {
 			
 			
 			}
+			menu();			
+			opcion=opc.nextLine().trim();
 		
 		
-		}while(!opcion.trim().equals("10"));
+		}
 		
 		
 		
-	System.out.println("GRACIAS POR PREFERIRNOS");
+	System.out.println("GRACIAS POR PREFERIRNOS!!!! ");
 		
 
 	opc.close();
@@ -94,20 +100,24 @@ public class TestAmbulancia {
 	private static void asignarServicioAmbulanciaIPS(Scanner sc, EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println(empresaAmbulancia.reporteServiciosNoAsignadas());
 		System.out.println("--Cual es el codigo del servicio que desea asignar ?:");
-		Long codigo=Long.valueOf((sc.nextLine().trim()));
+		String test=sc.nextLine().trim();
+		if( Utils.isNumeric(test) ){
+		Long codigo=Long.valueOf(test);
 		if( empresaAmbulancia.verificarCodigoServicio(codigo) )
 		{
 			
 			System.out.println(empresaAmbulancia.relacionarServicio(codigo));
 		}
 		else System.err.println("El codigo que ingreso no existe");
-		
+		}
+		else 
+			System.err.println("Error");
 	}
 	private static void registrarAmbulancia(Scanner sc, EmpresaAmbulancias empresaAmbulancias) {
 		String nombre,tipoServicio,telefono,tipoDireccion;
 		int n1,n2,n3;
 		System.out.println("Ingrese el nombre del paciente");
-		nombre=sc.nextLine();
+		nombre=sc.nextLine().trim();
 		System.out.println("Ingrese el tipo de servicio");
 		tipoServicio=sc.nextLine().trim();
 		System.out.println("Ingrese el telefono");
@@ -115,41 +125,55 @@ public class TestAmbulancia {
 		System.out.println("Ingrese el tipo de direccion");
 		tipoDireccion=sc.nextLine().trim();
 		System.out.println("ingrese la calle, carrera y el numero");
-		n1=Integer.valueOf((sc.nextLine().trim()));
-		n2=Integer.valueOf((sc.nextLine().trim()));
-		n3=Integer.valueOf((sc.nextLine().trim()));
-		long codigo=empresaAmbulancias.agregarServicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
-		System.out.println("El nuevo Servicio tiene codigo "+codigo);
+		String test=sc.nextLine().trim(),test2=sc.nextLine().trim(),test3=sc.nextLine().trim();
+		if(Utils.isNumeric(test)&&Utils.isNumeric(test2)&&Utils.isNumeric(test3)){
+			n1=Integer.valueOf(test);
+			n2=Integer.valueOf(test2);
+			n3=Integer.valueOf(test3);
+			long codigo=empresaAmbulancias.agregarServicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
+			System.out.println("El nuevo Servicio tiene codigo "+codigo);
+		}
+		else 
+			System.err.println("Error");
 	}
 	private static void registrarPosicionAmbulancia(Scanner opc2, EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el codigo de la ambulancia");
-		int codigo=Integer.valueOf((opc2.nextLine().trim()));
-		System.out.println("Ingrese la calle y la carrera");
-		int calle=Integer.valueOf((opc2.nextLine().trim()));
-		int carrera=Integer.valueOf((opc2.nextLine().trim()));
-		
-		boolean exito=empresaAmbulancia.registrarPosAmbulancia( codigo, calle,  carrera);
-		if(exito)
-		{
-			System.out.println("EXITO");
-		}else{
-			
-			System.out.println("ERROR");
+		String test=opc2.nextLine().trim();
+		if(Utils.isNumeric(test)){
+			int codigo=Integer.valueOf(test);
+			System.out.println("Ingrese la calle y la carrera");
+			test=opc2.nextLine().trim();
+			String test2=opc2.nextLine().trim();
+			if(Utils.isNumeric(test)&&Utils.isNumeric(test2)){
+				int calle=Integer.valueOf(test);
+				int carrera=Integer.valueOf(test2);
+				
+				boolean exito=empresaAmbulancia.registrarPosAmbulancia( codigo, calle,  carrera);
+				if(exito)
+				{
+					System.out.println("EXITO");
+				}else{
+					
+					System.err.println("ERROR");
+				}
+			}
+			else 
+				System.err.println("ERR");
 		}
+		else 
+			System.err.println("ERR");
 		
 	}
 	private static void ingresarAmbulacia(Scanner opc2, EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el nombre del archivo (example.txt): ");
 		
 		String archivoName=opc2.nextLine();
-
 		ManejadorArchivos.ingresarAmbulancia(archivoName, empresaAmbulancia);
 		
 	}
 	private static void ingresarIPS(Scanner sc,EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el nombre del archivo (example.txt): ");
 		String archivoName=sc.nextLine();
-		
 		ManejadorArchivos.ingresarIPS(archivoName, empresaAmbulancia);
 	
 		
@@ -169,9 +193,10 @@ public class TestAmbulancia {
 	}
 	private static void finalizarServicio(Scanner opc, EmpresaAmbulancias empresaAmbulancias)
 	{
-		empresaAmbulancias.reporteServiciosSiAsignadas();
+		System.out.println(empresaAmbulancias.reporteServiciosSiAsignadas());
 		System.out.println("Ingrese el codigo del servicio a finalizar: ");
-		if(empresaAmbulancias.finAServicio(opc.nextLong()))
+		String test=opc.nextLine().trim();
+		if(Utils.isNumeric(test)&&empresaAmbulancias.finAServicio(Long.valueOf(test)))
 		{
 			System.out.println("EXITO!!!");
 		}

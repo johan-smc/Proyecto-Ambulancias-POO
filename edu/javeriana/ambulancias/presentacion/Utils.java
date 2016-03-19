@@ -63,5 +63,15 @@ public class Utils {
 			return "";
 		return hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
 	}
+	//recoletado de:
+	//http://lineadecodigo.com/java/validar-si-un-dato-es-numerico-en-java/
 
+	public static boolean isNumeric(String cadena){
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
 }

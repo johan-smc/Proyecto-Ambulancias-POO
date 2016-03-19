@@ -128,6 +128,8 @@ public class EmpresaAmbulancias {
 		public String relacionarServicio(Long codigo) {
 			
 			Servicio servicio=servicios.get(codigo);
+			if(!servicio.getEstado().equals("NO_ASIGNADO"))
+				return "El servicio no esta libre";
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
 			if(ambulancia==null)
 				return "No se encontro ambulancia disponible";

@@ -24,7 +24,7 @@ public class ManejadorArchivos {
 					while(!a.equals("0"))
 						{
 								
-								if(a.charAt(0)!='#')
+								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
 								   
@@ -65,7 +65,7 @@ public class ManejadorArchivos {
 					while(!a.equals("0"))
 						{
 								
-								if(a.charAt(0)!='#')
+								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
 								   
