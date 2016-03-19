@@ -39,7 +39,7 @@ public class TestAmbulancia {
 				}
 			case '3':{
 
-				registrarPocicionAmbulancia(opc,empresaAmbulancia);
+				registrarPosicionAmbulancia(opc,empresaAmbulancia);
 
 
 				break;
@@ -122,7 +122,7 @@ public class TestAmbulancia {
 		long codigo=empresaAmbulancias.agregarServicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 		System.out.println("El nuevo Servicio tiene codigo "+codigo);
 	}
-	private static void registrarPocicionAmbulancia(Scanner opc2, EmpresaAmbulancias empresaAmbulancia) {
+	private static void registrarPosicionAmbulancia(Scanner opc2, EmpresaAmbulancias empresaAmbulancia) {
 		System.out.println("Ingrese el codigo de la ambulancia");
 		int codigo=opc.nextInt();
 		System.out.println("Ingrese la calle y la carrera");
