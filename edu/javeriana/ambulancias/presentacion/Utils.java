@@ -51,6 +51,11 @@ public class Utils {
 			return "Dic";
 		return "";
 	}
+	
+	public static String imprimirLinea(int a){
+		String linea=""+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a;
+		return linea;
+	}
 
 	public static int calcularDistancia(Direccion x ,Direccion y) {
 		int a=Math.abs(y.getCalle()-x.getCalle());

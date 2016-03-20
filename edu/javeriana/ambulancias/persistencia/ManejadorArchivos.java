@@ -11,7 +11,7 @@ public class ManejadorArchivos {
 			
 
 			
-			public static void ingresarIPS(String dir, EmpresaAmbulancias empresa)
+			public static String ingresarIPS(String dir, EmpresaAmbulancias empresa)
 				{			
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
@@ -23,7 +23,11 @@ public class ManejadorArchivos {
 					
 					while(!a.equals("0"))
 						{
-								
+								if(a.charAt(0)=='#' && a.charAt(1)!='n')
+								{
+									input.close();
+									return "ERROR!: El archivo tiene formato incorrecto.";
+								}
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
@@ -41,18 +45,14 @@ public class ManejadorArchivos {
 						}
 					
 					input.close();
-					System.out.println("EXITOSO!.");
+					return "EXITOSO!.";
 				}catch(FileNotFoundException e){
 					
-					System.err.println("ERROR!.");
-				}
-				
-				
-				
-				
+					return "ERROR!.";
+				}	
 				
 			}
-			public static void ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
+			public static String ingresarAmbulancia(String dir, EmpresaAmbulancias empresa)
 			{
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
@@ -64,7 +64,11 @@ public class ManejadorArchivos {
 					
 					while(!a.equals("0"))
 						{
-								
+								if(a.charAt(0)=='#' && a.charAt(1)!='c')
+								{
+									input.close();
+									return "ERROR!: El archivo tiene formato incorrecto.";
+								}
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");  
@@ -79,10 +83,11 @@ public class ManejadorArchivos {
 						}
 					
 					input.close();
-					System.out.println("LECTURA CORRECTA!.");
+					return "LECTURA CORRECTA!.";
 				}catch(FileNotFoundException e){
 					
-					System.err.println("ERROR!.");
+					
+					return "ERROR!.";
 				}
 				
 			}

@@ -50,24 +50,28 @@ public class EmpresaAmbulancias {
 		}
 		public String reporteambul(){
 			
-			String todas="";
-			for(Ambulancia ambulancia : ambulancias)
+			if(!ambulancias.isEmpty())
 			{
-				todas=todas+ambulancia.getCodigo()+"\t";
-				todas=todas+ambulancia.getPlaca()+"\t";
-				todas=todas+ambulancia.getTipoDotacion()+"\t";
-				todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t\t";
-				todas=todas+ambulancia.getPosicionCalle()+"\t\t";
-				todas=todas+ambulancia.getPosicionCarrera()+"\t\t";
-				if(ambulancia.getServicioAsignado()!=null)
+				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
+				for(Ambulancia ambulancia : ambulancias)
 				{
-					todas=todas+ambulancia.getServicioAsignado();
+					todas=todas+ambulancia.getCodigo()+"\t";
+					todas=todas+ambulancia.getPlaca()+"\t";
+					todas=todas+ambulancia.getTipoDotacion()+"\t";
+					todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t\t";
+					todas=todas+ambulancia.getPosicionCalle()+"\t\t";
+					todas=todas+ambulancia.getPosicionCarrera()+"\t\t";
+					if(ambulancia.getServicioAsignado()!=null)
+					{
+						todas=todas+ambulancia.getServicioAsignado();
+						
+					}
+					todas+="\n";
 					
 				}
-				todas+="\n";
-				
+				return todas;				
 			}
-			return todas;
+			else return "No se encuentran ambulancias.";
 			
 		}
 		
@@ -94,33 +98,61 @@ public class EmpresaAmbulancias {
 			return temp.getCodigo();
 			
 		}
-		public String reporteServiciosNoAsignadas() {
-			String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
-			reporte+="--Se muestran los servicios del sistema sin asignar:\n";
-			reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
-			reporte+="----------------------------------------------------------------------------------------\n";
+		
+		private boolean hayServicioDe(String servicio)
+		{
 			Set<Long> setKey= servicios.keySet();
 			for(Long key:setKey)
 			{
 				Servicio temp=servicios.get(key);
-				if(temp.getEstado().equals("NO_ASIGNADO"))
-					reporte+=temp.toString()+"\n";
+				if(temp.getEstado().equals(servicio))
+					return true;
 			}
-			return reporte;
+			return false;
+		}
+		
+		public String reporteServiciosNoAsignadas() {
+			if(!servicios.isEmpty() && hayServicioDe("NO_ASIGNADO"))
+			{
+				String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
+				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
+				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
+				reporte+="----------------------------------------------------------------------------------------\n";
+				Set<Long> setKey= servicios.keySet();
+				for(Long key:setKey)
+				{
+					Servicio temp=servicios.get(key);
+					if(temp.getEstado().equals("NO_ASIGNADO"))
+						reporte+=temp.toString()+"\n";
+				}
+				return reporte;
+			}
+			else
+			{
+				return "No se han encontrado Servicios.";
+			}
 		}
 		public String reporteServiciosSiAsignadas() {
-			String reporte="--FINALIZAR UN SERVICIO\n";
-			reporte+="--Se muestran los servicios del sistema asignados:\n";
-			reporte+="Codigo\tPaciente\tAmbulancia\tIPS\n";
-			reporte+="----------------------------------------------------------------------------------------\n";
-			Set<Long> setKey= servicios.keySet();
-			for(Long key:setKey)
+			
+			if(!servicios.isEmpty() && hayServicioDe("ASIGNADO"))
 			{
-				Servicio temp=servicios.get(key);
-				if(temp.getEstado().equals("ASIGNADO"))
-					reporte+=temp.toStringEspecial()+"\n";
+				String reporte="--FINALIZAR UN SERVICIO\n";
+				reporte+="--Se muestran los servicios del sistema asignados:\n";
+				reporte+="Codigo\tPaciente\tAmbulancia\tIPS\n";
+				reporte+="----------------------------------------------------------------------------------------\n";
+				Set<Long> setKey= servicios.keySet();
+				for(Long key:setKey)
+				{
+					Servicio temp=servicios.get(key);
+					if(temp.getEstado().equals("ASIGNADO"))
+						reporte+=temp.toStringEspecial()+"\n";
+				}
+				return reporte;
 			}
-			return reporte;
+			else
+			{
+				return "No se han encontrado Servicios para finalizar.";
+			}
 		}
 		public boolean verificarCodigoServicio(Long codigo) {
 			return servicios.containsKey(codigo);
