@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
-
+///cambiar forma de guardar las IPS, los servicios y las ambulancias
 public class EmpresaAmbulancias {
 		private String nombre;
 		private List<IPS> losIPS;
