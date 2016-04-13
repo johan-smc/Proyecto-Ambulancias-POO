@@ -1,8 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
-
-
+import java.util.Collections;
 import java.util.HashMap;
 
 import java.util.List;
@@ -31,9 +30,14 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				
 				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
 		}
-		public void agregarAmbulancia(int codigo,String placa, String tipoDotacion)
+		public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
 		{
-			ambulancias.put(codigo,new Ambulancia(codigo,placa,tipoDotacion));
+			if(tipoAmbulancia.equals("BASICA"))
+				ambulancias.put(codigo, new AmbulanciaBasica(codigo,placa,medico));
+			else if( tipoAmbulancia.equals("UCI"))
+				ambulancias.put(codigo, new AmbulanciaUCI(codigo,placa,medico,tipoUCI));
+			else if( tipoAmbulancia.equals("NOMEDICALIZADA"))
+				ambulancias.put(codigo, new AmbulanciaNoMedicalizada(codigo,placa,medico));
 		}
 		
 		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
@@ -69,7 +73,6 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					Ambulancia ambulancia=ambulancias.get(key);
 					todas=todas+ambulancia.getCodigo()+"\t";
 					todas=todas+ambulancia.getPlaca()+"\t";
-					todas=todas+ambulancia.getTipoDotacion()+"\t";
 					todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t\t";
 					todas=todas+ambulancia.getPosicionCalle()+"\t\t";
 					todas=todas+ambulancia.getPosicionCarrera()+"\t\t";
@@ -123,6 +126,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
 				reporte+="----------------------------------------------------------------------------------------\n";
 				
+				Collections.sort( servicios,new ServiciosHoraSolicitud() );
 				for(Servicio temp:servicios)
 				{
 					

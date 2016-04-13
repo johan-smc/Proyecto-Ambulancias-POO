@@ -21,7 +21,7 @@ public abstract class Ambulancia {
 	private boolean asignada;
 	private boolean dirModificada;
 
-	public Ambulancia(int codigo, String placa, String tipoDotacion) {
+	public Ambulancia(int codigo, String placa) {
 		this.codigo=codigo;
 		this.placa=placa;
 		//this.tipoDotacion=tipoDotacion;

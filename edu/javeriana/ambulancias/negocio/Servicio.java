@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
@@ -30,12 +31,21 @@ public class Servicio {
 			int n3) {
 		this.codigo=Servicio.getCONSECUTIVO();
 		this.paciente=nombre;
-		this.tipoServicio=tipoServicio;
+		this.tipoServicio=tipo(tipoServicio);
 		this.telefono=telefono;
 		this.direccion=new Direccion(tipoDireccion,n1,n2,n3);
 		this.estado=Estado.NO_ASIGNADO;
 		this.horaSolicitud=Utils.horaSistema();
 		
+	}
+	private TipoServicio tipo(String tipoServicio2) {
+		if(tipoServicio.equals("EMERGENCIA"))
+			return TipoServicio.EMERGENCIA;
+		else if( tipoServicio.equals("URGENCIA"))
+			return TipoServicio.URGENCIA;
+		else if( tipoServicio.equals("DOMICILIO"))
+			return TipoServicio.DOMICILIO;
+		return null;
 	}
 	@Override
 	public String toString() {
@@ -63,11 +73,14 @@ public class Servicio {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	public GregorianCalendar getHoraSolicitud() {
+		return horaSolicitud;
 	}
 	private static long getCONSECUTIVO() {
 		return CONSECUTIVO++;
@@ -118,6 +131,13 @@ public class Servicio {
 	{
 		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+"\t"+tipoServicio+"\t"+telefono+"\t"
 				+direccion.toString()+"\t"+estado+"\t"+ambulancia.getCodigo();
+	}
+	public long calcularValor(){
+		valor=ambulancia.calcularTarifa();
+		if(this.horaSolicitud.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY||this.horaSolicitud.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)
+			valor+=(valor*0.2);
+		return valor;
+		
 	}
 	
 }

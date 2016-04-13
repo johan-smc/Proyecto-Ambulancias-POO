@@ -2,8 +2,8 @@ package co.edu.javeriana.ambulancias.negocio;
 
 public class AmbulanciaBasica extends AmbulanciaMedicalizada{
 
-	public AmbulanciaBasica(int codigo, String placa, String tipoDotacion, String medico) {
-		super(codigo, placa, tipoDotacion, medico);
+	public AmbulanciaBasica(int codigo, String placa, String medico) {
+		super(codigo, placa, medico);
 		// TODO Auto-generated constructor stub
 	}
 
