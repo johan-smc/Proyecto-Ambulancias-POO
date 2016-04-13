@@ -10,30 +10,39 @@ import java.util.Map;
 
 import java.util.Set;
 
+import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
-///cambiar forma de guardar las IPS, los servicios y las ambulancias
-///test
-public class EmpresaAmbulancias {
+
+
+public class EmpresaAmbulancias implements IServicioAmbulancias {
 		private String nombre;
-		private List<IPS> losIPS;
-		private Map<Long,Servicio> servicios;
-		private List<Ambulancia> ambulancias;
+		private Map<String,IPS> losIPS;
+		private List<Servicio> servicios;
+		private Map<Integer,Ambulancia> ambulancias;
 		
+		public EmpresaAmbulancias(String nombre) {
+			this.nombre=nombre;
+			this.losIPS=new HashMap<String,IPS>();
+			this.servicios=new ArrayList<Servicio>();
+			this.ambulancias=new HashMap<Integer,Ambulancia>();
+		}
 		
 		public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
 				
-				losIPS.add(new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
+				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
 		}
 		public void agregarAmbulancia(int codigo,String placa, String tipoDotacion)
 		{
-			ambulancias.add(new Ambulancia(codigo,placa,tipoDotacion));
+			ambulancias.put(codigo,new Ambulancia(codigo,placa,tipoDotacion));
 		}
 		
 		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
 		{
 			boolean esta=false;
-			for(Ambulancia ambulancia: ambulancias){
-				
+			Set<Integer> setKey= ambulancias.keySet();
+			for(Integer key : setKey)
+			{
+				Ambulancia ambulancia=ambulancias.get(key);
 				
 				if(ambulancia.getCodigo()==codigo)
 				{
@@ -54,8 +63,10 @@ public class EmpresaAmbulancias {
 			if(!ambulancias.isEmpty())
 			{
 				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
-				for(Ambulancia ambulancia : ambulancias)
+				Set<Integer> setKey= ambulancias.keySet();
+				for(Integer key : setKey)
 				{
+					Ambulancia ambulancia=ambulancias.get(key);
 					todas=todas+ambulancia.getCodigo()+"\t";
 					todas=todas+ambulancia.getPlaca()+"\t";
 					todas=todas+ambulancia.getTipoDotacion()+"\t";
@@ -77,12 +88,6 @@ public class EmpresaAmbulancias {
 		}
 		
 		
-		public EmpresaAmbulancias(String nombre) {
-			this.nombre=nombre;
-			this.losIPS=new ArrayList<IPS>();
-			this.servicios=new HashMap<Long,Servicio>();
-			this.ambulancias=new ArrayList<Ambulancia>();
-		}
 
 		public String getNombre() {
 			return nombre;
@@ -95,17 +100,15 @@ public class EmpresaAmbulancias {
 				int n2, int n3) {
 			
 			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
-			this.servicios.put(temp.getCodigo(), temp);
+			this.servicios.add(temp);
 			return temp.getCodigo();
 			
 		}
 		
 		private boolean hayServicioDe(String servicio)
 		{
-			Set<Long> setKey= servicios.keySet();
-			for(Long key:setKey)
+			for(Servicio temp:servicios)
 			{
-				Servicio temp=servicios.get(key);
 				if(temp.getEstado().equals(servicio))
 					return true;
 			}
@@ -119,10 +122,10 @@ public class EmpresaAmbulancias {
 				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
 				reporte+="----------------------------------------------------------------------------------------\n";
-				Set<Long> setKey= servicios.keySet();
-				for(Long key:setKey)
+				
+				for(Servicio temp:servicios)
 				{
-					Servicio temp=servicios.get(key);
+					
 					if(temp.getEstado().equals("NO_ASIGNADO"))
 						reporte+=temp.toString()+"\n";
 				}
@@ -141,10 +144,9 @@ public class EmpresaAmbulancias {
 				reporte+="--Se muestran los servicios del sistema asignados:\n";
 				reporte+="Codigo\tPaciente\tAmbulancia\tIPS\n";
 				reporte+="----------------------------------------------------------------------------------------\n";
-				Set<Long> setKey= servicios.keySet();
-				for(Long key:setKey)
+				for(Servicio temp:servicios)
 				{
-					Servicio temp=servicios.get(key);
+					
 					if(temp.getEstado().equals("ASIGNADO"))
 						reporte+=temp.toStringEspecial()+"\n";
 				}
@@ -156,11 +158,11 @@ public class EmpresaAmbulancias {
 			}
 		}
 		public boolean verificarCodigoServicio(Long codigo) {
-			return servicios.containsKey(codigo);
+			return buscarServicio(codigo)==null?false:true;
 		}
 		public String relacionarServicio(Long codigo) {
 			
-			Servicio servicio=servicios.get(codigo);
+			Servicio servicio=buscarServicio(codigo);
 			if(!servicio.getEstado().equals("NO_ASIGNADO"))
 				return "El servicio no esta libre";
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
@@ -172,11 +174,25 @@ public class EmpresaAmbulancias {
 			servicio.relacionar(ambulancia,ips);
 			return "Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo()+" y la IPS "+ips.getNombre();
 		}
+		private Servicio buscarServicio(Long codigo) {
+			for(Servicio servicio:this.servicios)
+			{
+				if(((Long)servicio.getCodigo()).equals(codigo))
+				{
+					return servicio;
+				}
+				
+			}
+			return null;
+		}
+
 		private IPS ipsMasCercana(Servicio servicio) {
 			int men=999999,valorT;
 			IPS menI = null;
-			for(IPS o : losIPS)
+			Set<String> setKey= losIPS.keySet();
+			for(String key : setKey)
 			{
+				IPS o=losIPS.get(key);
 				valorT=Utils.calcularDistancia(o.getDireccion(),servicio.getDireccion());
 				if(valorT<men )
 				{
@@ -195,8 +211,10 @@ public class EmpresaAmbulancias {
 		private Ambulancia ambulanciaMasCercana(Servicio servicio) {
 			int men=999999,valorT;
 			Ambulancia menA = null;
-			for(Ambulancia o : ambulancias)
+			Set<Integer> setKey= ambulancias.keySet();
+			for(Integer key : setKey)
 			{
+				Ambulancia o=ambulancias.get(key);
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
 				if(valorT<men&&comprovarTipoServicio(servicio,o)&&!o.isAsignada()&& o.isDirModificada())
 				{
@@ -209,10 +227,10 @@ public class EmpresaAmbulancias {
 		}
 		public String reporteServiciosIPSAmbulacia() {
 			String reporte="--REPORTE DE SERVICIOS CON IPS Y AMBULANCIAS ASOCIADAS\n\n";
-			Set<Long> setKey= servicios.keySet();
-			for(Long key:setKey)
+		
+			for( Servicio servicio: servicios)
 			{
-				reporte+=servicios.get(key).toString(true)+"\n";
+				reporte+=servicio.toString(true)+"\n";
 			}
 			return reporte;
 		}
@@ -222,9 +240,10 @@ public class EmpresaAmbulancias {
 			
 			if(this.verificarCodigoServicio(codigo))
 			{
-				if(servicios.get(codigo).getEstado().equals("ASIGNADO"))
+				Servicio servicio=buscarServicio(codigo);
+				if(servicio.getEstado().equals("ASIGNADO"))
 				{
-					servicios.get(codigo).finalizarServicio();
+					servicio.finalizarServicio();
 					return true;
 				}
 			}
@@ -234,8 +253,10 @@ public class EmpresaAmbulancias {
 		public String reportarIPS()
 		{
 			String reporte="";
-			for(IPS ips: losIPS)
+			Set<String> setKey= losIPS.keySet();
+			for(String key : setKey)
 			{
+				IPS ips=losIPS.get(key);
 				reporte+="--------------------------------------------IPS---------------------------------------------------\n"+
 						"Nombre\ttipoAtencion\tdireccion\n---------------------------------------------------------------------------\n"
 						+ips.getNombre()+"\t"+ips.getTipoAtencion()+"\t"+ips.getDireccion().toString()+"\n"
@@ -243,6 +264,14 @@ public class EmpresaAmbulancias {
 			}
 			return reporte;
 			
+		}
+
+		public List<Servicio> getServicios() {
+			return servicios;
+		}
+
+		public Map<Integer, Ambulancia> getAmbulancias() {
+			return ambulancias;
 		}
 
 		

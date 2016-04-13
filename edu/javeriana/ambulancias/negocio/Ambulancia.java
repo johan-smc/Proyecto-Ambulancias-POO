@@ -9,21 +9,22 @@ import java.util.List;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
-public class Ambulancia {
-	private int codigo;
-	private String placa;
-	private String tipoDotacion;
-	private GregorianCalendar horaPosicion;
-	private int posicionCalle;
-	private int posicionCarrera;
+public abstract class Ambulancia {
+	protected static long TARIFA_BASE;
+	protected int codigo;
+	protected String placa;
+	//private String tipoDotacion;
+	protected GregorianCalendar horaPosicion;
+	protected int posicionCalle;
+	protected int posicionCarrera;
 	private List<Servicio> servicios;
 	private boolean asignada;
 	private boolean dirModificada;
-	
+
 	public Ambulancia(int codigo, String placa, String tipoDotacion) {
 		this.codigo=codigo;
 		this.placa=placa;
-		this.tipoDotacion=tipoDotacion;
+		//this.tipoDotacion=tipoDotacion;
 		this.servicios=new ArrayList<Servicio>();
 		this.horaPosicion=new GregorianCalendar();
 		this.dirModificada=false;
@@ -53,11 +54,11 @@ public class Ambulancia {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	
+
 	public void sethora() {
 		 horaPosicion=Utils.horaSistema();
-		
-		
+
+
 	}
 	public Long getServicioAsignado()
 	{
@@ -67,35 +68,35 @@ public class Ambulancia {
 			{
 				return servicio.getCodigo();
 			}
-			
+
 		}
-		
+
 		return null;
 	}
 	public GregorianCalendar getHoraPosicion() {
-		
-	 
+
+
 		return horaPosicion;
-		
+
 	}
-	
+
 	public void retirarServicio()
 	{
 		this.asignada=false;
-		
+
 	}
-	@Override
+	/*@Override
 	public String toString() {
 		return codigo+"\t"+placa+" "+tipoDotacion+"\t\t"+Utils.hora(horaPosicion)+"\t\t"+posicionCalle+"\t\t"+posicionCarrera;
-	}
-	public void setHoraPosicion(GregorianCalendar horaPosicion) {
-		this.horaPosicion = horaPosicion;
 	}
 	public String getTipoDotacion() {
 		return tipoDotacion;
 	}
 	public void setTipoDotacion(String tipoDotacion) {
 		this.tipoDotacion = tipoDotacion;
+	}*/
+	public void setHoraPosicion(GregorianCalendar horaPosicion) {
+		this.horaPosicion = horaPosicion;
 	}
 	public int getPosicionCalle() {
 		return posicionCalle;
@@ -112,7 +113,8 @@ public class Ambulancia {
 	public void relacionarServicio(Servicio servicio) {
 		this.asignada=true;
 		this.servicios.add(servicio);
-		
+
 	}
-	
+	public abstract long calcularTarifa();
+
 }

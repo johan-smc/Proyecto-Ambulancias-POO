@@ -15,6 +15,7 @@ public class Servicio {
 	private Direccion direccion;
 	private IPS ips;
 	private Ambulancia ambulancia;
+	private long valor;
 	
 	public Servicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1, int n2,
 			int n3) {
