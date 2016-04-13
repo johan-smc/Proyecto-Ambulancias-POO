@@ -117,5 +117,6 @@ public abstract class Ambulancia {
 	}
 	public abstract long calcularTarifa();
 	public abstract boolean comprovarTipoServicio(Servicio servicio);
+	public abstract void reporteAmbulancias(int basicas, int uci, int noEspe);
 
 }

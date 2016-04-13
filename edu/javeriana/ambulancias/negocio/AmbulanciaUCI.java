@@ -30,4 +30,9 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
 
+	@Override
+	public void reporteAmbulancias(int basicas, int uci, int noEspe) {
+		noEspe++;
+	}
+
 }

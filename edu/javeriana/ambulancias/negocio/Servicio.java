@@ -36,6 +36,8 @@ public class Servicio {
 		this.direccion=new Direccion(tipoDireccion,n1,n2,n3);
 		this.estado=Estado.NO_ASIGNADO;
 		this.horaSolicitud=Utils.horaSistema();
+		this.ambulancia=null;
+		this.ips=null;
 		
 	}
 	private TipoServicio tipo(String tipoServicio2) {
@@ -103,18 +105,20 @@ public class Servicio {
 		ret+="----------------------------------------------------------------------------------------\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
 				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t"+valor+"\n";
-		if(this.ambulancia!=null && this.ips!=null)
+		if(this.ips!=null)
 		{
 			ret+="\tIPS asignada:\n";
 			ret+="\tNombre                TipoAtencion            Direccion\n";
 			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t"+ips.toString()+"\n";
+		}
+		if( this.ambulancia!=null)
+		{
 			ret+="\tAmbulancia asignada:\n";
-			ret+="\tCodigo Placa   TipoDotacion  HoraPosicion  PosicionCalle PosicionCarrera\n";
+			ret+="\tTipoAmb\tCodigo\tPlaca\tMedico/enfermero\tTipoUCI\tHoraPosicion\tCalle\tCarrera\tTarifa\n";
 			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t";
 			ret+=ambulancia.toString();
-			
 		}
 		return ret;
 	}

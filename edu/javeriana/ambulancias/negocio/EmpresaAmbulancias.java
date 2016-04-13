@@ -279,6 +279,19 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public Map<Integer, Ambulancia> getAmbulancias() {
 			return ambulancias;
 		}
-
+		public String estadisticaAmbulanciasDisponibles()
+		{
+			Set<Integer> setKey= ambulancias.keySet();
+			int basicas=0,uci=0,noEspe = 0;
+			for(Integer key : setKey)
+			{
+				Ambulancia o=ambulancias.get(key);
+				if(!o.isAsignada()){
+					o.reporteAmbulancias(basicas,uci,noEspe);
+				}
+			}
+			return  "-----Estadisticas ambulancias no asignadas---\n"+
+				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
+		}
 		
 }
