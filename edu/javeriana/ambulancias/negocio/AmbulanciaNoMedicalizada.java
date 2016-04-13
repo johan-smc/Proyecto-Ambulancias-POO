@@ -1,5 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import co.edu.javeriana.ambulancias.presentacion.Utils;
+
 public class AmbulanciaNoMedicalizada extends Ambulancia{
 
 	public AmbulanciaNoMedicalizada(int codigo, String placa,String enfermero) {
@@ -23,5 +25,9 @@ public class AmbulanciaNoMedicalizada extends Ambulancia{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+	public String toString()
+	{
+		return "NoEspe\t"+codigo+"\t"+placa+"\t"+enfermero+"\t---\t"+Utils.hora(this.horaPosicion)+"\n"+this.posicionCalle+
+				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
+	}
 }

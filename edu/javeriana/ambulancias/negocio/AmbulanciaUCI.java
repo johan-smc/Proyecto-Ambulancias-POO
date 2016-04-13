@@ -1,5 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import co.edu.javeriana.ambulancias.presentacion.Utils;
+
 public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 
 	private String tipoUCI;
@@ -21,6 +23,11 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 		if(servicio.getTipoSercivio()==Servicio.TipoServicio.URGENCIA)
 			return true;
 		return super.comprovarTipoServicio(servicio);
+	}
+	public String toString()
+	{
+		return "UCI\t"+codigo+"\t"+placa+"\t"+medico+"\t"+this.tipoUCI+"\t"+Utils.hora(this.horaPosicion)+"\n"+this.posicionCalle+
+				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
 
 }

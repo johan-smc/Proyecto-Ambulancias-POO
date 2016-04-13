@@ -1,7 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 public abstract class AmbulanciaMedicalizada extends Ambulancia {
-	public AmbulanciaMedicalizada(int codigo, String placa,String medico) {
+	public AmbulanciaMedicalizada(int codigo, String placa, String medico) {
 		super(codigo, placa);
 		this.medico=medico;
 	}
