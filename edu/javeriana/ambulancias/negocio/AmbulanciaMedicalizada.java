@@ -7,6 +7,11 @@ public abstract class AmbulanciaMedicalizada extends Ambulancia {
 	}
 
 	protected String medico;
+	public boolean comprovarTipoServicio(Servicio servicio) {
+		if(servicio.getTipoSercivio()==Servicio.TipoServicio.URGENCIA)
+			return true;
+		return false;
+	}
 	
 	public abstract  long calcularTarifa();
 }

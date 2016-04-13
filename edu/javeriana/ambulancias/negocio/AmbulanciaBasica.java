@@ -9,8 +9,14 @@ public class AmbulanciaBasica extends AmbulanciaMedicalizada{
 
 	@Override
 	public long calcularTarifa() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (long) (super.TARIFA_BASE+(super.TARIFA_BASE*0.2));
+	}
+
+	@Override
+	public boolean comprovarTipoServicio(Servicio servicio) {
+		if(servicio.getTipoSercivio()==Servicio.TipoServicio.DOMICILIO)
+			return true;
+		return super.comprovarTipoServicio(servicio);
 	}
 
 }

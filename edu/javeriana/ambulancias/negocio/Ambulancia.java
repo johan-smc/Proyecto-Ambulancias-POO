@@ -10,7 +10,7 @@ import java.util.List;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public abstract class Ambulancia {
-	protected static long TARIFA_BASE;
+	protected final long TARIFA_BASE=80000;
 	protected int codigo;
 	protected String placa;
 	//private String tipoDotacion;
@@ -116,5 +116,6 @@ public abstract class Ambulancia {
 
 	}
 	public abstract long calcularTarifa();
+	public abstract boolean comprovarTipoServicio(Servicio servicio);
 
 }

@@ -1,6 +1,8 @@
 package co.edu.javeriana.ambulancias.presentacion;
 
 import java.util.Scanner;
+
+import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.*;
 import co.edu.javeriana.ambulancias.persistencia.ManejadorArchivos;
 
@@ -17,15 +19,15 @@ public class TestAmbulancia {
 		                            letra++ + " es " + i);      */   
 		 
 		
-		 //System.out.println(Utils.imprimirLinea(215)); //×××××××××××××××××××××××× pequeñas
-		// System.out.println(Utils.imprimirLinea(187)); //»»»»»»»»»»»»»»»»»»»»»»»» pequeños
+		 //System.out.println(Utils.imprimirLinea(215)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ pequeï¿½as
+		// System.out.println(Utils.imprimirLinea(187)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ pequeï¿½os
 		 //System.out.println(Utils.imprimirLinea(95));  //__________________________
-		 //System.out.println(Utils.imprimirLinea(175)); //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+		 //System.out.println(Utils.imprimirLinea(175)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		
 		System.out.println("\t\t\t  //////////////////////////////////\n"+"\t\t\t ///BIENVENIDO A BABYSOFT SYSTEM///\n"+"\t\t\t//////////////////////////////////\n");	
 		
-		EmpresaAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
+		IServicioAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
 		
 		opc = new Scanner(System.in);
 		

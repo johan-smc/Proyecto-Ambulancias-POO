@@ -168,9 +168,15 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
 			if(ambulancia==null)
 				return "No se encontro ambulancia disponible";
-			IPS ips=ipsMasCercana(servicio);
-			if(ips==null)
-				return "No se encomtro IPS disponible";
+			IPS ips=null;
+			if(servicio.getTipoSercivio()!=Servicio.TipoServicio.DOMICILIO)
+			{
+				ips=ipsMasCercana(servicio);
+				if(ips==null)
+					return "No se encomtro IPS disponible";
+				
+			}
+			
 			servicio.relacionar(ambulancia,ips);
 			return "Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo()+" y la IPS "+ips.getNombre();
 		}
@@ -203,11 +209,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			return menI;
 		}
-		private boolean comprovarTipoServicio(Servicio servicio,  Ambulancia ambulancia) {
-			if(servicio.getTipoSercivio().equals("EMERGENCIA")&&!ambulancia.getTipoDotacion().equals("ALTA_UCI"))
-				return false;
-			return true;
-		}
+		
 		private Ambulancia ambulanciaMasCercana(Servicio servicio) {
 			int men=999999,valorT;
 			Ambulancia menA = null;
@@ -216,7 +218,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			{
 				Ambulancia o=ambulancias.get(key);
 				valorT=Utils.calcularDistancia(new Direccion(o.getPosicionCalle(),o.getPosicionCarrera()),servicio.getDireccion());
-				if(valorT<men&&comprovarTipoServicio(servicio,o)&&!o.isAsignada()&& o.isDirModificada())
+				if(valorT<men&&o.comprovarTipoServicio(servicio)&&!o.isAsignada()&& o.isDirModificada())
 				{
 					menA=o;
 					men=valorT;

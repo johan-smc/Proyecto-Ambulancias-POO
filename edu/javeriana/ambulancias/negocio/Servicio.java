@@ -9,13 +9,22 @@ public class Servicio {
 	private long codigo;
 	private GregorianCalendar horaSolicitud;
 	private String paciente;
-	private String tipoServicio;
+	private TipoServicio tipoServicio;
 	private String telefono;
-	private String estado;
+	private Estado estado;
 	private Direccion direccion;
 	private IPS ips;
 	private Ambulancia ambulancia;
 	private long valor;
+	
+	public static enum TipoServicio
+	{
+		DOMICILIO,EMERGENCIA,URGENCIA;
+	}
+	public static enum Estado
+	{
+		NO_ASIGNADO,ASIGNADO,FINALIZDO;
+	}
 	
 	public Servicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1, int n2,
 			int n3) {
@@ -24,7 +33,7 @@ public class Servicio {
 		this.tipoServicio=tipoServicio;
 		this.telefono=telefono;
 		this.direccion=new Direccion(tipoDireccion,n1,n2,n3);
-		this.estado="NO_ASIGNADO";
+		this.estado=Estado.NO_ASIGNADO;
 		this.horaSolicitud=Utils.horaSistema();
 		
 	}
@@ -42,10 +51,10 @@ public class Servicio {
 	public void setPaciente(String paciente) {
 		this.paciente = paciente;
 	}
-	public String getTipoSercivio() {
+	public TipoServicio getTipoSercivio() {
 		return tipoServicio;
 	}
-	public void setTipoSercivio(String tipoSercivio) {
+	public void setTipoSercivio(TipoServicio tipoSercivio) {
 		this.tipoServicio = tipoSercivio;
 	}
 	public String getTelefono() {
@@ -69,9 +78,10 @@ public class Servicio {
 	public void relacionar(Ambulancia ambulancia, IPS ips) {
 		this.ips=ips;
 		this.ambulancia=ambulancia;
-		ips.relacionarServicio(this);
+		if(tipoServicio!=TipoServicio.DOMICILIO)
+			ips.relacionarServicio(this);
 		ambulancia.relacionarServicio(this);
-		this.estado="ASIGNADO";
+		this.estado=Estado.ASIGNADO;
 		
 	}
 	public String toString(boolean b) {
@@ -99,7 +109,7 @@ public class Servicio {
 		return codigo+"\t"+paciente+"\t"+ambulancia.getCodigo()+"\t"+ips.getNombre();
 	}
 	public void finalizarServicio(){
-		this.estado="FINALIZADO";
+		this.estado=Estado.FINALIZDO;
 		this.ambulancia.retirarServicio();
 		
 	}

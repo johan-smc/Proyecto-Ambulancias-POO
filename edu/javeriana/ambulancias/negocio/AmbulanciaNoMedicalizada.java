@@ -11,8 +11,7 @@ public class AmbulanciaNoMedicalizada extends Ambulancia{
 
 	@Override
 	public long calcularTarifa() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.TARIFA_BASE;
 	}
 	
 }
