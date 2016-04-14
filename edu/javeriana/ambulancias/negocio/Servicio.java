@@ -40,7 +40,7 @@ public class Servicio {
 		this.ips=null;
 		
 	}
-	private TipoServicio tipo(String tipoServicio2) {
+	private TipoServicio tipo(String tipoServicio) {
 		if(tipoServicio.equals("EMERGENCIA"))
 			return TipoServicio.EMERGENCIA;
 		else if( tipoServicio.equals("URGENCIA"))

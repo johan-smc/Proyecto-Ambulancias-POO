@@ -58,7 +58,7 @@ public class TestAmbulancia {
 					break;
 					}
 				case 4:{
-					registrarAmbulancia(opc,empresaAmbulancia);
+					registrarServicio(opc,empresaAmbulancia);
 					break;
 					}
 				case 5:{
@@ -84,6 +84,7 @@ public class TestAmbulancia {
 				case 10:
 					{
 					estadisticasAmbulanciasDisponibles(empresaAmbulancia);
+					break;
 				}
 
 				default:{
@@ -146,7 +147,7 @@ public class TestAmbulancia {
 		}
 
 	}
-	private static void registrarAmbulancia(Scanner sc, IServicioAmbulancias empresaAmbulancias) {
+	private static void registrarServicio(Scanner sc, IServicioAmbulancias empresaAmbulancias) {
 		String nombre,tipoServicio,telefono,tipoDireccion;
 		int n1,n2,n3;
 		System.out.println("Ingrese el nombre del paciente");
@@ -235,7 +236,7 @@ public class TestAmbulancia {
 	}
 	private static void menu(){
 	System.out.print("\n"+Utils.imprimirLinea(175)+"\n"
-			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: terminar.\n"
+			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: estadisticas de las ambulancias disponibles\nOpcion 12: terminar.\n"
 			+Utils.imprimirLinea(95)+"\n"+"Ingrese la opcion: ");
 	}
 
