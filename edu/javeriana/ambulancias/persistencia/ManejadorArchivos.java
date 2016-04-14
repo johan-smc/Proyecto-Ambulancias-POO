@@ -58,18 +58,18 @@ public class ManejadorArchivos {
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
 
-					String placa,tipoAmbulancia,tipoUCI,a,medico;
+					String placa,tipoAmbulancia,tipoUCI="",a,medico;
 					int codigo;
 
 					a=input.nextLine();
 
 					while(!a.equals("0"))
 						{
-								if(a.charAt(0)=='#' && a.charAt(1)!='c')
+								/*if(a.charAt(0)=='#' && a.charAt(1)!='c')
 								{
 									input.close();
 									return "ERROR!: El archivo tiene formato incorrecto.";
-								}
+								}*/
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");
@@ -79,7 +79,8 @@ public class ManejadorArchivos {
 
 								   placa=hola.nextToken().trim();
 								   medico=hola.nextToken().trim();
-							       tipoUCI=hola.nextToken().trim();
+								   if(tipoAmbulancia.equals("UCI"))
+									   tipoUCI=hola.nextToken().trim();
 							       empresa.agregarAmbulancia(codigo, placa,tipoAmbulancia,medico,tipoUCI);
 						       }
 								a=input.nextLine();
