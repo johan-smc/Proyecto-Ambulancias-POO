@@ -65,6 +65,7 @@ public class ManejadorArchivos {
 
 					while(!a.equals("0"))
 						{
+						////Mirar esto para arreglar
 								/*if(a.charAt(0)=='#' && a.charAt(1)!='c')
 								{
 									input.close();

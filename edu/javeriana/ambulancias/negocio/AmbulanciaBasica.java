@@ -22,13 +22,9 @@ public class AmbulanciaBasica extends AmbulanciaMedicalizada{
 	}
 	public String toString()
 	{
-		return "BASICA\t"+codigo+"\t"+placa+"\t"+medico+"\t---\t"+Utils.hora(this.horaPosicion)+"\n"+this.posicionCalle+
+		return "BASICA\t"+codigo+"\t"+placa+"\t"+medico+"\t---\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
 
-	@Override
-	public void reporteAmbulancias(int basicas, int uci, int noEspe) {
-		basicas++;
-	}
 
 }

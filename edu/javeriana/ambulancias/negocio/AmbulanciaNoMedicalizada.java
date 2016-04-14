@@ -27,13 +27,9 @@ public class AmbulanciaNoMedicalizada extends Ambulancia{
 	}
 	public String toString()
 	{
-		return "NoEspe\t"+codigo+"\t"+placa+"\t"+enfermero+"\t---\t"+Utils.hora(this.horaPosicion)+"\n"+this.posicionCalle+
+		return "NoEspe\t"+codigo+"\t"+placa+"\t"+enfermero+"\t---\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
 
-	@Override
-	public void reporteAmbulancias(int basicas, int uci, int noEspe) {
-		noEspe++;
-		
-	}
+
 }

@@ -152,7 +152,7 @@ public class TestAmbulancia {
 		int n1,n2,n3;
 		System.out.println("Ingrese el nombre del paciente");
 		nombre=sc.nextLine().trim();
-		System.out.println("Ingrese el tipo de servicio (URGENCIA o EMERGENCIA)");
+		System.out.println("Ingrese el tipo de servicio (URGENCIA, EMERGENCIA o DOMICILIO)");
 		tipoServicio=sc.nextLine().trim();
 		System.out.println("Ingrese el telefono");
 		telefono=sc.nextLine().trim();

@@ -107,14 +107,14 @@ public class Servicio {
 				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t"+valor+"\n";
 		if(this.ips!=null)
 		{
-			ret+="\tIPS asignada:\n";
+			ret+="\n\tIPS asignada:\n";
 			ret+="\tNombre                TipoAtencion            Direccion\n";
 			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t"+ips.toString()+"\n";
 		}
 		if( this.ambulancia!=null)
 		{
-			ret+="\tAmbulancia asignada:\n";
+			ret+="\n\tAmbulancia asignada:\n";
 			ret+="\tTipoAmb\tCodigo\tPlaca\tMedico/enfermero\tTipoUCI\tHoraPosicion\tCalle\tCarrera\tTarifa\n";
 			ret+="\t-----------------------------------------------------------------------------------\n";
 			ret+="\t";

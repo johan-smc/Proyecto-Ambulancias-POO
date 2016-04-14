@@ -18,16 +18,16 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		private Map<String,IPS> losIPS;
 		private List<Servicio> servicios;
 		private Map<Integer,Ambulancia> ambulancias;
-		
+
 		public EmpresaAmbulancias(String nombre) {
 			this.nombre=nombre;
 			this.losIPS=new HashMap<String,IPS>();
 			this.servicios=new ArrayList<Servicio>();
 			this.ambulancias=new HashMap<Integer,Ambulancia>();
 		}
-		
+
 		public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
-				
+
 				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
 		}
 		public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
@@ -39,7 +39,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			else if( tipoAmbulancia.equals("NOMEDICALIZADA"))
 				ambulancias.put(codigo, new AmbulanciaNoMedicalizada(codigo,placa,medico));
 		}
-		
+
 		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
 		{
 			boolean esta=false;
@@ -47,7 +47,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			for(Integer key : setKey)
 			{
 				Ambulancia ambulancia=ambulancias.get(key);
-				
+
 				if(ambulancia.getCodigo()==codigo)
 				{
 					ambulancia.setPosicionCalle(calle);
@@ -57,13 +57,13 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					esta=true;
 					break;
 				}
-				
+
 			}
 			return esta;
-			
+
 		}
 		public String reporteambul(){
-			
+
 			if(!ambulancias.isEmpty())
 			{
 				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
@@ -79,18 +79,18 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					if(ambulancia.getServicioAsignado()!=null)
 					{
 						todas=todas+ambulancia.getServicioAsignado();
-						
+
 					}
 					todas+="\n";
-					
+
 				}
-				return todas;				
+				return todas;
 			}
 			else return "No se encuentran ambulancias.";
-			
+
 		}
-		
-		
+
+
 
 		public String getNombre() {
 			return nombre;
@@ -101,14 +101,14 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		}
 		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
 				int n2, int n3) {
-			
+
 			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 			this.servicios.add(temp);
 			return temp.getCodigo();
-			
+
 		}
-		
-		private boolean hayServicioDe(String servicio)
+
+		private boolean hayServicioDe(Servicio.Estado servicio)
 		{
 			for(Servicio temp:servicios)
 			{
@@ -117,20 +117,20 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			return false;
 		}
-		
+
 		public String reporteServiciosNoAsignadas() {
-			if(!servicios.isEmpty() && hayServicioDe("NO_ASIGNADO"))
+			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.NO_ASIGNADO))
 			{
 				String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
 				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
 				reporte+="----------------------------------------------------------------------------------------\n";
-				
+
 				Collections.sort( servicios,new ServiciosHoraSolicitud() );
 				for(Servicio temp:servicios)
 				{
-					
-					if(temp.getEstado().equals("NO_ASIGNADO"))
+
+					if(temp.getEstado().equals(Servicio.Estado.NO_ASIGNADO))
 						reporte+=temp.toString()+"\n";
 				}
 				return reporte;
@@ -141,8 +141,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 		}
 		public String reporteServiciosSiAsignadas() {
-			
-			if(!servicios.isEmpty() && hayServicioDe("ASIGNADO"))
+
+			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.ASIGNADO))
 			{
 				String reporte="--FINALIZAR UN SERVICIO\n";
 				reporte+="--Se muestran los servicios del sistema asignados:\n";
@@ -150,8 +150,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				reporte+="----------------------------------------------------------------------------------------\n";
 				for(Servicio temp:servicios)
 				{
-					
-					if(temp.getEstado().equals("ASIGNADO"))
+
+					if(temp.getEstado().equals(Servicio.Estado.ASIGNADO))
 						reporte+=temp.toStringEspecial()+"\n";
 				}
 				return reporte;
@@ -165,9 +165,9 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return buscarServicio(codigo)==null?false:true;
 		}
 		public String relacionarServicio(Long codigo) {
-			
+
 			Servicio servicio=buscarServicio(codigo);
-			if(!servicio.getEstado().equals("NO_ASIGNADO"))
+			if(!servicio.getEstado().equals(Servicio.Estado.NO_ASIGNADO))
 				return "El servicio no esta libre";
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
 			if(ambulancia==null)
@@ -178,11 +178,14 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				ips=ipsMasCercana(servicio);
 				if(ips==null)
 					return "No se encomtro IPS disponible";
-				
+
 			}
-			
+
 			servicio.relacionar(ambulancia,ips);
-			return "Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo()+" y la IPS "+ips.getNombre();
+			String ret="Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo();
+			if(ips!=null)
+				ret+=" y la IPS "+ips.getNombre();
+			return ret;
 		}
 		private Servicio buscarServicio(Long codigo) {
 			for(Servicio servicio:this.servicios)
@@ -191,7 +194,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				{
 					return servicio;
 				}
-				
+
 			}
 			return null;
 		}
@@ -209,11 +212,11 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					menI=o;
 					men=valorT;
 				}
-					
+
 			}
 			return menI;
 		}
-		
+
 		private Ambulancia ambulanciaMasCercana(Servicio servicio) {
 			int men=999999,valorT;
 			Ambulancia menA = null;
@@ -227,27 +230,27 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					menA=o;
 					men=valorT;
 				}
-					
+
 			}
 			return menA;
 		}
 		public String reporteServiciosIPSAmbulacia() {
 			String reporte="--REPORTE DE SERVICIOS CON IPS Y AMBULANCIAS ASOCIADAS\n\n";
-		
+
 			for( Servicio servicio: servicios)
 			{
 				reporte+=servicio.toString(true)+"\n";
 			}
 			return reporte;
 		}
-		
+
 		public boolean finAServicio(long codigo)
 		{
-			
+
 			if(this.verificarCodigoServicio(codigo))
 			{
 				Servicio servicio=buscarServicio(codigo);
-				if(servicio.getEstado().equals("ASIGNADO"))
+				if(servicio.getEstado().equals(Servicio.Estado.ASIGNADO))
 				{
 					servicio.finalizarServicio();
 					return true;
@@ -255,7 +258,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			return false;
 		}
-		
+
 		public String reportarIPS()
 		{
 			String reporte="";
@@ -269,7 +272,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 						+ips.reporteServicios()+"\n";
 			}
 			return reporte;
-			
+
 		}
 
 		public List<Servicio> getServicios() {
@@ -287,11 +290,16 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			{
 				Ambulancia o=ambulancias.get(key);
 				if(!o.isAsignada()){
-					o.reporteAmbulancias(basicas,uci,noEspe);
+					if(AmbulanciaBasica.class.isInstance(o))
+						basicas++;
+					else if(AmbulanciaUCI.class.isInstance(o))
+						uci++;
+					else if(AmbulanciaNoMedicalizada.class.isInstance(o))
+						noEspe++;
 				}
 			}
 			return  "-----Estadisticas ambulancias no asignadas---\n"+
 				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
 		}
-		
+
 }

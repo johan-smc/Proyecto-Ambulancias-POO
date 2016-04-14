@@ -54,7 +54,7 @@ public class IPS {
 
 	@Override
 	public String toString() {
-		return nombre+"     "+tipoAtencion+"     "+direccion.toString();
+		return nombre+"\t"+tipoAtencion+"\t"+direccion.toString();
 	}
 	
 }

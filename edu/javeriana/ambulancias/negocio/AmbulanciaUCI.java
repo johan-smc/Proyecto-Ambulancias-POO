@@ -26,13 +26,12 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 	}
 	public String toString()
 	{
-		return "UCI\t"+codigo+"\t"+placa+"\t"+medico+"\t"+this.tipoUCI+"\t"+Utils.hora(this.horaPosicion)+"\n"+this.posicionCalle+
+		return "UCI\t"+codigo+"\t"+placa+"\t"+medico+"\t"+this.tipoUCI+"\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
 
-	@Override
-	public void reporteAmbulancias(int basicas, int uci, int noEspe) {
-		noEspe++;
-	}
+	
+
+	
 
 }
