@@ -17,4 +17,9 @@ public interface IServicioAmbulancias {
 	public List<Servicio> getServicios(); 
 	public Map<Integer, Ambulancia> getAmbulancias();
 	public boolean verificarCodigoServicio(Long codigo);
+	public String reporteServiciosIPSAmbulacia();
+	public String reporteServiciosNoAsignadas();
+	public String reportarIPS();
+	public String reporteambul();
+	public String estadisticaAmbulanciasDisponibles();
 }

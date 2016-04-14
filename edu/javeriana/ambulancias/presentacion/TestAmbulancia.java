@@ -32,55 +32,59 @@ public class TestAmbulancia {
 		opc = new Scanner(System.in);
 
 		String opcion;
-		char primervalor;
+		int primervalor;
 		menu();
 		opcion=opc.nextLine().trim();
 
-		while(!opcion.trim().equals("10")){
+		while(!opcion.trim().equals("12")){
 			primervalor='.';
-			if(opcion.trim().length()>0&&opcion.length()<2)
-				primervalor=opcion.charAt(0);
+			if(Utils.isNumeric(opcion))
+				primervalor=Integer.parseInt(opcion);
 
 
 			switch(primervalor)
 			{
-				case '1':{
+				case 1:{
 
 					ingresarIPS(opc, empresaAmbulancia);
 					break;
 					}
-				case '2':{
+				case 2:{
 					ingresarAmbulacia(opc,empresaAmbulancia);
 					break;
 					}
-				case '3':{
+				case 3:{
 					registrarPosicionAmbulancia(opc,empresaAmbulancia);
 					break;
 					}
-				case '4':{
+				case 4:{
 					registrarAmbulancia(opc,empresaAmbulancia);
 					break;
 					}
-				case '5':{
+				case 5:{
 					reportedeambulancias(empresaAmbulancia);
 					break;
 					}
-				case '6':{
+				case 6:{
 					asignarServicioAmbulanciaIPS(opc,empresaAmbulancia);
 					break;
 					}
-				case '7':{
+				case 7:{
 					finalizarServicio(opc, empresaAmbulancia);
 					break;
 					}
-				case '8':{
+				case 8:{
 					reporteServiciosIPSAmbulancia(empresaAmbulancia);
 					break;
 					}
-				case '9':{
+				case 9:{
 					reporteServiciosIPS(empresaAmbulancia);
 					break;
 					}
+				case 10:
+					{
+					estadisticasAmbulanciasDisponibles(empresaAmbulancia);
+				}
 
 				default:{
 					System.err.println("OPCION INCORRECTA, INTENTE DE NUEVO.");
@@ -95,8 +99,12 @@ public class TestAmbulancia {
 	opc.close();
 	}
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	private static void estadisticasAmbulanciasDisponibles(IServicioAmbulancias empresaAmbulancia) {
+		System.out.println(empresaAmbulancia.estadisticaAmbulanciasDisponibles());
+	}
 	private static void reporteServiciosIPSAmbulancia(IServicioAmbulancias empresaAmbulancia) {
 		System.out.println(empresaAmbulancia.reporteServiciosIPSAmbulacia());
 
@@ -246,7 +254,7 @@ public class TestAmbulancia {
 	}
 	private static void finalizarServicio(Scanner opc, IServicioAmbulancias empresaAmbulancias)
 	{
-		String Loqueretorno=empresaAmbulancias.reporteServiciosSiAsignadas();
+		String Loqueretorno=empresaAmbulancias.reporteServiciosNoAsignadas();
 		if(!Loqueretorno.equals("No se han encontrado Servicios para finalizar."))
 		{
 			System.out.println(Loqueretorno);
