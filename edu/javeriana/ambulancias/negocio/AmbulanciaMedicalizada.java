@@ -13,5 +13,16 @@ public abstract class AmbulanciaMedicalizada extends Ambulancia {
 		return false;
 	}
 	
+	
+	public String getMedico() {
+		return medico;
+	}
+
+
+	public void setMedico(String medico) {
+		this.medico = medico;
+	}
+
+
 	public abstract  long calcularTarifa();
 }

@@ -143,5 +143,19 @@ public class Servicio {
 		return valor;
 		
 	}
+	public String toStringUltimoEspecial()
+	
+	{
+		String retorno=Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t";
+		if (tipoServicio != TipoServicio.DOMICILIO && ambulancia instanceof AmbulanciaMedicalizada) {
+			retorno+=((AmbulanciaMedicalizada)ambulancia).getMedico()+"\n";
+		}
+		else if(tipoServicio != TipoServicio.DOMICILIO && ambulancia instanceof AmbulanciaNoMedicalizada)
+		{
+			retorno+=((AmbulanciaNoMedicalizada)ambulancia).getEnfermero()+"\n";
+		}
+		 return retorno;
+		
+	}
 	
 }

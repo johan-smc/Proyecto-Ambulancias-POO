@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.Set;
+import java.util.TreeMap;
+
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
@@ -66,8 +69,11 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 			if(!ambulancias.isEmpty())
 			{
+
+				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
+				
 				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
-				Set<Integer> setKey= ambulancias.keySet();
+				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
 					Ambulancia ambulancia=ambulancias.get(key);
@@ -121,12 +127,15 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public String reporteServiciosNoAsignadas() {
 			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.NO_ASIGNADO))
 			{
+				
+				Collections.sort(servicios, new comparatorCodigoServicio());
+				
 				String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
 				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
 				reporte+="----------------------------------------------------------------------------------------\n";
 
-				Collections.sort( servicios,new ServiciosHoraSolicitud() );
+				;
 				for(Servicio temp:servicios)
 				{
 
@@ -261,8 +270,11 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 		public String reportarIPS()
 		{
+
+			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>();
+			
 			String reporte="";
-			Set<String> setKey= losIPS.keySet();
+			Set<String> setKey= serviciosOrdennombre.keySet();
 			for(String key : setKey)
 			{
 				IPS ips=losIPS.get(key);
@@ -301,5 +313,17 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return  "-----Estadisticas ambulancias no asignadas---\n"+
 				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
 		}
-
+		
+		public String reportePacientes()
+		{
+			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su dirección, estado, medico o enfermero,\n";
+					for (Servicio servicio : servicios) {
+						
+						report+=servicio.toStringUltimoEspecial();
+						
+					}
+			return report;
+			
+		}
 }
+

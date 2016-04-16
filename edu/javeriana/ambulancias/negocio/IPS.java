@@ -1,6 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class IPS {
@@ -20,6 +21,8 @@ public class IPS {
 	}
 	public String reporteServicios()
 	{
+		Collections.sort(servicios, new ComparatorHoraServicio());
+		
 		String reporte="\tSERVICIOS:\n\tCodigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado ambul\n"
 						+"\t" +"-------------------------------------------------------------------------------------------------------\n";
 		for(Servicio servicio:servicios)

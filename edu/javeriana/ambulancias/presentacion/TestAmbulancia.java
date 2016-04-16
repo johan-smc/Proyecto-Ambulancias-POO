@@ -19,10 +19,10 @@ public class TestAmbulancia {
 		                            letra++ + " es " + i);      */
 
 
-		 //System.out.println(Utils.imprimirLinea(215)); //������������������������ peque�as
-		// System.out.println(Utils.imprimirLinea(187)); //������������������������ peque�os
-		 //System.out.println(Utils.imprimirLinea(95));  //__________________________
-		 //System.out.println(Utils.imprimirLinea(175)); //������������������������������
+//		 System.out.println(Utils.imprimirLinea(215)); //������������������������ peque�as
+//		 System.out.println(Utils.imprimirLinea(187)); //������������������������ peque�os
+//		 System.out.println(Utils.imprimirLinea(95));  //__________________________
+//		 System.out.println(Utils.imprimirLinea(175)); //������������������������������
 
 
 		System.out.println("\t\t\t  //////////////////////////////////\n"+"\t\t\t ///BIENVENIDO A BABYSOFT SYSTEM///\n"+"\t\t\t//////////////////////////////////\n");
@@ -86,6 +86,11 @@ public class TestAmbulancia {
 					estadisticasAmbulanciasDisponibles(empresaAmbulancia);
 					break;
 				}
+				case 11:
+				{
+				    reportedePAcientes(empresaAmbulancia);
+				break;
+			}
 
 				default:{
 					System.err.println("OPCION INCORRECTA, INTENTE DE NUEVO.");
@@ -236,7 +241,7 @@ public class TestAmbulancia {
 	}
 	private static void menu(){
 	System.out.print("\n"+Utils.imprimirLinea(175)+"\n"
-			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: estadisticas de las ambulancias disponibles\nOpcion 12: terminar.\n"
+			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: estadisticas de las ambulancias disponibles\nOpcion 11: pacientes atendidos\nOpcion 12: terminar.\n"
 			+Utils.imprimirLinea(95)+"\n"+"Ingrese la opcion: ");
 	}
 
@@ -284,6 +289,8 @@ public class TestAmbulancia {
 	{
 		System.out.println(empresaAmbulancia.reportarIPS());
 
+	}
+	private static void reportedePAcientes(IServicioAmbulancias empresaAmbulancia) {
 	}
 
 	}

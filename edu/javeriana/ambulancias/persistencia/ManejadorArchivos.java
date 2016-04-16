@@ -13,7 +13,7 @@ public class ManejadorArchivos {
 
 
 			public static String ingresarIPS(String dir, IServicioAmbulancias empresa)
-				{
+			{
 				try{
 					Scanner input=new Scanner(new File("./"+dir));
 
@@ -65,12 +65,12 @@ public class ManejadorArchivos {
 
 					while(!a.equals("0"))
 						{
-						////Mirar esto para arreglar
-								/*if(a.charAt(0)=='#' && a.charAt(1)!='c')
+
+								if(a.charAt(0)=='#' && a.charAt(1)!='v')
 								{
 									input.close();
 									return "ERROR!: El archivo tiene formato incorrecto.";
-								}*/
+								}
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");
