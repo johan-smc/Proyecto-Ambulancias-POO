@@ -271,7 +271,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 		public String reportarIPS()
 		{
-
+///falta agregar los datos a la variable 
 			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>();
 			
 			String reporte="";
