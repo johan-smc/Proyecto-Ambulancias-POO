@@ -32,8 +32,8 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 	public String toStringPunto5()
 	{
 		Long hola=getServicioAsignado();
-		return codigo+"\t"+placa+"\tUCI\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
-				"\t"+this.posicionCarrera+"\t"+((hola==null)?"":hola);
+		return codigo+"\t"+placa+"\tUCI\t\t"+Utils.hora(this.horaPosicion)+"\t\t"+this.posicionCalle+
+				"\t\t"+this.posicionCarrera+"\t\t"+((hola==null)?"":hola);
 	}
 
 

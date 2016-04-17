@@ -271,8 +271,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			for(String key : setKey)
 			{
 				IPS ips=losIPS.get(key);
-				reporte+=Utils.imprimirLinea(187, 45)+"IPS"+Utils.imprimirLinea(187, 45)+"\n"+
-						"Nombre\ttipoAtencion\tdireccion\n"+Utils.imprimirLinea(187,100)
+				reporte+=Utils.imprimirLinea(187, 48)+"IPS"+Utils.imprimirLinea(187, 49)+"\n"+
+						"Nombre\ttipoAtencion\tdireccion\n"+Utils.imprimirLinea(187,100)+"\n"
 						+ips.getNombre()+"\t"+ips.getTipoAtencion()+"\t"+ips.getDireccion().toString()+"\n"
 						+ips.reporteServicios()+"\n";
 			}
@@ -309,11 +309,11 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 		public String reportePacientes()
 		{
-			String report="Hora Solicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tMedico o Enfermero\n"+Utils.imprimirLinea(187, 100)+"\n";
+			String report="Hora Solicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tMedico/Enfermero\n"+Utils.imprimirLinea(187, 100)+"\n";
 					for (Servicio servicio : servicios) {
 
-						
-						report+=servicio.toStringUltimoEspecial()+"\n";	
+
+						report+=servicio.toStringUltimoEspecial()+"\n";
 
 
 

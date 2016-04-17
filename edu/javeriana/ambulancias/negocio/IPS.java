@@ -9,9 +9,9 @@ public class IPS {
 	private String tipoAtencion;
 	private Direccion direccion;
 	private List<Servicio> servicios;
-	
-	
-	
+
+
+
 	public IPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero) {
 		super();
 		this.nombre = nombre;
@@ -22,16 +22,16 @@ public class IPS {
 	public String reporteServicios()
 	{
 		Collections.sort(servicios, new ComparatorHoraServicio());
-		
+
 		String reporte="\tSERVICIOS:\n\tCodigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado ambul\n"
-						+"\t" +"-------------------------------------------------------------------------------------------------------\n";
+						+"\t" +Utils.imprimirLinea(187,95)+"\n";
 		for(Servicio servicio:servicios)
 		{
 			reporte+="\t"+servicio.toStringEspecialSupremo()+"\n";
 		}
 		return reporte;
 	}
-	
+
 	public Direccion getDireccion() {
 		return direccion;
 	}
@@ -52,12 +52,12 @@ public class IPS {
 	public void relacionarServicio(Servicio servicio) {
 		if(servicio!=null)
 			this.servicios.add(servicio);
-		
+
 	}
 
 	@Override
 	public String toString() {
 		return nombre+"\t"+tipoAtencion+"\t"+direccion.toString();
 	}
-	
+
 }
