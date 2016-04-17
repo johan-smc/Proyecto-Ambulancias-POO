@@ -1,2 +1,2 @@
-java -jar "C:\Users\willi_000\Desktop\PROYECTO FINAL FINAL\co\src\Proyecto.jar"
+java -jar ".\Proyecto.jar"
 pause

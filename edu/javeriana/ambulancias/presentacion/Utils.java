@@ -9,7 +9,7 @@ public class Utils {
 
 	public static GregorianCalendar horaSistema() {
 		GregorianCalendar fecha = new GregorianCalendar();
-		GregorianCalendar horaPosicion=new GregorianCalendar(); 
+		GregorianCalendar horaPosicion=new GregorianCalendar();
 		horaPosicion.set(Calendar.HOUR_OF_DAY, fecha.get(Calendar.HOUR_OF_DAY));
 		horaPosicion.set(Calendar.MINUTE, fecha.get(Calendar.MINUTE));
 		horaPosicion.set(Calendar.SECOND, fecha.get(Calendar.SECOND));
@@ -21,7 +21,7 @@ public class Utils {
 		fecha+=mes(hora.get(Calendar.MONTH))+" ";
 		fecha+=hora.get(Calendar.DAY_OF_MONTH)+" ";
 		fecha+=hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
-		
+
 		return fecha;
 	}
 	public static String mes(int i) {
@@ -51,9 +51,12 @@ public class Utils {
 			return "Dic";
 		return "";
 	}
-	
-	public static String imprimirLinea(int a){
-		String linea=""+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a+(char)a;
+
+	public static String imprimirLinea(int a,int n){
+		String linea=""
+		for (int i = 0 ;i < n  ;++i ) {
+			linea+=(char)a;
+		}
 		return linea;
 	}
 
@@ -68,8 +71,8 @@ public class Utils {
 			return "";
 		return hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
 	}
-	
-	
+
+
 	/*recoletado de:
 	 * http://lineadecodigo.com/java/validar-si-un-dato-es-numerico-en-java/
 	 */
