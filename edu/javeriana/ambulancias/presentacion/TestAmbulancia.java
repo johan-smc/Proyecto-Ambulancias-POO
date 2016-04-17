@@ -111,7 +111,17 @@ public class TestAmbulancia {
 		System.out.println(empresaAmbulancia.estadisticaAmbulanciasDisponibles());
 	}
 	private static void reporteServiciosIPSAmbulancia(IServicioAmbulancias empresaAmbulancia) {
-		System.out.println(empresaAmbulancia.reporteServiciosIPSAmbulacia());
+		
+		if(!empresaAmbulancia.reporteServiciosIPSAmbulacia().equals("No hay Servicios"))
+		{
+			System.out.println(empresaAmbulancia.reporteServiciosIPSAmbulacia());
+		}
+		else
+		{
+			System.err.println(empresaAmbulancia.reporteServiciosIPSAmbulacia()+".");
+		}
+
+		
 
 	}
 	private static void asignarServicioAmbulanciaIPS(Scanner sc, IServicioAmbulancias empresaAmbulancia) {
@@ -250,7 +260,7 @@ public class TestAmbulancia {
 	}
 	private static void menu(){
 	System.out.print("\n"+Utils.imprimirLinea(175,100)+"\n"
-			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: estadisticas de las ambulancias disponibles\nOpcion 11: pacientes atendidos\nOpcion 12: terminar.\n"
+			+ "Opcion 1:   Ingresar las IPS al sistema.\nOpcion 2:   Ingresar las ambulancias al sistema.\nOpcion 3:   Registrar la posicion actual de una ambulancia.\nOpcion 4:   Registrar un servicio.\nOpcion 5:   Reporte de ambulancias.\nOpcion 6:   Asignar a un servicio una ambulancia y una IPS.\nOpcion 7:   Finalizar un servicio.\nOpcion 8:   Reporte de servicios con IPS y ambulancias asignados.\nOpcion 9:   Reporte de las IPS con servicios asociados.\nOpcion 10:  Estadisticas de las ambulancias disponibles.\nOpcion 11:  Pacientes atendidos.\nOpcion 12:  Terminar.\n"
 			+Utils.imprimirLinea(95,100)+"\n"+"Ingrese la opcion: ");
 	}
 
@@ -296,11 +306,29 @@ public class TestAmbulancia {
 	}
 	private static void reporteServiciosIPS(IServicioAmbulancias empresaAmbulancia)
 	{
-		System.out.println(empresaAmbulancia.reportarIPS());
+		
+		if (!empresaAmbulancia.reportarIPS().equals("No hay IPS.")) {
+			
+			System.out.println(empresaAmbulancia.reportarIPS());
+		}
+		else
+		{
+			System.err.println(empresaAmbulancia.reportarIPS());
+		}
 
 	}
 	private static void reportedePAcientes(IServicioAmbulancias empresaAmbulancia) {
-		System.out.println(empresaAmbulancia.reportePacientes());
+		if(!empresaAmbulancia.reportePacientes().equals("No hay Pacientes."))
+		{
+			
+			System.out.println(empresaAmbulancia.reportePacientes());
+		}
+		else
+		{
+			System.err.println(empresaAmbulancia.reportePacientes());
+			
+		}
+		
 
 
 	}

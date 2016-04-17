@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import co.edu.javeriana.ambulancias.presentacion.Utils;
+
 public class IPS {
 	private String nombre;
 	private String tipoAtencion;
