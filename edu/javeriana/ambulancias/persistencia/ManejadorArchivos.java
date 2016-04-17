@@ -71,17 +71,8 @@ public class ManejadorArchivos {
 					while(!a.equals("0"))
 						{
 
-<<<<<<< HEAD
-								
-								if(a.charAt(0)!='#'&& a.trim().length()>0)
-=======
-								/*if(a.charAt(0)=='#' && a.charAt(1)!='v')
-								{
-									input.close();
-									return "ERROR!: El archivo tiene formato incorrecto.";
-								}*/
+
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
->>>>>>> origin/master
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");
 								   tipoAmbulancia=hola.nextToken().trim();
