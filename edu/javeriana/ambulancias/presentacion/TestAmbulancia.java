@@ -260,7 +260,7 @@ public class TestAmbulancia {
 	}
 	private static void finalizarServicio(Scanner opc, IServicioAmbulancias empresaAmbulancias)
 	{
-		String Loqueretorno=empresaAmbulancias.reporteServiciosNoAsignadas();
+		String Loqueretorno=empresaAmbulancias.reporteServiciosSiAsignadas();
 		if(!Loqueretorno.equals("No se han encontrado Servicios para finalizar."))
 		{
 			System.out.println(Loqueretorno);
@@ -292,5 +292,5 @@ public class TestAmbulancia {
 	}
 	private static void reportedePAcientes(IServicioAmbulancias empresaAmbulancia) {
 	}
-
+//????
 	}

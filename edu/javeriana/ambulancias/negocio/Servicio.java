@@ -123,7 +123,7 @@ public class Servicio {
 		return ret;
 	}
 	public String toStringEspecial() {
-		return codigo+"\t"+paciente+"\t"+ambulancia.getCodigo()+"\t"+ips.getNombre();
+		return codigo+"\t"+paciente+"\t"+ambulancia.getCodigo()+"\t"+((ips==null)?"":ips.getNombre());
 	}
 	public void finalizarServicio(){
 		this.estado=Estado.FINALIZDO;
