@@ -150,12 +150,13 @@ public class Servicio {
 
 	{
 		String retorno=Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t";
-		if (tipoServicio != TipoServicio.DOMICILIO && ambulancia instanceof AmbulanciaMedicalizada) {
-			retorno+=((AmbulanciaMedicalizada)ambulancia).getMedico()+"\n";
+		
+		if (ambulancia instanceof AmbulanciaMedicalizada) {
+			retorno+=((AmbulanciaMedicalizada)ambulancia).getMedico();
 		}
-		else if(tipoServicio != TipoServicio.DOMICILIO && ambulancia instanceof AmbulanciaNoMedicalizada)
+		else if(ambulancia instanceof AmbulanciaNoMedicalizada)
 		{
-			retorno+=((AmbulanciaNoMedicalizada)ambulancia).getEnfermero()+"\n";
+			retorno+=((AmbulanciaNoMedicalizada)ambulancia).getEnfermero();
 		}
 		 return retorno;
 

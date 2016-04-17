@@ -312,8 +312,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su direcci�n, estado, medico o enfermero,\n";
 					for (Servicio servicio : servicios) {
 						
-						report+=servicio.toStringUltimoEspecial();
-						
+						report+=servicio.toStringUltimoEspecial()+"\n";	
 					}
 			return report;
 			
