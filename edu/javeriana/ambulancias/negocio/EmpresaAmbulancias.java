@@ -71,14 +71,14 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			{
 
 				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
-				
+
 				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
 					todas+=ambulancias.get(key).toStringPunto5();
-					
-					
+
+
 
 					todas+="\n";
 
@@ -120,9 +120,9 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public String reporteServiciosNoAsignadas() {
 			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.NO_ASIGNADO))
 			{
-				
+
 				Collections.sort(servicios, new comparatorCodigoServicio());
-				
+
 				String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
 				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
@@ -173,13 +173,13 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				return "El servicio no esta libre";
 			Ambulancia ambulancia=ambulanciaMasCercana(servicio);
 			if(ambulancia==null)
-				return "No se encontro ambulancia disponible";
+				return "No se encontro ambulancia disponible, porfavor espere.";
 			IPS ips=null;
 			if(servicio.getTipoSercivio()!=Servicio.TipoServicio.DOMICILIO)
 			{
 				ips=ipsMasCercana(servicio);
 				if(ips==null)
-					return "No se encomtro IPS disponible";
+					return "No se encomtro IPS disponible.";
 
 			}
 
@@ -187,6 +187,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			String ret="Al servicio "+codigo+" le fue asignada la ambulancia "+ambulancia.getCodigo();
 			if(ips!=null)
 				ret+=" y la IPS "+ips.getNombre();
+			ret+=".";
 			return ret;
 		}
 		private Servicio buscarServicio(Long codigo) {
@@ -265,7 +266,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		{
 
 			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>(losIPS);
-			
+
 			String reporte="";
 			Set<String> setKey= serviciosOrdennombre.keySet();
 			for(String key : setKey)
@@ -306,16 +307,19 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return  "-----Estadisticas ambulancias no asignadas---\n"+
 				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
 		}
-		
+
 		public String reportePacientes()
 		{
 			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su direcci�n, estado, medico o enfermero,\n";
 					for (Servicio servicio : servicios) {
+
 						
 						report+=servicio.toStringUltimoEspecial()+"\n";	
+
+
+
 					}
 			return report;
-			
+
 		}
 }
-
