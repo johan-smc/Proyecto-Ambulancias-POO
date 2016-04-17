@@ -25,6 +25,12 @@ public class AmbulanciaBasica extends AmbulanciaMedicalizada{
 		return "BASICA\t"+codigo+"\t"+placa+"\t"+medico+"\t---\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
+	public String toStringPunto5()
+	{
+		Long hola=getServicioAsignado(); 
+		return codigo+"\t"+placa+"\tBASICA\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
+				"\t"+this.posicionCarrera+"\t"+((hola==null)?"":hola);
+	}
 
 
 }

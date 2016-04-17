@@ -76,18 +76,10 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
-					//creo que le toca cambiar esto por el toString de ambulancia
-					Ambulancia ambulancia=ambulancias.get(key);
-					todas=todas+ambulancia.getCodigo()+"\t";
-					todas=todas+ambulancia.getPlaca()+"\t";
-					todas=todas+Utils.hora(ambulancia.getHoraPosicion())+"\t\t";
-					todas=todas+ambulancia.getPosicionCalle()+"\t\t";
-					todas=todas+ambulancia.getPosicionCarrera()+"\t\t";
-					if(ambulancia.getServicioAsignado()!=null)
-					{
-						todas=todas+ambulancia.getServicioAsignado();
+					todas+=ambulancias.get(key).toStringPunto5();
+					
+					
 
-					}
 					todas+="\n";
 
 				}
@@ -271,8 +263,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 		public String reportarIPS()
 		{
-///falta agregar los datos a la variable 
-			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>();
+
+			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>(losIPS);
 			
 			String reporte="";
 			Set<String> setKey= serviciosOrdennombre.keySet();

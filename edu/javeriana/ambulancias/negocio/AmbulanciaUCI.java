@@ -10,7 +10,7 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 		this.tipoUCI=tipoUCI;
 	}
 
-	@Override
+
 	public long calcularTarifa() {
 		long total=super.TARIFA_BASE;
 		if(this.tipoUCI.equals("CARDIOVASCULAR"))
@@ -29,7 +29,12 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 		return "UCI\t"+codigo+"\t"+placa+"\t"+medico+"\t"+this.tipoUCI+"\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+this.calcularTarifa()+"\n";
 	}
-
+	public String toStringPunto5()
+	{
+		Long hola=getServicioAsignado(); 
+		return codigo+"\t"+placa+"\tUCI\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
+				"\t"+this.posicionCarrera+"\t"+((hola==null)?"":hola);
+	}
 	
 
 	

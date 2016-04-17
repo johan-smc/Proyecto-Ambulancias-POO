@@ -17,9 +17,9 @@ public abstract class Ambulancia {
 	protected GregorianCalendar horaPosicion;
 	protected int posicionCalle;
 	protected int posicionCarrera;
-	private List<Servicio> servicios;
-	private boolean asignada;
-	private boolean dirModificada;
+	protected  List<Servicio> servicios;
+	protected boolean asignada;
+	protected boolean dirModificada;
 
 	public Ambulancia(int codigo, String placa) {
 		this.codigo=codigo;
@@ -85,16 +85,17 @@ public abstract class Ambulancia {
 		this.asignada=false;
 
 	}
-	/*@Override
-	public String toString() {
-		return codigo+"\t"+placa+" "+tipoDotacion+"\t\t"+Utils.hora(horaPosicion)+"\t\t"+posicionCalle+"\t\t"+posicionCarrera;
-	}
-	public String getTipoDotacion() {
-		return tipoDotacion;
-	}
-	public void setTipoDotacion(String tipoDotacion) {
-		this.tipoDotacion = tipoDotacion;
-	}*/
+
+//	public String toString() {
+//		return codigo+"\t"+placa+" "+tipoDotacion+"\t\t"+Utils.hora(horaPosicion)+"\t\t"+posicionCalle+"\t\t"+posicionCarrera;
+//	}
+//	public String getTipoDotacion() {
+//		return tipoDotacion;
+//	}
+//	public void setTipoDotacion(String tipoDotacion) {
+//		this.tipoDotacion = tipoDotacion;
+//	}
+	
 	public void setHoraPosicion(GregorianCalendar horaPosicion) {
 		this.horaPosicion = horaPosicion;
 	}
@@ -117,4 +118,5 @@ public abstract class Ambulancia {
 	}
 	public abstract long calcularTarifa();
 	public abstract boolean comprovarTipoServicio(Servicio servicio);
+	public abstract String toStringPunto5();
 }

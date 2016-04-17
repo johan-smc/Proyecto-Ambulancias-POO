@@ -23,4 +23,7 @@ public interface IServicioAmbulancias {
 	public String reporteambul();
 	public String estadisticaAmbulanciasDisponibles();
 	public String reporteServiciosSiAsignadas();
+	public String reportePacientes();
+	
+	
 }
