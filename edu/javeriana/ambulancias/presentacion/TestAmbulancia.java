@@ -100,13 +100,12 @@ public class TestAmbulancia {
 			menu();
 			opcion=opc.nextLine().trim();
 		}
-		System.out.println("\n"+Utils.imprimirLinea(215)+"\n\n\t\t\t  //////////////////////////////////\n"+"\t\t\t ///GRACIAS POR PREFERIRNOS!!!!!///\n"+"\t\t\t//////////////////////////////////\n");
+		System.out.println("\n"+Utils.imprimirLinea(215,100)+"\n\n\t\t\t  //////////////////////////////////\n"+"\t\t\t ///GRACIAS POR PREFERIRNOS!!!!!///\n"+"\t\t\t//////////////////////////////////\n");
 
 	opc.close();
 	}
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	private static void estadisticasAmbulanciasDisponibles(IServicioAmbulancias empresaAmbulancia) {
 		System.out.println(empresaAmbulancia.estadisticaAmbulanciasDisponibles());
@@ -250,9 +249,9 @@ public class TestAmbulancia {
 
 	}
 	private static void menu(){
-	System.out.print("\n"+Utils.imprimirLinea(175)+"\n"
+	System.out.print("\n"+Utils.imprimirLinea(175,100)+"\n"
 			+ "Opcion 1: ingresar las IPS al sistema.\nOpcion 2: ingresar las ambulancias al sistema.\nOpcion 3: registrar la posicion actual de una ambulancia.\nOpcion 4: registrar un servicio.\nOpcion 5: reporte de ambulancias.\nOpcion 6: asignar a un servicio una ambulancia y una IPS.\nOpcion 7: finalizar un servicio.\nOpcion 8: reporte de servicios con IPS y ambulancias asignados.\nOpcion 9: reporte de las IPS con servicios asociados.\nOpcion 10: estadisticas de las ambulancias disponibles\nOpcion 11: pacientes atendidos\nOpcion 12: terminar.\n"
-			+Utils.imprimirLinea(95)+"\n"+"Ingrese la opcion: ");
+			+Utils.imprimirLinea(95,100)+"\n"+"Ingrese la opcion: ");
 	}
 
 

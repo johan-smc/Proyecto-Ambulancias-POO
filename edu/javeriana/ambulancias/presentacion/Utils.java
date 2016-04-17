@@ -53,7 +53,7 @@ public class Utils {
 	}
 
 	public static String imprimirLinea(int a,int n){
-		String linea=""
+		String linea="";
 		for (int i = 0 ;i < n  ;++i ) {
 			linea+=(char)a;
 		}

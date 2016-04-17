@@ -102,21 +102,21 @@ public class Servicio {
 	public String toString(boolean b) {
 		String ret="SERVICIO\n";
 		ret+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tValor\n";
-		ret+="----------------------------------------------------------------------------------------\n";
+		ret+=Utils.imprimirLinea(187, 100)+"\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
 				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t"+this.calcularValor()+"\n";
 		if(this.ips!=null)
 		{
 			ret+="\n\tIPS asignada:\n";
 			ret+="\tNombre                TipoAtencion            Direccion\n";
-			ret+="\t-----------------------------------------------------------------------------------\n";
+			ret+="\t"+Utils.imprimirLinea(187, 95)+"\n";
 			ret+="\t"+ips.toString()+"\n";
 		}
 		if( this.ambulancia!=null)
 		{
 			ret+="\n\tAmbulancia asignada:\n";
 			ret+="\tTipoAmb\tCodigo\tPlaca\tMedico/enfermero\tTipoUCI\tHoraPosicion\tCalle\tCarrera\tTarifa\n";
-			ret+="\t-----------------------------------------------------------------------------------\n";
+			ret+="\t"+Utils.imprimirLinea(187, 95)+"\n";
 			ret+="\t";
 			ret+=ambulancia.toString();
 		}

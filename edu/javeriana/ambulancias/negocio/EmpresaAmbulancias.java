@@ -72,7 +72,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
 
-				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187)+"\n";
+				String todas="Codigo\tPlaca\tTipoDotacion\tHoraPosicion\tPosicionCalle\tPosicionCarrera\tServicio\n"+Utils.imprimirLinea(187,100)+"\n";
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
@@ -98,8 +98,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
-		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
-				int n2, int n3) {
+		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,int n2, int n3) {
 
 			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
 			this.servicios.add(temp);
@@ -126,7 +125,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				String reporte="--ASIGNAR UN SERVICIO A UNA AMBULANCIA Y A UN IPS\n";
 				reporte+="--Se muestran los servicios del sistema sin asignar:\n";
 				reporte+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\n";
-				reporte+="----------------------------------------------------------------------------------------\n";
+				reporte+=Utils.imprimirLinea(187,100);
 
 				;
 				for(Servicio temp:servicios)
@@ -146,10 +145,10 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.ASIGNADO))
 			{
-				String reporte="--FINALIZAR UN SERVICIO\n";
+				String reporte="--FINALIZAR UN SERVICIO--\n";
 				reporte+="--Se muestran los servicios del sistema asignados:\n";
 				reporte+="Codigo\tPaciente\tAmbulancia\tIPS\n";
-				reporte+="----------------------------------------------------------------------------------------\n";
+				reporte+=Utils.imprimirLinea(187,100);
 				for(Servicio temp:servicios)
 				{
 
@@ -238,7 +237,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return menA;
 		}
 		public String reporteServiciosIPSAmbulacia() {
-			String reporte="--REPORTE DE SERVICIOS CON IPS Y AMBULANCIAS ASOCIADAS\n\n";
+			String reporte="--REPORTE DE SERVICIOS CON IPS Y AMBULANCIAS ASOCIADAS--\n\n";
 
 			for( Servicio servicio: servicios)
 			{
@@ -272,8 +271,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			for(String key : setKey)
 			{
 				IPS ips=losIPS.get(key);
-				reporte+="--------------------------------------------IPS---------------------------------------------------\n"+
-						"Nombre\ttipoAtencion\tdireccion\n---------------------------------------------------------------------------\n"
+				reporte+=Utils.imprimirLinea(187, 45)+"IPS"+Utils.imprimirLinea(187, 45)+"\n"+
+						"Nombre\ttipoAtencion\tdireccion\n"+Utils.imprimirLinea(187,100)
 						+ips.getNombre()+"\t"+ips.getTipoAtencion()+"\t"+ips.getDireccion().toString()+"\n"
 						+ips.reporteServicios()+"\n";
 			}
@@ -304,13 +303,13 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 						noEspe++;
 				}
 			}
-			return  "-----Estadisticas ambulancias no asignadas---\n"+
+			return  "-----ESTADISTICAS AMBULANCIAS NO ASIGNADAS----\n"+
 				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
 		}
 
 		public String reportePacientes()
 		{
-			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su direcci�n, estado, medico o enfermero,\n";
+			String report="Hora Solicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tMedico o Enfermero\n"+Utils.imprimirLinea(187, 100)+"\n";
 					for (Servicio servicio : servicios) {
 
 						
