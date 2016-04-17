@@ -302,7 +302,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public String reportePacientes()
 		{
 			if (servicios.isEmpty()) {
-				return "No hay Pacientes11.";
+				return "No hay Pacientes.";
 			}
 			String report="Hora Solicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tMedico/Enfermero\n"+Utils.imprimirLinea(187, 100)+"\n";
 					for (Servicio servicio : servicios) {
