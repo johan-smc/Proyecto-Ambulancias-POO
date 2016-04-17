@@ -17,7 +17,7 @@ public class Servicio {
 	private IPS ips;
 	private Ambulancia ambulancia;
 	private long valor;
-	
+
 	public static enum TipoServicio
 	{
 		DOMICILIO,EMERGENCIA,URGENCIA;
@@ -26,7 +26,7 @@ public class Servicio {
 	{
 		NO_ASIGNADO,ASIGNADO,FINALIZDO;
 	}
-	
+
 	public Servicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1, int n2,
 			int n3) {
 		this.codigo=Servicio.getCONSECUTIVO();
@@ -38,7 +38,7 @@ public class Servicio {
 		this.horaSolicitud=Utils.horaSistema();
 		this.ambulancia=null;
 		this.ips=null;
-		
+
 	}
 	private TipoServicio tipo(String tipoServicio) {
 		if(tipoServicio.equals("EMERGENCIA"))
@@ -97,14 +97,14 @@ public class Servicio {
 			ips.relacionarServicio(this);
 		ambulancia.relacionarServicio(this);
 		this.estado=Estado.ASIGNADO;
-		
+
 	}
 	public String toString(boolean b) {
 		String ret="SERVICIO\n";
 		ret+="Codigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado\tValor\n";
 		ret+="----------------------------------------------------------------------------------------\n";
 		ret+=codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+
-				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t"+valor+"\n";
+				tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t"+this.calcularValor()+"\n";
 		if(this.ips!=null)
 		{
 			ret+="\n\tIPS asignada:\n";
@@ -128,23 +128,26 @@ public class Servicio {
 	public void finalizarServicio(){
 		this.estado=Estado.FINALIZDO;
 		this.ambulancia.retirarServicio();
-		
+
 	}
-	
+
 	public String toStringEspecialSupremo()
 	{
 		return codigo+"\t"+Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+"\t"+tipoServicio+"\t"+telefono+"\t"
 				+direccion.toString()+"\t"+estado+"\t"+ambulancia.getCodigo();
 	}
 	public long calcularValor(){
+		valor=0;
+		if(ambulancia == null )
+			return 0;
 		valor=ambulancia.calcularTarifa();
 		if(this.horaSolicitud.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY||this.horaSolicitud.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)
 			valor+=(valor*0.2);
 		return valor;
-		
+
 	}
 	public String toStringUltimoEspecial()
-	
+
 	{
 		String retorno=Utils.fechaSolicitud(horaSolicitud)+"\t"+paciente+" 	"+tipoServicio+"\t"+telefono+"\t"+direccion.toString()+"\t"+estado+"\t";
 		if (tipoServicio != TipoServicio.DOMICILIO && ambulancia instanceof AmbulanciaMedicalizada) {
@@ -155,7 +158,7 @@ public class Servicio {
 			retorno+=((AmbulanciaNoMedicalizada)ambulancia).getEnfermero()+"\n";
 		}
 		 return retorno;
-		
+
 	}
-	
+
 }

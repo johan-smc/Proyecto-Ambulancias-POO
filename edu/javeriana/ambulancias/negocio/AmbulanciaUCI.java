@@ -20,7 +20,7 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 		return total;
 	}
 	public boolean comprovarTipoServicio(Servicio servicio) {
-		if(servicio.getTipoSercivio()==Servicio.TipoServicio.URGENCIA)
+		if(servicio.getTipoSercivio()==Servicio.TipoServicio.EMERGENCIA)
 			return true;
 		return super.comprovarTipoServicio(servicio);
 	}
@@ -31,12 +31,12 @@ public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 	}
 	public String toStringPunto5()
 	{
-		Long hola=getServicioAsignado(); 
+		Long hola=getServicioAsignado();
 		return codigo+"\t"+placa+"\tUCI\t"+Utils.hora(this.horaPosicion)+"\t"+this.posicionCalle+
 				"\t"+this.posicionCarrera+"\t"+((hola==null)?"":hola);
 	}
-	
 
-	
+
+
 
 }

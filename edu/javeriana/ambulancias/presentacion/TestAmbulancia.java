@@ -159,10 +159,20 @@ public class TestAmbulancia {
 		nombre=sc.nextLine().trim();
 		System.out.println("Ingrese el tipo de servicio (URGENCIA, EMERGENCIA o DOMICILIO)");
 		tipoServicio=sc.nextLine().trim();
+		if(!tipoServicio.equals("URGENCIA")&&!tipoServicio.equals("EMERGENCIA")&&!tipoServicio.equals("DOMICILIO"))
+			{
+				System.err.println("ERROR!.");
+				return;
+			}
 		System.out.println("Ingrese el telefono");
 		telefono=sc.nextLine().trim();
 		System.out.println("Ingrese el tipo de direccion (CALLE o CARRERA): ");
 		tipoDireccion=sc.nextLine().trim();
+		if(! tipoDireccion.equals("CALLE")&&!tipoDireccion.equals("CARRERA"))
+		{
+			System.err.println("ERROR!.");
+			return;
+		}
 		System.out.println("Ingrese la calle: ");
 		String test=sc.nextLine().trim();
 		System.out.println("Ingrese la carrera: ");
@@ -293,7 +303,7 @@ public class TestAmbulancia {
 	private static void reportedePAcientes(IServicioAmbulancias empresaAmbulancia) {
 		System.out.println(empresaAmbulancia.reportePacientes());
 
-		
+
 	}
 
 	}
