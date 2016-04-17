@@ -22,4 +22,5 @@ public interface IServicioAmbulancias {
 	public String reportarIPS();
 	public String reporteambul();
 	public String estadisticaAmbulanciasDisponibles();
+	public String reporteServiciosSiAsignadas();
 }

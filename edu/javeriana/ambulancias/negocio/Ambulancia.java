@@ -64,7 +64,7 @@ public abstract class Ambulancia {
 	{
 		for(Servicio servicio : servicios)
 		{
-			if(servicio.getEstado().equals("ASIGNADO"))
+			if(servicio.getEstado().equals(Servicio.Estado.ASIGNADO))
 			{
 				return servicio.getCodigo();
 			}

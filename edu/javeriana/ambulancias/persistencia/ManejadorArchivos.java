@@ -15,7 +15,7 @@ public class ManejadorArchivos {
 			public static String ingresarIPS(String dir, IServicioAmbulancias empresa)
 			{
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File(/*"./"+*/dir));
 
 					String a, nombre, tipoAtencion,tipoDireccion;
 					int calle, carrera, numero;
@@ -56,7 +56,7 @@ public class ManejadorArchivos {
 			public static String ingresarAmbulancia(String dir, IServicioAmbulancias empresa)
 			{
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File(/*"./"+*/dir));
 
 					String placa,tipoAmbulancia,tipoUCI="",a,medico;
 					int codigo;
@@ -66,11 +66,11 @@ public class ManejadorArchivos {
 					while(!a.equals("0"))
 						{
 
-								if(a.charAt(0)=='#' && a.charAt(1)!='v')
+								/*if(a.charAt(0)=='#' && a.charAt(1)!='v')
 								{
 									input.close();
 									return "ERROR!: El archivo tiene formato incorrecto.";
-								}
+								}*/
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");

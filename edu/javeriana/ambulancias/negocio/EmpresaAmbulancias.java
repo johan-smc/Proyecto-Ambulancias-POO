@@ -76,6 +76,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
+					//creo que le toca cambiar esto por el toString de ambulancia
 					Ambulancia ambulancia=ambulancias.get(key);
 					todas=todas+ambulancia.getCodigo()+"\t";
 					todas=todas+ambulancia.getPlaca()+"\t";
@@ -316,7 +317,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		
 		public String reportePacientes()
 		{
-			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su dirección, estado, medico o enfermero,\n";
+			String report=" horaSolicitud, paciente, tipoServicio, telefono, datos de su direcciï¿½n, estado, medico o enfermero,\n";
 					for (Servicio servicio : servicios) {
 						
 						report+=servicio.toStringUltimoEspecial();
