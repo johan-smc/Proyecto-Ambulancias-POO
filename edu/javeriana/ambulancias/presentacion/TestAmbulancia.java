@@ -259,7 +259,7 @@ public class TestAmbulancia {
 
 	}
 	private static void menu(){
-	System.out.print("\n"+Utils.imprimirLinea(175,100)+"\n"
+	System.out.print("\n"+Utils.imprimirLinea(95,100)+"\n"
 			+ "Opcion 1:   Ingresar las IPS al sistema.\nOpcion 2:   Ingresar las ambulancias al sistema.\nOpcion 3:   Registrar la posicion actual de una ambulancia.\nOpcion 4:   Registrar un servicio.\nOpcion 5:   Reporte de ambulancias.\nOpcion 6:   Asignar a un servicio una ambulancia y una IPS.\nOpcion 7:   Finalizar un servicio.\nOpcion 8:   Reporte de servicios con IPS y ambulancias asignados.\nOpcion 9:   Reporte de las IPS con servicios asociados.\nOpcion 10:  Estadisticas de las ambulancias disponibles.\nOpcion 11:  Pacientes atendidos.\nOpcion 12:  Terminar.\n"
 			+Utils.imprimirLinea(95,100)+"\n"+"Ingrese la opcion: ");
 	}
