@@ -23,7 +23,7 @@ public class IPS {
 	}
 	public String reporteServicios()
 	{
-		Collections.sort(servicios, new ComparatorHoraServicio());
+		Collections.sort(servicios, new OrdenadoSustentacion());
 
 		String reporte="\tSERVICIOS:\n\tCodigo\tHoraSolicitud\tPaciente\tTipoServicio\tTelefono\tDireccion\tEstado ambul\n"
 						+"\t" +Utils.imprimirLinea(187,95)+"\n";
