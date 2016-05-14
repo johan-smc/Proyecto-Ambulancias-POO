@@ -4,18 +4,20 @@ import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class AmbulanciaUCI extends AmbulanciaMedicalizada{
 
-	private String tipoUCI;
+	private TipoUCI tipoUCI;
 	public AmbulanciaUCI(int codigo, String placa, String medico,String tipoUCI) {
 		super(codigo, placa, medico);
-		this.tipoUCI=tipoUCI;
+		this.tipoUCI=tipoUCI.equals("CARDIOVASCULAR")?TipoUCI.CARDIOVASCULAR:TipoUCI.PEDIATRICA;
 	}
 
-
+	public static enum TipoUCI{
+		CARDIOVASCULAR,PEDIATRICA;
+	}
 	public long calcularTarifa() {
 		long total=super.TARIFA_BASE;
-		if(this.tipoUCI.equals("CARDIOVASCULAR"))
+		if(this.tipoUCI==TipoUCI.CARDIOVASCULAR)
 			total+=(super.TARIFA_BASE*0.5);
-		else if(this.tipoUCI.equals("PEDIATRICA"))
+		else if(this.tipoUCI==TipoUCI.PEDIATRICA)
 			total+=(super.TARIFA_BASE*0.6);
 		return total;
 	}

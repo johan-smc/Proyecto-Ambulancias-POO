@@ -1,12 +1,13 @@
 package co.edu.javeriana.ambulancias.inteface;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 import co.edu.javeriana.ambulancias.negocio.Ambulancia;
 import co.edu.javeriana.ambulancias.negocio.Servicio;
 
-public interface IServicioAmbulancias {
+public interface IServicioAmbulancias extends Serializable {
 	public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero);
 	public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI);
 	public boolean registrarPosAmbulancia(int codigo,int calle, int carrera);

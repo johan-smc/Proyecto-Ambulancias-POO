@@ -2,13 +2,17 @@ package co.edu.javeriana.ambulancias.negocio;
 
 public class Direccion {
 	
-	private String tipoDireccion;
+	private TipoDireccion tipoDireccion;
 	private int calle;
 	private int carrera;
 	private int numero;
 	
+	public static enum TipoDireccion
+	{
+		CALLE,CARRERA;
+	}
 	public String toString() {
-		String direccion=tipoDireccion;
+		String direccion=tipoDireccion.toString();
 		if(tipoDireccion.equals("CARRERA"))
 			direccion+=" "+carrera+" # "+calle;
 		else if(tipoDireccion.equals("CALLE"))
@@ -23,16 +27,17 @@ public class Direccion {
 	}
 	public Direccion(String tipoDireccion, int calle, int carrera, int numero) {
 		super();
-		this.tipoDireccion = tipoDireccion;
+		
+		this.tipoDireccion = tipoDireccion.equals("CALLE")?TipoDireccion.CALLE:TipoDireccion.CARRERA;
 		this.calle = calle;
 		this.carrera = carrera;
 		this.numero = numero;
 	}
 	
-	public String getTipoDireccion() {
+	public TipoDireccion getTipoDireccion() {
 		return tipoDireccion;
 	}
-	public void setTipoDireccion(String tipoDireccion) {
+	public void setTipoDireccion(TipoDireccion tipoDireccion) {
 		this.tipoDireccion = tipoDireccion;
 	}
 	public int getCalle() {

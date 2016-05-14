@@ -31,17 +31,20 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 		public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
 
+			if(!losIPS.containsKey(nombre))
 				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
 		}
 		
 		public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
 		{
-			if(tipoAmbulancia.equals("BASICA"))
-				ambulancias.put(codigo, new AmbulanciaBasica(codigo,placa,medico));
-			else if( tipoAmbulancia.equals("UCI"))
-				ambulancias.put(codigo, new AmbulanciaUCI(codigo,placa,medico,tipoUCI));
-			else if( tipoAmbulancia.equals("NOMEDICALIZADA"))
-				ambulancias.put(codigo, new AmbulanciaNoMedicalizada(codigo,placa,medico));
+			if(!ambulancias.containsKey(codigo)){
+				if(tipoAmbulancia.equals("BASICA"))
+					ambulancias.put(codigo, new AmbulanciaBasica(codigo,placa,medico));
+				else if( tipoAmbulancia.equals("UCI"))
+					ambulancias.put(codigo, new AmbulanciaUCI(codigo,placa,medico,tipoUCI));
+				else if( tipoAmbulancia.equals("NOMEDICALIZADA"))
+					ambulancias.put(codigo, new AmbulanciaNoMedicalizada(codigo,placa,medico));
+			}
 		}
 
 		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
