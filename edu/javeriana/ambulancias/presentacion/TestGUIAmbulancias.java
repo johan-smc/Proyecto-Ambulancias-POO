@@ -1,6 +1,6 @@
 package co.edu.javeriana.ambulancias.presentacion;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -86,7 +86,7 @@ public class TestGUIAmbulancias extends JFrame {
 	}
 
 	protected void ingresarIPS() {
-		JFileChooser chooser = new JFileChooser();
+		JFileChooser chooser = new JFileChooser("./");
 		int returnVal = chooser.showOpenDialog(this);
 		if( returnVal == JFileChooser.APPROVE_OPTION ){
 			String dir = chooser.getSelectedFile().getParent();
@@ -118,7 +118,9 @@ public class TestGUIAmbulancias extends JFrame {
 				JOptionPane.showMessageDialog(this, e.getMessage(),"problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-	    
+		System.out.println("hola");
+	   
 		
 	}
+	
 }

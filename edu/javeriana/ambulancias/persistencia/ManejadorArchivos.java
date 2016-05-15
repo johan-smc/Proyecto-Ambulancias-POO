@@ -24,11 +24,11 @@ public class ManejadorArchivos {
 
 					while(!a.equals("0"))
 						{
-								if(a.charAt(0)=='#' && a.charAt(1)!='n')
+								/*if(a.charAt(0)=='#' && a.charAt(1)!='n')
 								{
 									input.close();
 									return "ERROR!: El archivo tiene formato incorrecto.";
-								}
+								}*/
 								if(a.charAt(0)!='#'&&a.trim().length()>0)
 								{
 								   StringTokenizer hola=new StringTokenizer(a, "*");
@@ -62,11 +62,11 @@ public class ManejadorArchivos {
 					int codigo;
 
 					a=input.nextLine();
-					if(a.charAt(0)=='#' && a.charAt(1)!='v')
+					/*if(a.charAt(0)=='#' && a.charAt(1)!='v')
 					{
 							input.close();
 							return "ERROR!: El archivo tiene formato incorrecto.";
-					}
+					}*/
 
 					while(!a.equals("0"))
 						{
