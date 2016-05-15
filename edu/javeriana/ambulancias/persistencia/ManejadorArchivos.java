@@ -15,7 +15,7 @@ public class ManejadorArchivos {
 			public static String ingresarIPS(String dir, IServicioAmbulancias empresa)
 			{
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File(dir));
 
 					String a, nombre, tipoAtencion,tipoDireccion;
 					int calle, carrera, numero;
@@ -56,7 +56,7 @@ public class ManejadorArchivos {
 			public static String ingresarAmbulancia(String dir, IServicioAmbulancias empresa)
 			{
 				try{
-					Scanner input=new Scanner(new File("./"+dir));
+					Scanner input=new Scanner(new File(dir));
 
 					String placa,tipoAmbulancia,tipoUCI="",a,medico;
 					int codigo;

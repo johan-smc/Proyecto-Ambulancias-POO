@@ -17,6 +17,10 @@ import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 
 public class EmpresaAmbulancias implements IServicioAmbulancias {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		private String nombre;
 		private Map<String,IPS> losIPS;
 		private List<Servicio> servicios;
