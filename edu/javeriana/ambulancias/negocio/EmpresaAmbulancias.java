@@ -87,6 +87,21 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			else return "No se encuentran ambulancias.";
 		}
+		public List< List<Object> > reporteAmbulancia()
+		{
+			
+				List< List<Object> > ll = null;
+				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
+				
+				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
+				for(Integer key : setKey)
+				{
+					Ambulancia temp=ambulancias.get(key);
+					
+				}
+				return ll;
+			
+		}
 
 		public String getNombre() {
 			return nombre;
