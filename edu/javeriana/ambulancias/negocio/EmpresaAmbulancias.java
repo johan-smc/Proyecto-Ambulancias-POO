@@ -10,7 +10,7 @@ import java.util.Map;
 
 import java.util.Set;
 import java.util.TreeMap;
-
+import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
@@ -87,17 +87,18 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			else return "No se encuentran ambulancias.";
 		}
-		public List< List<Object> > reporteAmbulancia()
+		public List< Object > reporteAmbulancia()
 		{
 			
-				List< List<Object> > ll = null;
+				List< Object > ll = new Vector< Object >();
 				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
 				
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
 					Ambulancia temp=ambulancias.get(key);
-					
+					List<Object> t=temp.reporteAmbulancia();
+					ll.add(t);
 				}
 				return ll;
 			

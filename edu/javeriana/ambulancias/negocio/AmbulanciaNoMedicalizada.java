@@ -1,5 +1,8 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.List;
+import java.util.Vector;
+
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class AmbulanciaNoMedicalizada extends Ambulancia{
@@ -37,5 +40,17 @@ public class AmbulanciaNoMedicalizada extends Ambulancia{
 				"\t\t"+this.posicionCarrera+"\t\t"+((hola==null)?"":hola);
 	}
 
+	public List<Object> reporteAmbulancia() {
+		List<Object> temp=new Vector<Object>();
+		temp.add(String.valueOf(this.codigo));
+		temp.add("No Medicalizada");
+		temp.add(this.placa);
+		temp.add(this.enfermero);
+		temp.add("");
+		temp.add(String.valueOf(this.horaPosicion));
+		temp.add(String.valueOf(this.posicionCalle));
+		temp.add(String.valueOf(this.posicionCarrera));
+		return temp;
+	}
 
 }

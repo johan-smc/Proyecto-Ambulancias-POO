@@ -1,5 +1,7 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.List;
+
 public abstract class AmbulanciaMedicalizada extends Ambulancia {
 	public AmbulanciaMedicalizada(int codigo, String placa, String medico) {
 		super(codigo, placa);
@@ -25,4 +27,7 @@ public abstract class AmbulanciaMedicalizada extends Ambulancia {
 
 
 	public abstract  long calcularTarifa();
+	public abstract List<Object> reporteAmbulancia();
+
+	
 }

@@ -39,7 +39,6 @@ public class ManejadorArchivos {
 							       calle=Integer.valueOf(hola.nextToken().trim());
 							       carrera=Integer.valueOf(hola.nextToken().trim());
 							       numero=Integer.valueOf(hola.nextToken().trim());
-
 							       empresa.agregarIPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero);
 						       }
 								a=input.nextLine();

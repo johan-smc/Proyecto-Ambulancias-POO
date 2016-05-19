@@ -119,4 +119,5 @@ public abstract class Ambulancia {
 	public abstract long calcularTarifa();
 	public abstract boolean comprovarTipoServicio(Servicio servicio);
 	public abstract String toStringPunto5();
+	public abstract List<Object>  reporteAmbulancia();
 }

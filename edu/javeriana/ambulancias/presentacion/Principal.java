@@ -25,10 +25,11 @@ public class Principal extends JPanel {
 	 * @param empresaAmbulancia 
 	 */
 	public Principal(IServicioAmbulancias empresaAmbulancia) {
+		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 450, 278);
+		tabbedPane.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		add(tabbedPane);
 		vistaMenuServicios=new VistaMenuServicios();
 		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
