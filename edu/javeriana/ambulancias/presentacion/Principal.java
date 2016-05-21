@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.presentacion;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
@@ -34,8 +35,10 @@ public class Principal extends JPanel {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		add(tabbedPane);
+		///hay que mirar la ruta
+		 ImageIcon icon =new ImageIcon( "nose.jpg");
 		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
-		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
+		tabbedPane.addTab("Menu de servicios", icon,vistaMenuServicios , null);
 		
 		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
 		tabbedPane.addTab("Ingresar Ips o Ambulancias", null, vistaIngresarIPSAmbulancias, null);
@@ -66,7 +69,17 @@ public class Principal extends JPanel {
 		tabbedPane.setSelectedIndex(i);
 		
 	}
-
+	//sacado de https://docs.oracle.com/javase/tutorial/uiswing/examples/components/TabbedPaneDemoProject/src/components/TabbedPaneDemo.java
+	protected static ImageIcon createImageIcon(String path) {
+		
+	        java.net.URL imgURL = Principal.class.getResource(path);
+	        if (imgURL != null) {
+	            return new ImageIcon(imgURL);
+	        } else {
+	            System.err.println("Couldn't find file: " + path);
+	            return null;
+	        }
+	}
 	
 
 }
