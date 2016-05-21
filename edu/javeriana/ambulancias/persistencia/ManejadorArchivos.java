@@ -2,6 +2,9 @@ package co.edu.javeriana.ambulancias.persistencia;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -19,7 +22,7 @@ public class ManejadorArchivos {
 
 					String a, nombre, tipoAtencion,tipoDireccion;
 					int calle, carrera, numero;
-
+					int cantidad=0;
 					a=input.nextLine();
 
 					while(!a.equals("0"))
@@ -39,13 +42,14 @@ public class ManejadorArchivos {
 							       calle=Integer.valueOf(hola.nextToken().trim());
 							       carrera=Integer.valueOf(hola.nextToken().trim());
 							       numero=Integer.valueOf(hola.nextToken().trim());
-							       empresa.agregarIPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero);
+							       if(empresa.agregarIPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero))
+							    	   ++cantidad;
 						       }
 								a=input.nextLine();
 						}
 
 					input.close();
-					return "EXITOSO!.";
+					return "EXITOSO!.\nSe guardaron "+cantidad+" IPS.";
 				}catch(FileNotFoundException e){
 
 					return "ERROR!.";
@@ -59,7 +63,7 @@ public class ManejadorArchivos {
 
 					String placa,tipoAmbulancia,tipoUCI="",a,medico;
 					int codigo;
-
+					int cantidad=0;
 					a=input.nextLine();
 					/*if(a.charAt(0)=='#' && a.charAt(1)!='v')
 					{
@@ -82,19 +86,27 @@ public class ManejadorArchivos {
 								   medico=hola.nextToken().trim();
 								   if(tipoAmbulancia.equals("UCI"))
 									   tipoUCI=hola.nextToken().trim();
-							       empresa.agregarAmbulancia(codigo, placa,tipoAmbulancia,medico,tipoUCI);
+							       if(empresa.agregarAmbulancia(codigo, placa,tipoAmbulancia,medico,tipoUCI))
+							    	   ++cantidad;
 						}
 								       a=input.nextLine();
 						}
 
 					input.close();
-					return "LECTURA CORRECTA!.";
+					return "LECTURA CORRECTA!.\nSe guardaron "+cantidad+" Ambulancias.";
 				}catch(FileNotFoundException e){
 
 
 					return "ERROR!.";
 				}
 
+			}
+			public static void salvarDatos(IServicioAmbulancias empresaAmbulancia, String dir, String nombre) throws IOException {
+				File outFile=new File(dir+"/"+nombre);
+				FileOutputStream outStream = new FileOutputStream(outFile);
+				ObjectOutputStream objectOutStream = new ObjectOutputStream(outStream);
+				objectOutStream.writeObject(empresaAmbulancia);
+				objectOutStream.close();
 			}
 
 		}

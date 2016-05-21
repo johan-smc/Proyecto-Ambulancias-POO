@@ -35,22 +35,36 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			this.ambulancias=new HashMap<Integer,Ambulancia>();
 		}
 
-		public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
+		public boolean agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero){
 
-			if(!losIPS.containsKey(nombre))
+			if(!losIPS.containsKey(nombre)){
 				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
+				return true;
+			}
+			return false;
 		}
 
-		public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
+		public boolean agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
 		{
 			if(!ambulancias.containsKey(codigo)){
 				if(tipoAmbulancia.equals("BASICA"))
+				{
 					ambulancias.put(codigo, new AmbulanciaBasica(codigo,placa,medico));
+					return true;
+				}
 				else if( tipoAmbulancia.equals("UCI"))
+				{
 					ambulancias.put(codigo, new AmbulanciaUCI(codigo,placa,medico,tipoUCI));
+					return true;
+				}
 				else if( tipoAmbulancia.equals("NOMEDICALIZADA"))
+				{
 					ambulancias.put(codigo, new AmbulanciaNoMedicalizada(codigo,placa,medico));
+					return true;
+				}
+
 			}
+			return false;
 		}
 
 		public boolean registrarPosAmbulancia(int codigo,int calle, int carrera)
@@ -203,7 +217,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			ret+=".";
 			return ret;
 		}
-		
+
 		private Servicio buscarServicio(Long codigo) {
 			for(Servicio servicio:this.servicios)
 			{
@@ -336,7 +350,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return report;
 
 		}
-		
+
 		public Vector< Object > reporteIPS()
 		{
 			Vector< Object > ll = new Vector< Object >();
@@ -365,7 +379,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 			return ll;
 		}
-		
+
 		public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws Exception {
 
 			Servicio servicio=buscarServicio(servicioB);
@@ -386,5 +400,21 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				ret+=" y la IPS "+ips.getNombre();
 			ret+=".";
 			return ret;
+		}
+
+
+		public Vector<Object> reporteServicioAmbulancia(long codigoServicio) {
+			Servicio temp=this.buscarServicio(codigoServicio);
+			if(temp==null)
+				return null;
+			return temp.reporteAmbulancia();
+		}
+
+
+		public Vector<Object> reporteServicioIPS(long codigoServicio) {
+			Servicio temp=this.buscarServicio(codigoServicio);
+			if(temp==null)
+				return null;
+			return temp.reporteIPS();
 		}
 }

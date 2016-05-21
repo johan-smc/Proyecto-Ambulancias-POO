@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -7,7 +8,11 @@ import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
-public class Servicio {
+public class Servicio implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static long CONSECUTIVO=0;
 	private long codigo;
 	private GregorianCalendar horaSolicitud;
@@ -175,6 +180,18 @@ public class Servicio {
 		temp[7]=(this.ips==null)?"":this.ips.getNombre();
 		temp[8]=(this.ambulancia==null)?"":this.ambulancia.getCodigo();
 		return   new Vector<Object> (Arrays.asList(temp));
+	}
+	public Vector<Object> reporteAmbulancia() {
+		if (this.ambulancia==null) {
+			return null;
+		}
+		return this.ambulancia.reporteAmbulancia();
+	}
+	public Vector<Object> reporteIPS() {
+		if (this.ips==null) {
+			return null;
+		}
+		return this.ips.reporteTable();
 	}
 
 }

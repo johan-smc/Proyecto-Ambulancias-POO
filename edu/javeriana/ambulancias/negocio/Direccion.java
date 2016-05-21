@@ -1,7 +1,13 @@
 package co.edu.javeriana.ambulancias.negocio;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TipoDireccion tipoDireccion;
 	private int calle;
 	private int carrera;

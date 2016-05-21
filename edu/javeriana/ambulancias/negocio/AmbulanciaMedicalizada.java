@@ -3,6 +3,10 @@ package co.edu.javeriana.ambulancias.negocio;
 import java.util.Vector;
 
 public abstract class AmbulanciaMedicalizada extends Ambulancia {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public AmbulanciaMedicalizada(int codigo, String placa, String medico) {
 		super(codigo, placa);
 		this.medico=medico;
@@ -28,6 +32,7 @@ public abstract class AmbulanciaMedicalizada extends Ambulancia {
 
 	public abstract  long calcularTarifa();
 	public abstract Vector<Object> reporteAmbulancia();
+	public abstract Vector<Object> reporteAmbulanciaTarifa() ;
 
 	
 }

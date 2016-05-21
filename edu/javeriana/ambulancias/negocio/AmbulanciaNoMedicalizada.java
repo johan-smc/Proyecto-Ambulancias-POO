@@ -9,6 +9,11 @@ import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class AmbulanciaNoMedicalizada extends Ambulancia{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AmbulanciaNoMedicalizada(int codigo, String placa,String enfermero) {
 		super(codigo, placa);
 		this.enfermero=enfermero;
@@ -54,6 +59,20 @@ public class AmbulanciaNoMedicalizada extends Ambulancia{
 		temp[7]=(String.valueOf(this.posicionCarrera));
 		return   new Vector<Object> (Arrays.asList(temp));
 
+	}
+	public Vector<Object> reporteAmbulanciaTarifa() {
+		Object[] temp=new Object[9];
+		temp[0]=(String.valueOf(this.codigo));
+		temp[1]=("NO MEDICALIZADA");
+		temp[2]=(this.placa);
+		temp[3]=(this.enfermero);
+		temp[4]=("");
+		temp[5]=(String.valueOf(Utils.fechaSolicitud(this.horaPosicion)));
+		temp[6]=(String.valueOf(this.posicionCalle));
+		temp[7]=(String.valueOf(this.posicionCarrera));
+		temp[8]=this.calcularTarifa();
+		return   new Vector<Object> (Arrays.asList(temp));
+		
 	}
 
 }

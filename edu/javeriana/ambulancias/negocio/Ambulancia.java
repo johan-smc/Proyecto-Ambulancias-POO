@@ -3,6 +3,7 @@ package co.edu.javeriana.ambulancias.negocio;
 
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -10,7 +11,11 @@ import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
-public abstract class Ambulancia {
+public abstract class Ambulancia implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected final long TARIFA_BASE=80000;
 	protected int codigo;
 	protected String placa;
@@ -123,4 +128,6 @@ public abstract class Ambulancia {
 	public abstract boolean comprovarTipoServicio(Servicio servicio);
 	public abstract String toStringPunto5();
 	public abstract Vector<Object>  reporteAmbulancia();
+	public abstract Vector<Object> reporteAmbulanciaTarifa() ;
+
 }

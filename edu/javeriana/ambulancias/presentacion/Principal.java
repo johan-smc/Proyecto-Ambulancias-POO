@@ -8,6 +8,7 @@ import co.edu.javeriana.ambulancias.Vistas.VistaAsignarServicio;
 import co.edu.javeriana.ambulancias.Vistas.VistaIngresarIPSAmbulancias;
 import co.edu.javeriana.ambulancias.Vistas.VistaMenuServicios;
 import co.edu.javeriana.ambulancias.Vistas.VistaRegistrarPosicionAmbulancia;
+import co.edu.javeriana.ambulancias.Vistas.VistaReporteSeriviciosIPSAmbulancia;
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 
 public class Principal extends JPanel {
@@ -21,6 +22,7 @@ public class Principal extends JPanel {
 	private static VistaIngresarIPSAmbulancias vistaIngresarIPSAmbulancias;
 	private static VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
 	private static VistaAsignarServicio vistaAsignarServicio;
+	private static VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
 	/**
 	 * Create the panel.
 	 * @param empresaAmbulancia 
@@ -32,7 +34,7 @@ public class Principal extends JPanel {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		add(tabbedPane);
-		vistaMenuServicios=new VistaMenuServicios();
+		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
 		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
 		
 		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
@@ -43,6 +45,9 @@ public class Principal extends JPanel {
 		
 		vistaAsignarServicio=new  VistaAsignarServicio(empresaAmbulancia);
 		tabbedPane.addTab("Asignar un Servicio", null,vistaAsignarServicio, null);
+		
+		vistaReporteSeriviciosIPSAmbulancia=new  VistaReporteSeriviciosIPSAmbulancia(empresaAmbulancia);
+		tabbedPane.addTab("Reporte Servicio con Ips y Ambulancia", null,vistaReporteSeriviciosIPSAmbulancia, null);
 	}
 
 	public static void actulizarTablasAmbulancias(IServicioAmbulancias empresaAmbulancia) {

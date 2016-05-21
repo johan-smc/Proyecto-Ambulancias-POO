@@ -53,8 +53,8 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 			String nombre = chooser.getSelectedFile().getName();
 			try {
 				String message = ManejadorArchivos.ingresarIPS(dir+'/'+nombre,empresaAmbulancia );
-				JOptionPane.showMessageDialog(this,"IPS cargada con exito",
-						message,JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,message,
+						"IPS cargada con exito",JOptionPane.INFORMATION_MESSAGE);
 				Principal.actulizarTablasIPS(empresaAmbulancia);
 
 			}
@@ -73,8 +73,8 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 			String nombre = chooser.getSelectedFile().getName();
 			try {
 				String message = ManejadorArchivos.ingresarAmbulancia(dir+'/'+nombre,empresaAmbulancia );
-				JOptionPane.showMessageDialog(this,"Ambulancia cargada con exito",
-						message,JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,message,
+						"Ambulancia cargada con exito",JOptionPane.INFORMATION_MESSAGE);
 				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
 			}
 			catch (Exception e) {

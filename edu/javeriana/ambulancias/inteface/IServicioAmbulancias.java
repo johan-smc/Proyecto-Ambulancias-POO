@@ -9,8 +9,8 @@ import co.edu.javeriana.ambulancias.negocio.Ambulancia;
 import co.edu.javeriana.ambulancias.negocio.Servicio;
 
 public interface IServicioAmbulancias extends Serializable {
-	public void agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero);
-	public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI);
+	public boolean agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero);
+	public boolean agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI);
 	public boolean registrarPosAmbulancia(int codigo,int calle, int carrera);
 	public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
 			int n2, int n3);
@@ -30,6 +30,8 @@ public interface IServicioAmbulancias extends Serializable {
 	public Vector< Object > reporteIPS();
 	public Vector< Object > reporteServicios();
 	public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws  Exception ;
+	public Vector<Object> reporteServicioAmbulancia(long codigoServicio);
+	public Vector<Object> reporteServicioIPS(long codigoServicio);
 	
 	
 }

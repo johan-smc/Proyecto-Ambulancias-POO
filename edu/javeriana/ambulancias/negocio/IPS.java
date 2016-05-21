@@ -1,5 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,7 +9,11 @@ import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
-public class IPS {
+public class IPS implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String tipoAtencion;
 	private Direccion direccion;
@@ -70,6 +75,7 @@ public class IPS {
 		temp[2]=this.getDireccion();
 		return   new Vector<Object> (Arrays.asList(temp));
 	}
+	
 	
 
 }
