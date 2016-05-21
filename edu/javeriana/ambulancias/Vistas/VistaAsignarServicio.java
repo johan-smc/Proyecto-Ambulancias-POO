@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.Servicio;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,9 +100,14 @@ public class VistaAsignarServicio extends JPanel {
 		add(btnAgregarServicio);
 
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(0);
+			}
+		});
 		btnRegresar.setBounds(357, 407, 117, 29);
 		add(btnRegresar);
-
+	
 	}
 
 	protected void asignarServicio(IServicioAmbulancias empresaAmbulancia) {

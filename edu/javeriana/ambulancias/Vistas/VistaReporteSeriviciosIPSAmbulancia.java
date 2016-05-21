@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -203,6 +204,11 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		txtDireccionips.setColumns(10);
 
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(0);
+			}
+		});
 		btnRegresar.setBounds(362, 411, 117, 29);
 		add(btnRegresar);
 

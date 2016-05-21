@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -83,6 +84,14 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		});
 		btnActualizar.setBounds(16, 249, 117, 29);
 		add(btnActualizar);
+		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(0);
+			}
+		});
+		btnRegresar.setBounds(357, 407, 117, 29);
+		add(btnRegresar);
 
 	}
 	protected void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {

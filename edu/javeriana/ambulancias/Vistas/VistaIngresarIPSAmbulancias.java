@@ -31,7 +31,8 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 				ingresarAmbulancia(empresaAmbulancia);
 			}
 		});
-		btnIngresarAmbulancia.setBounds(42, 88, 160, 29);
+		setLayout(null);
+		btnIngresarAmbulancia.setBounds(51, 67, 173, 29);
 		this.add(btnIngresarAmbulancia);
 
 		JButton btnIngresarIps = new JButton("Ingresar IPS");
@@ -40,8 +41,16 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 				ingresarIPS(empresaAmbulancia);
 			}
 		});
-		btnIngresarIps.setBounds(299, 88, 145, 29);
+		btnIngresarIps.setBounds(265, 67, 117, 29);
 		this.add(btnIngresarIps);
+		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(0);
+			}
+		});
+		btnRegresar.setBounds(177, 264, 98, 29);
+		add(btnRegresar);
 
 	}
 

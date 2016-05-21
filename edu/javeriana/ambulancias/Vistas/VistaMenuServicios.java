@@ -37,6 +37,42 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnSalvarDatosSistema.setBounds(75, 378, 167, 29);
 		add(btnSalvarDatosSistema);
+		
+		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
+		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(2);
+			}
+		});
+		btnRegistrarPosicionAmbulancia.setBounds(52, 60, 340, 29);
+		add(btnRegistrarPosicionAmbulancia);
+		
+		JButton btnAsignarAUn = new JButton("Asignar a un servicio un ambulancia y IPS");
+		btnAsignarAUn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(3);
+			}
+		});
+		btnAsignarAUn.setBounds(52, 101, 340, 29);
+		add(btnAsignarAUn);
+		
+		JButton btnReporteServiciosCon = new JButton("Reporte servicios con IPS y Ambulancia");
+		btnReporteServiciosCon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(4);
+			}
+		});
+		btnReporteServiciosCon.setBounds(52, 142, 340, 29);
+		add(btnReporteServiciosCon);
+		
+		JButton btnIngresarIpsO = new JButton("Ingresar IPS o Ambulancia");
+		btnIngresarIpsO.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.vistaWiew(1);
+			}
+		});
+		btnIngresarIpsO.setBounds(52, 25, 340, 29);
+		add(btnIngresarIpsO);
 
 	}
 
