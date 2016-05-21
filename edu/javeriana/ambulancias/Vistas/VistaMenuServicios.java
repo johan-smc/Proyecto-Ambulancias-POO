@@ -15,8 +15,7 @@ public class VistaMenuServicios extends JPanel {
 	 * Create the panel.
 	 */
 	public VistaMenuServicios() {
-		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
-
+		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
 	}
 

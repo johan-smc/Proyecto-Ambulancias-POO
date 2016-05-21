@@ -24,7 +24,7 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 	 */
 	public VistaIngresarIPSAmbulancias(IServicioAmbulancias empresaAmbulancia) {
 
-		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
+		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 		JButton btnIngresarAmbulancia = new JButton("Ingresar Ambulancia");
 		btnIngresarAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -55,6 +55,8 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 				String message = ManejadorArchivos.ingresarIPS(dir+'/'+nombre,empresaAmbulancia );
 				JOptionPane.showMessageDialog(this,"IPS cargada con exito",
 						message,JOptionPane.WARNING_MESSAGE);
+				Principal.actulizarTablasIPS(empresaAmbulancia);
+
 			}
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(),"problema archivo", JOptionPane.ERROR_MESSAGE);

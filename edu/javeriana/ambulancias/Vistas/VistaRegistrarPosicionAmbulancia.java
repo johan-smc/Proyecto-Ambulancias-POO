@@ -39,8 +39,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	 */
 	public VistaRegistrarPosicionAmbulancia(IServicioAmbulancias empresaAmbulancia) {
 		setLayout(null);
-		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
-
+		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
 		 scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 6, 438, 105);

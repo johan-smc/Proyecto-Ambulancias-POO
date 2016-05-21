@@ -1,7 +1,9 @@
 package co.edu.javeriana.ambulancias.negocio;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
@@ -160,6 +162,19 @@ public class Servicio {
 		}
 		 return retorno;
 
+	}
+	public Vector<Object> reporteTable() {
+		Object[] temp=new Object[9];
+		temp[0]=this.getCodigo();
+		temp[1]=Utils.hora(this.getHoraSolicitud());
+		temp[2]=this.getPaciente();
+		temp[3]=this.getTipoSercivio();
+		temp[4]=this.getTelefono();
+		temp[5]=this.getDireccion().toString();
+		temp[6]=this.getEstado();
+		temp[7]=(this.ips==null)?"":this.ips.getNombre();
+		temp[8]=(this.ambulancia==null)?"":this.ambulancia.getCodigo();
+		return   new Vector<Object> (Arrays.asList(temp));
 	}
 
 }

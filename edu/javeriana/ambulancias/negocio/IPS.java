@@ -1,8 +1,10 @@
 package co.edu.javeriana.ambulancias.negocio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
@@ -61,5 +63,13 @@ public class IPS {
 	public String toString() {
 		return nombre+"\t"+tipoAtencion+"\t"+direccion.toString();
 	}
+	public Vector<Object> reporteTable() {
+		Object[] temp=new Object[3];
+		temp[0]=this.getNombre();
+		temp[1]=this.getTipoAtencion();
+		temp[2]=this.getDireccion();
+		return   new Vector<Object> (Arrays.asList(temp));
+	}
+	
 
 }

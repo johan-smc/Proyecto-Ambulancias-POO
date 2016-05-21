@@ -41,7 +41,7 @@ public class TestGUIAmbulancias extends JFrame {
 	 */
 	public TestGUIAmbulancias() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, width, height);
+		setBounds(100, 100, width, height+20);
 		principal = new Principal(empresaAmbulancia);
 		principal.setVisible(true);
 		this.setContentPane(principal);

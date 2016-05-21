@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
+import co.edu.javeriana.ambulancias.exceptions.ExcepcionAmbulanciaNoModificad;
+import co.edu.javeriana.ambulancias.exceptions.ExcepcionServicioAsignado;
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
@@ -201,7 +203,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			ret+=".";
 			return ret;
 		}
-
+		
 		private Servicio buscarServicio(Long codigo) {
 			for(Servicio servicio:this.servicios)
 			{
@@ -333,5 +335,56 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 					}
 			return report;
 
+		}
+		
+		public Vector< Object > reporteIPS()
+		{
+			Vector< Object > ll = new Vector< Object >();
+			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>(losIPS);
+			Set<String> setKey= serviciosOrdennombre.keySet();
+			for(String key : setKey)
+			{
+				IPS ips=losIPS.get(key);
+				ll.add(ips.reporteTable());
+			}
+
+			return ll;
+		}
+		public Vector< Object > reporteServicios()
+		{
+			Vector< Object > ll = new Vector< Object >();
+
+			Collections.sort(servicios, new comparatorCodigoServicio());
+			for(Servicio temp:servicios)
+			{
+				if(temp.getEstado().equals(Servicio.Estado.NO_ASIGNADO)||temp.getEstado().equals(Servicio.Estado.ASIGNADO))
+				{
+					ll.add(temp.reporteTable());
+				}
+			}
+
+			return ll;
+		}
+		
+		public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws Exception {
+
+			Servicio servicio=buscarServicio(servicioB);
+			if(!servicio.getEstado().equals(Servicio.Estado.NO_ASIGNADO))
+					throw new ExcepcionServicioAsignado("El servicio ya esta asignado");
+			Ambulancia ambulancia=this.ambulancias.get(ambulanciaB);
+			if(!ambulancia.isDirModificada())
+				throw new ExcepcionAmbulanciaNoModificad("La ambulancia no tiene direccion valida");
+			IPS ips=null;
+			if(servicio.getTipoSercivio()!=Servicio.TipoServicio.DOMICILIO)
+			{
+				ips=this.losIPS.get(IPSB);
+			}
+
+			servicio.relacionar(ambulancia,ips);
+			String ret="Al servicio "+servicioB+" le fue asignada la ambulancia "+ambulancia.getCodigo();
+			if(ips!=null)
+				ret+=" y la IPS "+ips.getNombre();
+			ret+=".";
+			return ret;
 		}
 }
