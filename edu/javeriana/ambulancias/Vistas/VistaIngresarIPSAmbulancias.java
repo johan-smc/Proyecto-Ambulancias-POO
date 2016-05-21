@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.persistencia.ManejadorArchivos;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
 public class VistaIngresarIPSAmbulancias extends JPanel {
@@ -17,8 +18,7 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L; 
 	/**
 	 * Create the panel.
 	 */
@@ -73,14 +73,17 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 				String message = ManejadorArchivos.ingresarAmbulancia(dir+'/'+nombre,empresaAmbulancia );
 				JOptionPane.showMessageDialog(this,"Ambulancia cargada con exito",
 						message,JOptionPane.WARNING_MESSAGE);
+				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
 			}
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(),"problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		System.out.println("hola");
 
 
 	}
+
+	
+
 
 }

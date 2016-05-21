@@ -16,9 +16,9 @@ public class Principal extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane ;
-	private VistaMenuServicios vistaMenuServicios;
-	private VistaIngresarIPSAmbulancias vistaIngresarIPSAmbulancias;
-	private VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
+	private static VistaMenuServicios vistaMenuServicios;
+	private static VistaIngresarIPSAmbulancias vistaIngresarIPSAmbulancias;
+	private static VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
 	
 	/**
 	 * Create the panel.
@@ -40,5 +40,11 @@ public class Principal extends JPanel {
 		vistaRegistrarPosicionAmbulancia=new  VistaRegistrarPosicionAmbulancia(empresaAmbulancia);
 		tabbedPane.addTab("Registrar posicion ambulancias", null,vistaRegistrarPosicionAmbulancia, null);
 	}
+
+	public static void actulizarTablasAmbulancias(IServicioAmbulancias empresaAmbulancia) {
+		vistaRegistrarPosicionAmbulancia.actualizar(empresaAmbulancia);
+	}
+
+	
 
 }

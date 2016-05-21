@@ -1,6 +1,6 @@
 package co.edu.javeriana.ambulancias.negocio;
 
-import java.util.List;
+import java.util.Vector;
 
 public abstract class AmbulanciaMedicalizada extends Ambulancia {
 	public AmbulanciaMedicalizada(int codigo, String placa, String medico) {
@@ -27,7 +27,7 @@ public abstract class AmbulanciaMedicalizada extends Ambulancia {
 
 
 	public abstract  long calcularTarifa();
-	public abstract List<Object> reporteAmbulancia();
+	public abstract Vector<Object> reporteAmbulancia();
 
 	
 }

@@ -11,10 +11,13 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VistaRegistrarPosicionAmbulancia extends JPanel {
 
@@ -27,6 +30,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	private JTextField txtCarrera;
 	private Vector<String> columName=null;
 	private Vector<Object> data=null;
+	private JScrollPane scrollPane=null;
 	private String[] nombres={
 			"Codigo","Tipo","Placa","Medico o Enfermero","Tipo UCI","Hora posicion","Calle","Carrera"
 			};
@@ -38,7 +42,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 
 
-		JScrollPane scrollPane = new JScrollPane();
+		 scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 6, 438, 105);
 		add(scrollPane);
 
@@ -46,6 +50,11 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		scrollPane.setViewportView(table);
 
 		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
+		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarPosicion(empresaAmbulancia);
+			}
+		});
 		btnRegistrarPosicionAmbulancia.setBounds(16, 123, 234, 29);
 		add(btnRegistrarPosicionAmbulancia);
 
@@ -68,14 +77,52 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		txtCarrera.setColumns(10);
 
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actualizar(empresaAmbulancia);
+			}
+		});
 		btnActualizar.setBounds(16, 249, 117, 29);
 		add(btnActualizar);
 
 	}
+	protected void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {
+		try{
+			int pos = this.table.getSelectedRow();
+			//System.out.println(pos+" + "+table.getValueAt(pos, 0));
+			int codigo=Integer.valueOf( table.getValueAt(pos, 0).toString());
+			//System.out.println("-- "+codigo);
+			int carrera = Integer.valueOf(this.txtCarrera.getText());
+			int calle = Integer.valueOf(this.txtCalle.getText());
+			empresaAmbulancia.registrarPosAmbulancia(codigo, calle, carrera);
+			JOptionPane.showMessageDialog(this,"La posicion se guardo correctamente", "Exitoso",JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch( NumberFormatException e)
+		{
+			JOptionPane.showMessageDialog(this, "La entrada no tiene el formato correcto","Error entrada",JOptionPane.ERROR_MESSAGE);
+		}
+		catch( Exception e)
+		{
+			JOptionPane.showMessageDialog(this, "No hay ambulancias","Error",JOptionPane.ERROR_MESSAGE);
+		}
+		
+		
+	}
+	public void actualizar(IServicioAmbulancias empresaAmbulancia) {
+		table = infoTabla(empresaAmbulancia);
+		scrollPane.setViewportView(table);
+	}
 	private JTable infoTabla(IServicioAmbulancias empresaAmbulancia) {
 		if(this.columName==null)
 			this.columName=new Vector<String>(Arrays.asList(this.nombres));
-		this.data=(Vector<Object>) empresaAmbulancia.reporteAmbulancia();
+		this.data=  empresaAmbulancia.reporteAmbulancia();
+		//imprimir(data);
 		return new JTable(this.data,this.columName);
 	}
+	
+	/*private void imprimir(Vector<Object> data2) {
+		for( Object o:data2)
+			System.out.println(o.toString());
+		
+	}*/
 }

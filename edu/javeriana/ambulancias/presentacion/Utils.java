@@ -18,10 +18,12 @@ public class Utils {
 
 	public static String fechaSolicitud(GregorianCalendar hora) {
 		String fecha="";
-		fecha+=mes(hora.get(Calendar.MONTH))+" ";
-		fecha+=hora.get(Calendar.DAY_OF_MONTH)+" ";
-		fecha+=hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
-
+		if(hora!=null)
+		{
+			fecha+=mes(hora.get(Calendar.MONTH))+" ";
+			fecha+=hora.get(Calendar.DAY_OF_MONTH)+" ";
+			fecha+=hora.get(Calendar.HOUR)+":"+hora.get(Calendar.MINUTE);
+		}
 		return fecha;
 	}
 	public static String mes(int i) {

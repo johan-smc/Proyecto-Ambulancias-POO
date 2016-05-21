@@ -18,7 +18,7 @@ import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class EmpresaAmbulancias implements IServicioAmbulancias {
 		/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 		private String nombre;
@@ -38,7 +38,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			if(!losIPS.containsKey(nombre))
 				losIPS.put(nombre,new IPS(nombre, tipoAtencion, tipoDireccion, calle, carrera, numero));
 		}
-		
+
 		public void agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI)
 		{
 			if(!ambulancias.containsKey(codigo)){
@@ -70,7 +70,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			return esta;
 		}
-		
+
 		public String reporteambul(){
 
 			if(!ambulancias.isEmpty())
@@ -87,21 +87,21 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			else return "No se encuentran ambulancias.";
 		}
-		public List< Object > reporteAmbulancia()
+		public Vector< Object > reporteAmbulancia()
 		{
-			
-				List< Object > ll = new Vector< Object >();
+
+				Vector< Object > ll = new Vector< Object >();
 				Map<Integer, Ambulancia> ambulanciasOrdenCodigo=new TreeMap<Integer, Ambulancia>(ambulancias);
-				
+
 				Set<Integer> setKey= ambulanciasOrdenCodigo.keySet();
 				for(Integer key : setKey)
 				{
+					//System.out.println("Pase ");
 					Ambulancia temp=ambulancias.get(key);
-					List<Object> t=temp.reporteAmbulancia();
-					ll.add(t);
+					ll.add(temp.reporteAmbulancia());
 				}
 				return ll;
-			
+
 		}
 
 		public String getNombre() {
@@ -111,7 +111,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
-		
+
 		public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,int n2, int n3) {
 
 			Servicio temp=new Servicio(nombre,tipoServicio,telefono,tipoDireccion,n1,n2,n3);
@@ -150,7 +150,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				return "No se han encontrado Servicios.";
 			}
 		}
-		
+
 		public String reporteServiciosSiAsignadas() {
 
 			if(!servicios.isEmpty() && hayServicioDe(Servicio.Estado.ASIGNADO))
@@ -172,8 +172,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 				return "No se han encontrado Servicios para finalizar.";
 			}
 		}
-		
-		
+
+
 		public boolean verificarCodigoServicio(Long codigo) {
 			return buscarServicio(codigo)==null?false:true;
 		}
@@ -201,7 +201,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			ret+=".";
 			return ret;
 		}
-		
+
 		private Servicio buscarServicio(Long codigo) {
 			for(Servicio servicio:this.servicios)
 			{
@@ -246,9 +246,9 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			}
 			return menA;
 		}
-		
+
 		public String reporteServiciosIPSAmbulacia() {
-			
+
 			if (servicios.isEmpty()) {
 				return "No hay Servicios";
 			}
@@ -279,8 +279,8 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		{
 			if (losIPS.isEmpty()) {
 				return "No hay IPS.";
-			}			
-			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>(losIPS);			
+			}
+			Map<String,IPS> serviciosOrdennombre=new TreeMap<String,IPS>(losIPS);
 			String reporte="";
 			Set<String> setKey= serviciosOrdennombre.keySet();
 			for(String key : setKey)
@@ -301,7 +301,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		public Map<Integer, Ambulancia> getAmbulancias() {
 			return ambulancias;
 		}
-		
+
 		public String estadisticaAmbulanciasDisponibles()
 		{
 			Set<Integer> setKey= ambulancias.keySet();
@@ -321,7 +321,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return  "-----ESTADISTICAS AMBULANCIAS NO ASIGNADAS----\n"+
 				"Basicas: "+basicas+"\nUCI: "+uci+"\nNo Especialisadas: "+noEspe+"\n";
 		}
-		
+
 		public String reportePacientes()
 		{
 			if (servicios.isEmpty()) {

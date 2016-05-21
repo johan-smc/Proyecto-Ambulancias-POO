@@ -6,6 +6,7 @@ package co.edu.javeriana.ambulancias.negocio;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Vector;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
@@ -26,9 +27,11 @@ public abstract class Ambulancia {
 		this.placa=placa;
 		//this.tipoDotacion=tipoDotacion;
 		this.servicios=new ArrayList<Servicio>();
-		this.horaPosicion=new GregorianCalendar();
+		this.horaPosicion=null;
 		this.dirModificada=false;
 		this.asignada=false;
+		this.posicionCalle=-1;
+		this.posicionCarrera=-1;
 	}
 	public boolean isDirModificada() {
 		return dirModificada;
@@ -119,5 +122,5 @@ public abstract class Ambulancia {
 	public abstract long calcularTarifa();
 	public abstract boolean comprovarTipoServicio(Servicio servicio);
 	public abstract String toStringPunto5();
-	public abstract List<Object>  reporteAmbulancia();
+	public abstract Vector<Object>  reporteAmbulancia();
 }

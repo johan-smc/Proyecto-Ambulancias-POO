@@ -3,6 +3,8 @@ package co.edu.javeriana.ambulancias.inteface;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
+
 import co.edu.javeriana.ambulancias.negocio.Ambulancia;
 import co.edu.javeriana.ambulancias.negocio.Servicio;
 
@@ -24,7 +26,7 @@ public interface IServicioAmbulancias extends Serializable {
 	public String estadisticaAmbulanciasDisponibles();
 	public String reporteServiciosSiAsignadas();
 	public String reportePacientes();
-	public List< Object > reporteAmbulancia();
+	public Vector< Object > reporteAmbulancia();
 	
 	
 }
