@@ -76,7 +76,7 @@ public class Principal extends JPanel {
 	}
 
 	public static void actulizarTablasAmbulancias(IServicioAmbulancias empresaAmbulancia) {
-		vistaRegistrarPosicionAmbulancia.actualizar(empresaAmbulancia);
+		vistaRegistrarPosicionAmbulancia.actualizarTabla(empresaAmbulancia);
 		vistaAsignarServicio.actualizarAmbulancia(empresaAmbulancia);
 	}
 

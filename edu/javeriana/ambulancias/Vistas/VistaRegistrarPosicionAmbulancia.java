@@ -79,7 +79,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				actualizar(empresaAmbulancia);
+				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
 			}
 		});
 		btnActualizar.setBounds(16, 249, 117, 29);
@@ -116,10 +116,11 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		
 		
 	}
-	public void actualizar(IServicioAmbulancias empresaAmbulancia) {
+	public void actualizarTabla(IServicioAmbulancias empresaAmbulancia) {
 		table = infoTabla(empresaAmbulancia);
 		scrollPane.setViewportView(table);
 	}
+
 	private JTable infoTabla(IServicioAmbulancias empresaAmbulancia) {
 		if(this.columName==null)
 			this.columName=new Vector<String>(Arrays.asList(this.nombres));

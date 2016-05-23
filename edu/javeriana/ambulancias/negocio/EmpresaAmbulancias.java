@@ -12,8 +12,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
-import co.edu.javeriana.ambulancias.exceptions.ExcepcionAmbulanciaNoModificad;
-import co.edu.javeriana.ambulancias.exceptions.ExcepcionServicioAsignado;
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
@@ -381,15 +379,19 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			return ll;
 		}
 
-		public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws Exception {
+		public String relacionarServicio(Long servicioB,int ambulanciaB,String IPSB) throws Exception {
 
 			Servicio servicio=buscarServicio(servicioB);
 			if(!servicio.getEstado().equals(Servicio.Estado.NO_ASIGNADO))
-					throw new ExcepcionServicioAsignado("El servicio ya esta asignado");
+					throw new Exception("El servicio ya esta asignado");
+		
 			Ambulancia ambulancia=this.ambulancias.get(ambulanciaB);
 			if(!ambulancia.isDirModificada())
-				throw new ExcepcionAmbulanciaNoModificad("La ambulancia no tiene direccion valida");
+				throw new Exception("La ambulancia no tiene direccion valida");
+			else if(ambulancia.isAsignada())
+				throw new Exception("La ambulancia ya esta asignada");
 			IPS ips=null;
+
 			if(servicio.getTipoSercivio()!=Servicio.TipoServicio.DOMICILIO)
 			{
 				ips=this.losIPS.get(IPSB);

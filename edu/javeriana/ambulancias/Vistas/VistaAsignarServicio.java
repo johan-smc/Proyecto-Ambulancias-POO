@@ -116,28 +116,34 @@ public class VistaAsignarServicio extends JPanel {
 			int posAmbulancia=this.tableAmbulancia.getSelectedRow();
 			int posServicios=this.tableServicios.getSelectedRow();
 			String nombreIPS="";
+			long codigoServicio = 0;
+			int codigoAmbulancia = 0;
 			if(posAmbulancia==-1)
 				JOptionPane.showMessageDialog(this, "No ha seleccionado la Ambulancia","No ha selecionado",JOptionPane.WARNING_MESSAGE);
 			else if( posServicios==-1)
 				JOptionPane.showMessageDialog(this, "No ha seleccionado el servicio","No ha selecionado",JOptionPane.WARNING_MESSAGE);
 			else
 			{
-				long codigoServicio=Long.valueOf(this.tableServicios.getValueAt(posServicios, 0).toString());
-				long codigoAmbulancia = Long.valueOf(this.tableAmbulancia.getValueAt(posAmbulancia, 0).toString());
-				if( this.tableServicios.getValueAt(posServicios, 3)!=Servicio.TipoServicio.DOMICILIO){
+				 codigoServicio=Long.valueOf(this.tableServicios.getValueAt(posServicios, 0).toString());
+				 codigoAmbulancia = Integer.valueOf(this.tableAmbulancia.getValueAt(posAmbulancia, 0).toString());
+				
+				if( this.tableServicios.getValueAt(posServicios, 3)!=Servicio.TipoServicio.DOMICILIO)
 					if( posIPS==-1){
 						throw new Exception("No ha seleccionado la IPS");
 					}
-					nombreIPS = this.tableAmbulancia.getValueAt(posIPS, 0).toString();
-				}
-				String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
-				JOptionPane.showMessageDialog(this,resultado,"Asignado correctamente",JOptionPane.INFORMATION_MESSAGE);
-				this.actualizarServicios(empresaAmbulancia);
+				nombreIPS = this.tableIPS.getValueAt(posIPS, 0).toString();
 			}
+
+			String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
+
+			JOptionPane.showMessageDialog(this,resultado,"Asignado correctamente",JOptionPane.INFORMATION_MESSAGE);
+			this.actualizarServicios(empresaAmbulancia);
+			
 		}
 		catch( Exception e)
 		{
-			JOptionPane.showMessageDialog(this, "No ha podido agregar el servicio","Error",JOptionPane.ERROR_MESSAGE);
+
+			JOptionPane.showMessageDialog(this, e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

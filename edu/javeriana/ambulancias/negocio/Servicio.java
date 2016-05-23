@@ -100,8 +100,10 @@ public class Servicio implements Serializable{
 	public void relacionar(Ambulancia ambulancia, IPS ips) {
 		this.ips=ips;
 		this.ambulancia=ambulancia;
-		if(tipoServicio!=TipoServicio.DOMICILIO)
+		if(tipoServicio!=TipoServicio.DOMICILIO){
+			System.out.println("hola");
 			ips.relacionarServicio(this);
+		}
 		ambulancia.relacionarServicio(this);
 		this.estado=Estado.ASIGNADO;
 

@@ -28,7 +28,7 @@ public interface IServicioAmbulancias extends Serializable {
 	public Vector< Object > reporteAmbulancia();
 	public Vector< Object > reporteIPS();
 	public Vector< Object > reporteServicios();
-	public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws  Exception ;
+	public String relacionarServicio(Long servicioB,int ambulanciaB,String IPSB) throws  Exception ;
 	public Vector<Object> reporteServicioAmbulancia(long codigoServicio);
 	public Vector<Object> reporteServicioIPS(long codigoServicio);
 	public List<String> listadeIps();
