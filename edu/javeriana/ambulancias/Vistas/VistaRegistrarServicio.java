@@ -14,6 +14,7 @@ import co.edu.javeriana.ambulancias.presentacion.Principal;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.SynchronousQueue;
 import java.awt.event.ActionEvent;
 
 public class VistaRegistrarServicio extends JPanel {
@@ -24,6 +25,8 @@ public class VistaRegistrarServicio extends JPanel {
 	private JTextField bxtNumero;
 	private JComboBox dspServicio;
 	private JComboBox dspDireccion;
+	private String contenido[]={"DOMICILIO","EMERGENCIA","URGENCIA"};
+	private String contenido2[]={"CALLE","CARRERA"};
 	/**
 	 * Create the panel.
 	 */
@@ -88,14 +91,14 @@ public class VistaRegistrarServicio extends JPanel {
 		bxtNumero.setBounds(111, 293, 86, 20);
 		add(bxtNumero);
 		
-		String contenido[]={"DOMICILIO","EMERGENCIA","URGENCIA"};
-		JComboBox dspServicio = new JComboBox(contenido);
+		
+		dspServicio = new JComboBox(contenido);
 		dspServicio.setBounds(111, 125, 86, 20);
 		add(dspServicio);
 		
 		
-		String contenido2[]={"CALLE","CARRERA"};
-		JComboBox dspDireccion = new JComboBox(contenido2);
+		
+		dspDireccion = new JComboBox(contenido2);
 		dspDireccion.setBounds(111, 191, 95, 20);
 		add(dspDireccion);
 		
@@ -119,21 +122,27 @@ public class VistaRegistrarServicio extends JPanel {
 		
 		try
 		{
-			empresaAmbulancia.agregarServicio(bxtPaciente.getText(),String.valueOf( dspServicio.getSelectedItem()),bxttelefono.getText(), String.valueOf( dspDireccion.getSelectedItem()), Integer.parseInt(bxtCalle.getText()), Integer.parseInt(bxtCarrera.getText()),Integer.parseInt( bxtNumero.getText()));
+
+			
+			System.out.println(( (String) (dspServicio.getItemAt(dspServicio.getSelectedIndex()))));
+			empresaAmbulancia.agregarServicio(bxtPaciente.getText(),( dspServicio.getItemAt(dspServicio.getSelectedIndex()).toString()),bxttelefono.getText(), ( dspDireccion.getItemAt(dspDireccion.getSelectedIndex()).toString()), Integer.parseInt(bxtCalle.getText()), Integer.parseInt(bxtCarrera.getText()),Integer.parseInt( bxtNumero.getText()));
+			JOptionPane.showMessageDialog(null, "Se registro existosamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
 			Principal.actulizarTablasServicio(empresaAmbulancia);
 		}
 		catch(Exception e)
 		{
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error al registrar", JOptionPane.ERROR_MESSAGE);
 			try
 			{
 				Integer.parseInt(bxtCalle.getText()); 
-				JOptionPane.showMessageDialog(null, "Se registro existosamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+				
 				
 			}
 			catch(Exception a)
 			{
 				JOptionPane.showMessageDialog(null, "Error: Esa Calle es de verdad?", "Error al registrar", JOptionPane.ERROR_MESSAGE);
 			}
+			
 			try
 			{
 				 Integer.parseInt(bxtCarrera.getText());
@@ -143,6 +152,7 @@ public class VistaRegistrarServicio extends JPanel {
 			{
 				JOptionPane.showMessageDialog(null, "Error: Esa Carrera es de verdad?", "Error al registrar", JOptionPane.ERROR_MESSAGE);
 			}
+			
 			try
 			{
 				Integer.parseInt( bxtNumero.getText());

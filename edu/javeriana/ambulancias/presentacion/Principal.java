@@ -29,12 +29,13 @@ public class Principal extends JPanel {
 	private static VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
 	private VistaFinalizarServicio vistaFinalizarServicio;
 	private VistaRegistrarServicio vistaRegistrarServicio;
-	private VistaReporteIPS vistaReporteIPS;
+	private static VistaReporteIPS vistaReporteIPS;
 	/**
 	 * Create the panel.
 	 * @param empresaAmbulancia 
 	 */
 	public Principal(IServicioAmbulancias empresaAmbulancia) {
+		
 		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
@@ -81,6 +82,7 @@ public class Principal extends JPanel {
 
 	public static void actulizarTablasIPS(IServicioAmbulancias empresaAmbulancia) {
 		vistaAsignarServicio.actualizarIPS(empresaAmbulancia);
+		vistaReporteIPS.actualizarIPS(empresaAmbulancia);
 		
 	}
 	public static void actulizarTablasServicio(IServicioAmbulancias empresaAmbulancia) {

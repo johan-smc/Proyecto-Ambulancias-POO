@@ -15,8 +15,8 @@ public class TestGUIAmbulancias extends JFrame {
 	/**
 	 * 
 	 */
-	private static  int width=500;
-	private static  int height=500;
+	private static  int width=739;
+	private static  int height=667;
 	private IServicioAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");;
 	private static final long serialVersionUID = 1L;
 	private Principal principal;
@@ -43,7 +43,7 @@ public class TestGUIAmbulancias extends JFrame {
 	public TestGUIAmbulancias() {
 		setTitle("BabySoft");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 739, 667);
+		setBounds(100, 100,this.width,this.height);
 		principal = new Principal(empresaAmbulancia);
 		principal.setVisible(true);
 		this.setContentPane(principal);
