@@ -181,6 +181,12 @@ public class Servicio implements Serializable{
 		temp[8]=(this.ambulancia==null)?"":this.ambulancia.getCodigo();
 		return   new Vector<Object> (Arrays.asList(temp));
 	}
+	public Ambulancia getAmbulancia() {
+		return ambulancia;
+	}
+	public void setAmbulancia(Ambulancia ambulancia) {
+		this.ambulancia = ambulancia;
+	}
 	public Vector<Object> reporteAmbulancia() {
 		if (this.ambulancia==null) {
 			return null;

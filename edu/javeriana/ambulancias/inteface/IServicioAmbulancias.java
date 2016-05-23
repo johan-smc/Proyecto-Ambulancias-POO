@@ -12,8 +12,7 @@ public interface IServicioAmbulancias extends Serializable {
 	public boolean agregarIPS(String nombre, String tipoAtencion,  String tipoDireccion, int calle, int carrera, int numero);
 	public boolean agregarAmbulancia(int codigo,String placa, String tipoAmbulancia, String medico, String tipoUCI);
 	public boolean registrarPosAmbulancia(int codigo,int calle, int carrera);
-	public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,
-			int n2, int n3);
+	public long agregarServicio(String nombre, String tipoServicio, String telefono, String tipoDireccion, int n1,int n2, int n3);
 	public String relacionarServicio(Long codigo);
 	public boolean finAServicio(long codigo);
 	public List<Servicio> getServicios(); 
@@ -32,6 +31,9 @@ public interface IServicioAmbulancias extends Serializable {
 	public String relacionarServicio(Long servicioB,Long ambulanciaB,String IPSB) throws  Exception ;
 	public Vector<Object> reporteServicioAmbulancia(long codigoServicio);
 	public Vector<Object> reporteServicioIPS(long codigoServicio);
+	public List<String> listadeIps();
+	
+	public String[][] datosVistaIPS(String nombre);
 	
 	
 }

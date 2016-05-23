@@ -18,13 +18,14 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 1L; 
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Create the panel.
 	 */
 	public VistaIngresarIPSAmbulancias(IServicioAmbulancias empresaAmbulancia) {
 
-		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
+		this.setBounds(0, 0, TestGUIAmbulancias.getW() - 20, TestGUIAmbulancias.getH() - 55);
 		JButton btnIngresarAmbulancia = new JButton("Ingresar Ambulancia");
 		btnIngresarAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -57,18 +58,16 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 	protected void ingresarIPS(IServicioAmbulancias empresaAmbulancia) {
 		JFileChooser chooser = new JFileChooser("./");
 		int returnVal = chooser.showOpenDialog(this);
-		if( returnVal == JFileChooser.APPROVE_OPTION ){
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			String dir = chooser.getSelectedFile().getParent();
 			String nombre = chooser.getSelectedFile().getName();
 			try {
-				String message = ManejadorArchivos.ingresarIPS(dir+'/'+nombre,empresaAmbulancia );
-				JOptionPane.showMessageDialog(this,message,
-						"IPS cargada con exito",JOptionPane.INFORMATION_MESSAGE);
+				String message = ManejadorArchivos.ingresarIPS(dir + '/' + nombre, empresaAmbulancia);
+				JOptionPane.showMessageDialog(this, message, "IPS cargada con exito", JOptionPane.INFORMATION_MESSAGE);
 				Principal.actulizarTablasIPS(empresaAmbulancia);
 
-			}
-			catch (Exception e) {
-				JOptionPane.showMessageDialog(this, e.getMessage(),"problema archivo", JOptionPane.ERROR_MESSAGE);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e.getMessage(), "problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
@@ -77,24 +76,19 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 	protected void ingresarAmbulancia(IServicioAmbulancias empresaAmbulancia) {
 		JFileChooser chooser = new JFileChooser("./");
 		int returnVal = chooser.showOpenDialog(this);
-		if( returnVal == JFileChooser.APPROVE_OPTION ){
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			String dir = chooser.getSelectedFile().getParent();
 			String nombre = chooser.getSelectedFile().getName();
 			try {
-				String message = ManejadorArchivos.ingresarAmbulancia(dir+'/'+nombre,empresaAmbulancia );
-				JOptionPane.showMessageDialog(this,message,
-						"Ambulancia cargada con exito",JOptionPane.INFORMATION_MESSAGE);
+				String message = ManejadorArchivos.ingresarAmbulancia(dir + '/' + nombre, empresaAmbulancia);
+				JOptionPane.showMessageDialog(this, message, "Ambulancia cargada con exito",
+						JOptionPane.INFORMATION_MESSAGE);
 				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
-			}
-			catch (Exception e) {
-				JOptionPane.showMessageDialog(this, e.getMessage(),"problema archivo", JOptionPane.ERROR_MESSAGE);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e.getMessage(), "problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
-
 	}
-
-	
-
 
 }

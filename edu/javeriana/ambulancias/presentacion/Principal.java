@@ -6,9 +6,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 import co.edu.javeriana.ambulancias.Vistas.VistaAsignarServicio;
+import co.edu.javeriana.ambulancias.Vistas.VistaFinalizarServicio;
 import co.edu.javeriana.ambulancias.Vistas.VistaIngresarIPSAmbulancias;
 import co.edu.javeriana.ambulancias.Vistas.VistaMenuServicios;
 import co.edu.javeriana.ambulancias.Vistas.VistaRegistrarPosicionAmbulancia;
+import co.edu.javeriana.ambulancias.Vistas.VistaRegistrarServicio;
+import co.edu.javeriana.ambulancias.Vistas.VistaReporteIPS;
 import co.edu.javeriana.ambulancias.Vistas.VistaReporteSeriviciosIPSAmbulancia;
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 
@@ -24,6 +27,9 @@ public class Principal extends JPanel {
 	private static VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
 	private static VistaAsignarServicio vistaAsignarServicio;
 	private static VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
+	private VistaFinalizarServicio VistaFinalizarServicio;
+	private VistaRegistrarServicio VistaRegistrarServicio;
+	private VistaReporteIPS VistaReporteIPS;
 	/**
 	 * Create the panel.
 	 * @param empresaAmbulancia 
@@ -37,11 +43,6 @@ public class Principal extends JPanel {
 		add(tabbedPane);
 		///hay que mirar la ruta
 		 ImageIcon icon =new ImageIcon( "nose.jpg");
-		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
-		tabbedPane.addTab("Menu de servicios", icon,vistaMenuServicios , null);
-		
-		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
-		tabbedPane.addTab("Ingresar Ips o Ambulancias", null, vistaIngresarIPSAmbulancias, null);
 		
 		vistaRegistrarPosicionAmbulancia=new  VistaRegistrarPosicionAmbulancia(empresaAmbulancia);
 		tabbedPane.addTab("Registrar posicion ambulancias", null,vistaRegistrarPosicionAmbulancia, null);
@@ -49,8 +50,24 @@ public class Principal extends JPanel {
 		vistaAsignarServicio=new  VistaAsignarServicio(empresaAmbulancia);
 		tabbedPane.addTab("Asignar un Servicio", null,vistaAsignarServicio, null);
 		
+		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
+		tabbedPane.addTab("Menu de servicios", icon,vistaMenuServicios , null);
+		
+		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
+		tabbedPane.addTab("Ingresar Ips o Ambulancias", null, vistaIngresarIPSAmbulancias, null);
+		
 		vistaReporteSeriviciosIPSAmbulancia=new  VistaReporteSeriviciosIPSAmbulancia(empresaAmbulancia);
 		tabbedPane.addTab("Reporte Servicio con Ips y Ambulancia", null,vistaReporteSeriviciosIPSAmbulancia, null);
+		
+		VistaFinalizarServicio=new VistaFinalizarServicio(empresaAmbulancia);
+		tabbedPane.addTab("Finalizar Servicio", icon,VistaFinalizarServicio , null);
+		
+		
+		VistaRegistrarServicio=new VistaRegistrarServicio(empresaAmbulancia);
+		tabbedPane.addTab("Registrar Servicio", icon,VistaRegistrarServicio , null);
+		
+		VistaReporteIPS=new VistaReporteIPS(empresaAmbulancia);
+		tabbedPane.addTab("Reporte IPS", icon,VistaReporteIPS , null);
 		
 		
 	}

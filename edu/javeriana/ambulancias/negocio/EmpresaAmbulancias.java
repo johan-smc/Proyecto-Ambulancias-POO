@@ -27,6 +27,7 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 		private Map<String,IPS> losIPS;
 		private List<Servicio> servicios;
 		private Map<Integer,Ambulancia> ambulancias;
+		
 
 		public EmpresaAmbulancias(String nombre) {
 			this.nombre=nombre;
@@ -416,5 +417,24 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			if(temp==null)
 				return null;
 			return temp.reporteIPS();
+		}
+		public List<String> listadeIps()
+		{
+			List<String> listaIPSes = new ArrayList<String>();
+			Set<String> llaves=losIPS.keySet();
+			for(String llave: llaves)
+			{
+				listaIPSes.add(losIPS.get(llave).getNombre());
+			}
+			return listaIPSes;
+			
+			
+		}
+
+		@Override
+		public String[][] datosVistaIPS (String nombre) {
+			
+					
+			return losIPS.get(nombre).matrizdetabla();
 		}
 }

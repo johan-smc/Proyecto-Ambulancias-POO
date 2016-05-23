@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
+import javax.rmi.CORBA.Util;
+
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 
 public class IPS implements Serializable{
@@ -74,6 +76,27 @@ public class IPS implements Serializable{
 		temp[1]=this.getTipoAtencion();
 		temp[2]=this.getDireccion();
 		return   new Vector<Object> (Arrays.asList(temp));
+	}
+	public String[][] matrizdetabla() {
+		
+		String[][] Tablepues = new String[8][servicios.size()];
+		for(Servicio temp:servicios)
+		{
+			for (int a = 0; a< servicios.size(); a++) {
+				
+					Tablepues[a][0]=String.valueOf( temp.getCodigo());
+					Tablepues[a][1]=Utils.hora(temp.getHoraSolicitud());
+					Tablepues[a][2]=String.valueOf( temp.getPaciente());
+					Tablepues[a][3]=String.valueOf( temp.getTipoSercivio());
+					Tablepues[a][4]=String.valueOf( temp.getTelefono());
+					Tablepues[a][5]=String.valueOf( temp.getDireccion().toString());
+					Tablepues[a][6]=String.valueOf( temp.getEstado());
+					Tablepues[a][7]=String.valueOf( this.nombre);
+					Tablepues[a][8]=String.valueOf( temp.getAmbulancia().getCodigo());	
+			}
+			
+		}
+		return null;
 	}
 	
 	
