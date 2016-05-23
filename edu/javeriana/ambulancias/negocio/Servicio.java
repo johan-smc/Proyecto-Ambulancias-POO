@@ -193,7 +193,7 @@ public class Servicio implements Serializable{
 		if (this.ambulancia==null) {
 			return null;
 		}
-		return this.ambulancia.reporteAmbulancia();
+		return this.ambulancia.reporteAmbulanciaTarifa();
 	}
 	public Vector<Object> reporteIPS() {
 		if (this.ips==null) {

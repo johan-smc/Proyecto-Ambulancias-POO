@@ -137,7 +137,7 @@ public class VistaAsignarServicio extends JPanel {
 			String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
 
 			JOptionPane.showMessageDialog(this,resultado,"Asignado correctamente",JOptionPane.INFORMATION_MESSAGE);
-			this.actualizarServicios(empresaAmbulancia);
+			Principal.actulizarTablasServicio(empresaAmbulancia);
 			
 		}
 		catch( Exception e)

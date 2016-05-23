@@ -240,6 +240,12 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 				this.txtTipoAtencionIPS.setText(info.get(1).toString());
 				this.txtDireccionips.setText(info.get(2).toString());
 			}
+			else
+			{
+				this.txtNombreips.setText("");
+				this.txtTipoAtencionIPS.setText("");
+				this.txtDireccionips.setText("");
+			}
 
 		}
 		catch( Exception e)
