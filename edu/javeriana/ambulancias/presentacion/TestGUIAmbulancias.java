@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
+import java.awt.Toolkit;
 
 
 public class TestGUIAmbulancias extends JFrame {
@@ -40,8 +41,9 @@ public class TestGUIAmbulancias extends JFrame {
 	 * Create the frame.
 	 */
 	public TestGUIAmbulancias() {
+		setTitle("BabySoft");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, width, height+20);
+		setBounds(100, 100, 739, 667);
 		principal = new Principal(empresaAmbulancia);
 		principal.setVisible(true);
 		this.setContentPane(principal);

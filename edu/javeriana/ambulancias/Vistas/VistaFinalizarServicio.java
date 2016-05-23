@@ -5,6 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 
 import java.util.Arrays;
 import java.util.Vector;
@@ -31,6 +32,8 @@ public class VistaFinalizarServicio extends JPanel {
 	 */
 	public VistaFinalizarServicio(IServicioAmbulancias empresaAmbulancia) {
 		setLayout(null);
+		
+		
 		
 		scrollPaneServicios = new JScrollPane();
 		scrollPaneServicios.setBounds(10, 149, 360, 104);

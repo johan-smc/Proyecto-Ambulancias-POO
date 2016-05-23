@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+import co.edu.javeriana.ambulancias.presentacion.Principal;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -119,7 +120,7 @@ public class VistaRegistrarServicio extends JPanel {
 		try
 		{
 			empresaAmbulancia.agregarServicio(bxtPaciente.getText(),String.valueOf( dspServicio.getSelectedItem()),bxttelefono.getText(), String.valueOf( dspDireccion.getSelectedItem()), Integer.parseInt(bxtCalle.getText()), Integer.parseInt(bxtCarrera.getText()),Integer.parseInt( bxtNumero.getText()));
-			
+			Principal.actulizarTablasServicio(empresaAmbulancia);
 		}
 		catch(Exception e)
 		{

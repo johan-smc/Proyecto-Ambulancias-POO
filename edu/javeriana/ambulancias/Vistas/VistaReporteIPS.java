@@ -38,8 +38,8 @@ public class VistaReporteIPS extends JPanel {
 		
 		///////////////////////////////////////////
 		
-		List contenido3=(List) empresaambulancia.listadeIps();
-		JScrollPane scrollPane = new JScrollPane(contenido3);
+		
+		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(50, 159, 349, 117);
 		add(scrollPane);
 		
@@ -48,6 +48,10 @@ public class VistaReporteIPS extends JPanel {
 		tabladeService = new JTable();
 		scrollPane.setRowHeaderView(tabladeService);
 		
+		Object[] contenido3=empresaambulancia.listadeIps().toArray();
+		JComboBox<Object> dspIPS = new JComboBox<Object>(contenido3);
+		dspIPS.setBounds(200, 76, 153, 20);
+		add(dspIPS);
+		
 	}
-
 }
