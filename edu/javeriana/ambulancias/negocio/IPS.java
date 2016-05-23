@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-import javax.rmi.CORBA.Util;
 
 import co.edu.javeriana.ambulancias.presentacion.Utils;
 

@@ -51,7 +51,7 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Asignar un Servicio", null,vistaAsignarServicio, null);
 		
 		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
-		tabbedPane.addTab("Menu de servicios", icon,vistaMenuServicios , null);
+		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
 		
 		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
 		tabbedPane.addTab("Ingresar Ips o Ambulancias", null, vistaIngresarIPSAmbulancias, null);
@@ -60,14 +60,14 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Reporte Servicio con Ips y Ambulancia", null,vistaReporteSeriviciosIPSAmbulancia, null);
 		
 		VistaFinalizarServicio=new VistaFinalizarServicio(empresaAmbulancia);
-		tabbedPane.addTab("Finalizar Servicio", icon,VistaFinalizarServicio , null);
+		tabbedPane.addTab("Finalizar Servicio",null,VistaFinalizarServicio , null);
 		
 		
 		VistaRegistrarServicio=new VistaRegistrarServicio(empresaAmbulancia);
-		tabbedPane.addTab("Registrar Servicio", icon,VistaRegistrarServicio , null);
+		tabbedPane.addTab("Registrar Servicio", null,VistaRegistrarServicio , null);
 		
 		VistaReporteIPS=new VistaReporteIPS(empresaAmbulancia);
-		tabbedPane.addTab("Reporte IPS", icon,VistaReporteIPS , null);
+		tabbedPane.addTab("Reporte IPS", null,VistaReporteIPS , null);
 		
 		
 	}
