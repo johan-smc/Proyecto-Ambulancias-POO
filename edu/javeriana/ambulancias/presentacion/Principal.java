@@ -89,6 +89,7 @@ public class Principal extends JPanel {
 		vistaAsignarServicio.actualizarServicios(empresaAmbulancia);
 		vistaReporteSeriviciosIPSAmbulancia.actualizarServicios(empresaAmbulancia);
 		vistaFinalizarServicio.actualizarServicios(empresaAmbulancia);
+		
 	}
 
 	public static void vistaWiew(int i) {

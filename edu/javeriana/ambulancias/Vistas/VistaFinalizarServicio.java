@@ -63,12 +63,13 @@ public class VistaFinalizarServicio extends JPanel {
 	private void Finalicemos(IServicioAmbulancias empresaAmbulancia) {
 		if(tableServicios.getSelectedRow()==-1)
 				{
-			JOptionPane.showMessageDialog(this, "No ha seleccionado la Ambulancia","No ha selecionado",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(this, "No ha seleccionado la Ambulancia","No ha selecionado",JOptionPane.WARNING_MESSAGE);
 				}else
 				{
 					empresaAmbulancia.finAServicio(((Long) tableServicios.getValueAt(tableServicios.getSelectedRow(), 0)));
 					JOptionPane.showMessageDialog(this, "Exito","Exito",JOptionPane.INFORMATION_MESSAGE);
 					actualizarServicios(empresaAmbulancia);
+					//Principal.actulizarTablasServicio(empresaAmbulancia);
 				}
 		
 		

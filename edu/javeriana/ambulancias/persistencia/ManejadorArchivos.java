@@ -1,9 +1,12 @@
 package co.edu.javeriana.ambulancias.persistencia;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -107,6 +110,13 @@ public class ManejadorArchivos {
 				ObjectOutputStream objectOutStream = new ObjectOutputStream(outStream);
 				objectOutStream.writeObject(empresaAmbulancia);
 				objectOutStream.close();
+			}
+			public static void cargarDatos(IServicioAmbulancias empresaAmbulancia, String dir, String nombre) throws IOException, ClassNotFoundException {
+				File inputFile=new File(dir+"/"+nombre);
+				FileInputStream inputStream = new FileInputStream(inputFile);
+				ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+				empresaAmbulancia= (IServicioAmbulancias) objectInputStream.readObject();
+				objectInputStream.close();
 			}
 
 		}
