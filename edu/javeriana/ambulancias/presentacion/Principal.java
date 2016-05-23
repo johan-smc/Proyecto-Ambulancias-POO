@@ -27,7 +27,7 @@ public class Principal extends JPanel {
 	private static VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
 	private static VistaAsignarServicio vistaAsignarServicio;
 	private static VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
-	private VistaFinalizarServicio vistaFinalizarServicio;
+	private static VistaFinalizarServicio vistaFinalizarServicio;
 	private VistaRegistrarServicio vistaRegistrarServicio;
 	private static VistaReporteIPS vistaReporteIPS;
 	/**
@@ -43,7 +43,7 @@ public class Principal extends JPanel {
 		tabbedPane.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		add(tabbedPane);
 		///hay que mirar la ruta
-		 ImageIcon icon =new ImageIcon( "nose.jpg");
+		 //ImageIcon icon =new ImageIcon( "nose.jpg");
 		
 		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
 		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
@@ -87,7 +87,8 @@ public class Principal extends JPanel {
 	}
 	public static void actulizarTablasServicio(IServicioAmbulancias empresaAmbulancia) {
 		vistaAsignarServicio.actualizarServicios(empresaAmbulancia);
-		
+		vistaReporteSeriviciosIPSAmbulancia.actualizarServicios(empresaAmbulancia);
+		vistaFinalizarServicio.actualizarServicios(empresaAmbulancia);
 	}
 
 	public static void vistaWiew(int i) {
