@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
-import java.awt.Toolkit;
+
 
 
 public class TestGUIAmbulancias extends JFrame {
@@ -17,9 +17,9 @@ public class TestGUIAmbulancias extends JFrame {
 	 */
 	private static  int width=739;
 	private static  int height=667;
-	private IServicioAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");;
 	private static final long serialVersionUID = 1L;
 	private Principal principal;
+	private  IServicioAmbulancias empresaAmbulancia=new EmpresaAmbulancias("BabySoft");
 
 	/**
 	 * Launch the application.
@@ -41,16 +41,25 @@ public class TestGUIAmbulancias extends JFrame {
 	 * Create the frame.
 	 */
 	public TestGUIAmbulancias() {
-		setTitle("BabySoft");
+		setTitle(this.empresaAmbulancia.getNombre());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100,this.width,this.height);
-		principal = new Principal(empresaAmbulancia);
+		setBounds(100, 100,TestGUIAmbulancias.width,TestGUIAmbulancias.height);
+		principal = new Principal(this);
 		principal.setVisible(true);
 		this.setContentPane(principal);
 		
 		
 	}
-	 
+	
+	
+	public  IServicioAmbulancias getEmpresaAmbulancia() {
+		return empresaAmbulancia;
+	}
+	
+	public  void setEmpresaAmbulancia(IServicioAmbulancias empresaAmbulancia) {
+		this.empresaAmbulancia = empresaAmbulancia;
+	}
+	
 	public static int getW()
 	{
 		return width;
@@ -60,7 +69,7 @@ public class TestGUIAmbulancias extends JFrame {
 	{
 		return height;
 	}
-
+	
 	
 
 	

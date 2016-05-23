@@ -34,6 +34,8 @@ public interface IServicioAmbulancias extends Serializable {
 	public List<String> listadeIps();
 	
 	public String[][] datosVistaIPS(String nombre);
+	public String getNombre();
+
 	
 	
 }

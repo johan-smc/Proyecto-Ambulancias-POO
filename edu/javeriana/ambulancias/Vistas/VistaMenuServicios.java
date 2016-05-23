@@ -7,7 +7,6 @@ import co.edu.javeriana.ambulancias.persistencia.ManejadorArchivos;
 import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
-import javax.print.attribute.standard.PrinterInfo;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -23,18 +22,20 @@ public class VistaMenuServicios extends JPanel {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private JButton btnSalvarDatosSistema=null;
+	private JButton btnCargar =null;
+	
 	/**
 	 * Create the panel.
 	 */
-	public VistaMenuServicios(IServicioAmbulancias empresaAmbulancia) {
+	public VistaMenuServicios(TestGUIAmbulancias testGUIAmbulancias) {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 		setLayout(null);
 		
-		JButton btnSalvarDatosSistema = new JButton("Salvar datos sistema");
+		 btnSalvarDatosSistema = new JButton("Salvar datos sistema");
 		btnSalvarDatosSistema.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				salvarDatos(empresaAmbulancia);
+				salvarDatos(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 		});
 		btnSalvarDatosSistema.setBounds(75, 378, 167, 29);
@@ -76,29 +77,26 @@ public class VistaMenuServicios extends JPanel {
 		btnIngresarIpsO.setBounds(52, 25, 340, 29);
 		add(btnIngresarIpsO);
 		
-		JButton btnCargar = new JButton("Cargar Datos");
-		btnCargar.addActionListener(new ActionListener() {
+		 btnCargar = new JButton("Cargar Datos");
+		/*btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cargarDatos(empresaAmbulancia);
+				cargarDatos(testGUIAmbulancias);
 			}
-		});
+		});*/
 		btnCargar.setBounds(274, 378, 152, 29);
 		add(btnCargar);
 
 	}
 	
-	protected void cargarDatos(IServicioAmbulancias empresaAmbulancia) {
+	public void cargarDatos(TestGUIAmbulancias testGUIAmbulancias) {
 		JFileChooser chooser = new JFileChooser("./");
 		int returnVal = chooser.showOpenDialog(this);
 		if( returnVal == JFileChooser.APPROVE_OPTION ){
 			String dir = chooser.getSelectedFile().getParent();
 			String nombre = chooser.getSelectedFile().getName();
 			try {
-				ManejadorArchivos.cargarDatos(empresaAmbulancia,dir,nombre);
+				testGUIAmbulancias.setEmpresaAmbulancia(ManejadorArchivos.cargarDatos(testGUIAmbulancias.getEmpresaAmbulancia(),dir,nombre));
 				JOptionPane.showMessageDialog(this,"El archivo se cargo con exito","Exito",JOptionPane.INFORMATION_MESSAGE);
-				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
-				Principal.actulizarTablasIPS(empresaAmbulancia);
-				Principal.actulizarTablasServicio(empresaAmbulancia);
 			}
 			catch( FileNotFoundException e)
 			{
@@ -127,7 +125,7 @@ public class VistaMenuServicios extends JPanel {
 			try {
 				ManejadorArchivos.salvarDatos(empresaAmbulancia,dir,nombre);
 				JOptionPane.showMessageDialog(this,"El archivo se guardo con exito","Exito",JOptionPane.INFORMATION_MESSAGE);
-				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
+
 			}
 			catch( FileNotFoundException e)
 			{
@@ -146,4 +144,8 @@ public class VistaMenuServicios extends JPanel {
 		}
 		
 	}
+	public JButton getBtnCargar() {
+		return btnCargar;
+	}
+
 }

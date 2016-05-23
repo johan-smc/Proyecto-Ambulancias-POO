@@ -48,10 +48,11 @@ public class VistaAsignarServicio extends JPanel {
 			"Codigo","Hora solicitud","Paciente","Tipo Servicio","Telefono","Direccion","Estado","IPS","Ambulancia"
 			};
 	//
+	private JButton btnAgregarServicio=null;
 	/**
 	 * Create the panel.
 	 */
-	public VistaAsignarServicio(IServicioAmbulancias empresaAmbulancia) {
+	public VistaAsignarServicio(TestGUIAmbulancias testGUIAmbulancias) {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
 
@@ -61,21 +62,21 @@ public class VistaAsignarServicio extends JPanel {
 		scrollPaneIPS.setBounds(6, 34, 452, 107);
 		add(scrollPaneIPS);
 
-		tableIPS = infoTablaIPS(empresaAmbulancia);
+		tableIPS = infoTablaIPS(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneIPS.setViewportView(tableIPS);
 
 		 scrollPaneAmbulancia = new JScrollPane();
 		scrollPaneAmbulancia.setBounds(6, 169, 452, 99);
 		add(scrollPaneAmbulancia);
 
-		tableAmbulancia = infoTablaAmbulancia(empresaAmbulancia);
+		tableAmbulancia = infoTablaAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneAmbulancia.setViewportView(tableAmbulancia);
 
 		 scrollPaneServicios = new JScrollPane();
 		scrollPaneServicios.setBounds(6, 296, 452, 99);
 		add(scrollPaneServicios);
 
-		tableServicios = infoTablaServicios(empresaAmbulancia);
+		tableServicios = infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneServicios.setViewportView(tableServicios);
 
 		JLabel lblIps = new JLabel("IPS");
@@ -90,12 +91,12 @@ public class VistaAsignarServicio extends JPanel {
 		lblServicios.setBounds(22, 280, 61, 16);
 		add(lblServicios);
 
-		JButton btnAgregarServicio = new JButton("Agregar Servicio");
-		btnAgregarServicio.addActionListener(new ActionListener() {
+		 btnAgregarServicio = new JButton("Asignar Servicio");
+		/*btnAgregarServicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asignarServicio(empresaAmbulancia);
+				asignarServicio(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
-		});
+		});*/
 		btnAgregarServicio.setBounds(6, 407, 146, 29);
 		add(btnAgregarServicio);
 
@@ -107,10 +108,16 @@ public class VistaAsignarServicio extends JPanel {
 		});
 		btnRegresar.setBounds(357, 407, 117, 29);
 		add(btnRegresar);
-	
+
 	}
 
-	protected void asignarServicio(IServicioAmbulancias empresaAmbulancia) {
+	
+	public JButton getBtnAgregarServicio() {
+		return btnAgregarServicio;
+	}
+
+
+	public void asignarServicio(IServicioAmbulancias empresaAmbulancia) {
 		try{
 			int posIPS=this.tableIPS.getSelectedRow();
 			int posAmbulancia=this.tableAmbulancia.getSelectedRow();
@@ -126,7 +133,7 @@ public class VistaAsignarServicio extends JPanel {
 			{
 				 codigoServicio=Long.valueOf(this.tableServicios.getValueAt(posServicios, 0).toString());
 				 codigoAmbulancia = Integer.valueOf(this.tableAmbulancia.getValueAt(posAmbulancia, 0).toString());
-				
+
 				if( this.tableServicios.getValueAt(posServicios, 3)!=Servicio.TipoServicio.DOMICILIO){
 					if( posIPS==-1){
 						throw new Exception("No ha seleccionado la IPS");
@@ -138,8 +145,7 @@ public class VistaAsignarServicio extends JPanel {
 			String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
 
 			JOptionPane.showMessageDialog(this,resultado,"Asignado correctamente",JOptionPane.INFORMATION_MESSAGE);
-			Principal.actulizarTablasServicio(empresaAmbulancia);
-			
+
 		}
 		catch( Exception e)
 		{

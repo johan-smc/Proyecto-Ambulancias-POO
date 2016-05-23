@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
 
 
 public class ManejadorArchivos {
@@ -111,12 +112,13 @@ public class ManejadorArchivos {
 				objectOutStream.writeObject(empresaAmbulancia);
 				objectOutStream.close();
 			}
-			public static void cargarDatos(IServicioAmbulancias empresaAmbulancia, String dir, String nombre) throws IOException, ClassNotFoundException {
+			public static IServicioAmbulancias cargarDatos(IServicioAmbulancias empresaAmbulancia, String dir, String nombre) throws IOException, ClassNotFoundException {
 				File inputFile=new File(dir+"/"+nombre);
 				FileInputStream inputStream = new FileInputStream(inputFile);
 				ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-				empresaAmbulancia= (IServicioAmbulancias) objectInputStream.readObject();
+				empresaAmbulancia= (EmpresaAmbulancias) objectInputStream.readObject();
 				objectInputStream.close();
+				return empresaAmbulancia;
 			}
 
 		}

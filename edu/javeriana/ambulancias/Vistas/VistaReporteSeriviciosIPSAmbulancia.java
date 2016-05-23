@@ -47,7 +47,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VistaReporteSeriviciosIPSAmbulancia(IServicioAmbulancias empresaAmbulancia) {
+	public VistaReporteSeriviciosIPSAmbulancia(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
@@ -55,7 +55,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		scrollPaneServicios.setBounds(6, 53, 468, 92);
 		add(scrollPaneServicios);
 
-		tableServicios =  infoTablaServicios(empresaAmbulancia);
+		tableServicios =  infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneServicios.setViewportView(tableServicios);
 
 		JLabel lblServicios = new JLabel("Servicios");
@@ -65,7 +65,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		JButton btnMostrarIpsY = new JButton("Mostrar IPS y Ambulancia asignada");
 		btnMostrarIpsY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarIPSAmbulancia(empresaAmbulancia);
+				mostrarIPSAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 		});
 		btnMostrarIpsY.setBounds(99, 157, 263, 29);

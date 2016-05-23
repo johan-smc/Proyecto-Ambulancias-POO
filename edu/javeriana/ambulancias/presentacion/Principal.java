@@ -1,5 +1,8 @@
 package co.edu.javeriana.ambulancias.presentacion;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -13,29 +16,29 @@ import co.edu.javeriana.ambulancias.Vistas.VistaRegistrarPosicionAmbulancia;
 import co.edu.javeriana.ambulancias.Vistas.VistaRegistrarServicio;
 import co.edu.javeriana.ambulancias.Vistas.VistaReporteIPS;
 import co.edu.javeriana.ambulancias.Vistas.VistaReporteSeriviciosIPSAmbulancia;
-import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
+
 
 public class Principal extends JPanel {
 
 	/**
-	 * 
+	 *
 	 */
-	private static final long serialVersionUID = 1L;
-	private static JTabbedPane tabbedPane ;
-	private static VistaMenuServicios vistaMenuServicios;
-	private static VistaIngresarIPSAmbulancias vistaIngresarIPSAmbulancias;
-	private static VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
-	private static VistaAsignarServicio vistaAsignarServicio;
-	private static VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
-	private static VistaFinalizarServicio vistaFinalizarServicio;
+	private  static final long serialVersionUID = 1L;
+	private static  JTabbedPane tabbedPane ;
+	private  VistaMenuServicios vistaMenuServicios;
+	private  VistaIngresarIPSAmbulancias vistaIngresarIPSAmbulancias;
+	private  VistaRegistrarPosicionAmbulancia vistaRegistrarPosicionAmbulancia;
+	private VistaAsignarServicio vistaAsignarServicio;
+	private  VistaReporteSeriviciosIPSAmbulancia vistaReporteSeriviciosIPSAmbulancia;
+	private  VistaFinalizarServicio vistaFinalizarServicio;
 	private VistaRegistrarServicio vistaRegistrarServicio;
-	private static VistaReporteIPS vistaReporteIPS;
+	private  VistaReporteIPS vistaReporteIPS;
+
 	/**
 	 * Create the panel.
-	 * @param empresaAmbulancia 
+	 * @param testGUIAmbulancias
 	 */
-	public Principal(IServicioAmbulancias empresaAmbulancia) {
-		
+	public Principal(TestGUIAmbulancias testGUIAmbulancias) {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
@@ -44,61 +47,107 @@ public class Principal extends JPanel {
 		add(tabbedPane);
 		///hay que mirar la ruta
 		 //ImageIcon icon =new ImageIcon( "nose.jpg");
-		
-		vistaMenuServicios=new VistaMenuServicios(empresaAmbulancia);
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaMenuServicios=new VistaMenuServicios( testGUIAmbulancias);
 		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
-		
-		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(empresaAmbulancia);
+		this.vistaMenuServicios.getBtnCargar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaMenuServicios.cargarDatos(testGUIAmbulancias);
+				actulizarTablasAmbulancias(testGUIAmbulancias);
+				actulizarTablasIPS(testGUIAmbulancias);
+				actulizarTablasServicio(testGUIAmbulancias);
+			}
+		});
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaIngresarIPSAmbulancias = new VistaIngresarIPSAmbulancias(testGUIAmbulancias);
 		tabbedPane.addTab("Ingresar Ips o Ambulancias", null, vistaIngresarIPSAmbulancias, null);
 		
-		vistaRegistrarPosicionAmbulancia=new  VistaRegistrarPosicionAmbulancia(empresaAmbulancia);
+		this.vistaIngresarIPSAmbulancias.getBtnIngresarAmbulancia().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaIngresarIPSAmbulancias.ingresarAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
+				actulizarTablasAmbulancias(testGUIAmbulancias);
+			}
+		});
+		this.vistaIngresarIPSAmbulancias.getBtnIngresarIps().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaIngresarIPSAmbulancias.ingresarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
+				actulizarTablasIPS(testGUIAmbulancias);
+			}
+		});
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaRegistrarPosicionAmbulancia=new  VistaRegistrarPosicionAmbulancia(testGUIAmbulancias);
 		tabbedPane.addTab("Registrar posicion ambulancias", null,vistaRegistrarPosicionAmbulancia, null);
-		
-		vistaAsignarServicio=new  VistaAsignarServicio(empresaAmbulancia);
+		this.vistaRegistrarPosicionAmbulancia.getBtnActualizar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaRegistrarPosicionAmbulancia.agregarPosicion(testGUIAmbulancias.getEmpresaAmbulancia());
+				actulizarTablasAmbulancias(testGUIAmbulancias);
+			}
+		});
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaAsignarServicio=new  VistaAsignarServicio(testGUIAmbulancias);
 		tabbedPane.addTab("Asignar un Servicio", null,vistaAsignarServicio, null);
-		
-		
-		
-		vistaReporteSeriviciosIPSAmbulancia=new  VistaReporteSeriviciosIPSAmbulancia(empresaAmbulancia);
+		this.vistaAsignarServicio.getBtnAgregarServicio().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaAsignarServicio.asignarServicio(testGUIAmbulancias.getEmpresaAmbulancia());
+				actulizarTablasServicio(testGUIAmbulancias);
+			}
+		});
+		///////////////////////////////////////////////////////////////////////////////////////////
+		vistaReporteSeriviciosIPSAmbulancia=new  VistaReporteSeriviciosIPSAmbulancia(testGUIAmbulancias);
 		tabbedPane.addTab("Reporte Servicio con Ips y Ambulancia", null,vistaReporteSeriviciosIPSAmbulancia, null);
-		
-		vistaFinalizarServicio=new VistaFinalizarServicio(empresaAmbulancia);
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaFinalizarServicio=new VistaFinalizarServicio(testGUIAmbulancias);
 		tabbedPane.addTab("Finalizar Servicio",null,vistaFinalizarServicio , null);
-		
-		
-		vistaRegistrarServicio=new VistaRegistrarServicio(empresaAmbulancia);
+
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaRegistrarServicio=new VistaRegistrarServicio(testGUIAmbulancias);
 		tabbedPane.addTab("Registrar Servicio", null,vistaRegistrarServicio , null);
+		this.vistaRegistrarServicio.getBttnRegistrar().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						vistaRegistrarServicio.Registremos(testGUIAmbulancias.getEmpresaAmbulancia());
+						actulizarTablasServicio(testGUIAmbulancias);
+					}
+				});
 		
-		vistaReporteIPS=new VistaReporteIPS(empresaAmbulancia);
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		vistaReporteIPS=new VistaReporteIPS(testGUIAmbulancias);
 		tabbedPane.addTab("Reporte IPS", null,vistaReporteIPS , null);
-		
+
 		
 	}
 
-	public static void actulizarTablasAmbulancias(IServicioAmbulancias empresaAmbulancia) {
-		vistaRegistrarPosicionAmbulancia.actualizarTabla(empresaAmbulancia);
-		vistaAsignarServicio.actualizarAmbulancia(empresaAmbulancia);
+	public  void actulizarTablasAmbulancias(TestGUIAmbulancias testGUIAmbulancias) {
+		vistaRegistrarPosicionAmbulancia.actualizarTabla(testGUIAmbulancias.getEmpresaAmbulancia());
+		vistaAsignarServicio.actualizarAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
 	}
 
-	public static void actulizarTablasIPS(IServicioAmbulancias empresaAmbulancia) {
-		vistaAsignarServicio.actualizarIPS(empresaAmbulancia);
-		vistaReporteIPS.actualizarIPS(empresaAmbulancia);
-		
+	public  void actulizarTablasIPS(TestGUIAmbulancias testGUIAmbulancias) {
+		vistaAsignarServicio.actualizarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
+		vistaReporteIPS.actualizarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
+
 	}
-	public static void actulizarTablasServicio(IServicioAmbulancias empresaAmbulancia) {
-		vistaAsignarServicio.actualizarServicios(empresaAmbulancia);
-		vistaReporteSeriviciosIPSAmbulancia.actualizarServicios(empresaAmbulancia);
-		vistaFinalizarServicio.actualizarServicios(empresaAmbulancia);
-		
+	public  void actulizarTablasServicio(TestGUIAmbulancias testGUIAmbulancias) {
+		vistaAsignarServicio.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());
+		vistaReporteSeriviciosIPSAmbulancia.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());
+		vistaFinalizarServicio.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());
+
 	}
 
 	public static void vistaWiew(int i) {
 		tabbedPane.setSelectedIndex(i);
-		
+
 	}
 	//sacado de https://docs.oracle.com/javase/tutorial/uiswing/examples/components/TabbedPaneDemoProject/src/components/TabbedPaneDemo.java
 	protected static ImageIcon createImageIcon(String path) {
-		
+
 	        java.net.URL imgURL = Principal.class.getResource(path);
 	        if (imgURL != null) {
 	            return new ImageIcon(imgURL);
@@ -107,6 +156,6 @@ public class Principal extends JPanel {
 	            return null;
 	        }
 	}
-	
+
 
 }

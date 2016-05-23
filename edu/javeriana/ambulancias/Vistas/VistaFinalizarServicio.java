@@ -6,6 +6,7 @@ import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.Principal;
+import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
 import java.util.Arrays;
 import java.util.Vector;
@@ -30,7 +31,7 @@ public class VistaFinalizarServicio extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VistaFinalizarServicio(IServicioAmbulancias empresaAmbulancia) {
+	public VistaFinalizarServicio(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
 		
 		
@@ -39,7 +40,7 @@ public class VistaFinalizarServicio extends JPanel {
 		scrollPaneServicios.setBounds(10, 149, 360, 104);
 		add(scrollPaneServicios);
 		
-		tableServicios = infoTablaServicios(empresaAmbulancia);
+		tableServicios = infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneServicios.setViewportView(tableServicios);
 		
 		
@@ -47,7 +48,7 @@ public class VistaFinalizarServicio extends JPanel {
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Finalicemos(empresaAmbulancia);
+				Finalicemos(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 
 			

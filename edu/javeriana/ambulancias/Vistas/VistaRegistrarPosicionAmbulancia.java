@@ -35,10 +35,12 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	private String[] nombres={
 			"Codigo","Tipo","Placa","Medico o Enfermero","Tipo UCI","Hora posicion","Calle","Carrera"
 			};
+	private JButton btnActualizar =null;
+	
 	/**
 	 * Create the panel.
 	 */
-	public VistaRegistrarPosicionAmbulancia(IServicioAmbulancias empresaAmbulancia) {
+	public VistaRegistrarPosicionAmbulancia(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
@@ -46,15 +48,15 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		scrollPane.setBounds(6, 6, 438, 105);
 		add(scrollPane);
 
-		table = infoTabla(empresaAmbulancia);
+		table = infoTabla(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPane.setViewportView(table);
 
 		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
-		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
+		/*btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				agregarPosicion(empresaAmbulancia);
+				agregarPosicion(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
-		});
+		});*/
 		btnRegistrarPosicionAmbulancia.setBounds(16, 123, 234, 29);
 		add(btnRegistrarPosicionAmbulancia);
 
@@ -76,12 +78,8 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		add(txtCarrera);
 		txtCarrera.setColumns(10);
 
-		JButton btnActualizar = new JButton("Actualizar");
-		btnActualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Principal.actulizarTablasAmbulancias(empresaAmbulancia);
-			}
-		});
+		 btnActualizar = new JButton("Actualizar");
+		
 		btnActualizar.setBounds(16, 249, 117, 29);
 		add(btnActualizar);
 		JButton btnRegresar = new JButton("Regresar");
@@ -94,7 +92,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		add(btnRegresar);
 
 	}
-	protected void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {
+	public void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {
 		try{
 			int pos = this.table.getSelectedRow();
 			//System.out.println(pos+" + "+table.getValueAt(pos, 0));
@@ -128,6 +126,10 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 		//imprimir(data);
 		return new JTable(this.data,this.columName);
 	}
+	public JButton getBtnActualizar() {
+		return btnActualizar;
+	}
+	
 	
 	/*private void imprimir(Vector<Object> data2) {
 		for( Object o:data2)

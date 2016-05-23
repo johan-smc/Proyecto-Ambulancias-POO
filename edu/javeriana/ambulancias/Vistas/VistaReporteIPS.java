@@ -14,6 +14,8 @@ import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
+import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -29,7 +31,7 @@ public class VistaReporteIPS extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VistaReporteIPS(IServicioAmbulancias empresaambulancia) {
+	public VistaReporteIPS(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
 		
 		
@@ -44,7 +46,7 @@ public class VistaReporteIPS extends JPanel {
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MostrarServices(empresaambulancia);
+				MostrarServices(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 
 			
@@ -69,7 +71,7 @@ public class VistaReporteIPS extends JPanel {
 		scrollPane.setRowHeaderView(tabladeService);
 		
 		System.out.println("------------------------------");
-		Object[] contenido3=empresaambulancia.listadeIps().toArray();
+		Object[] contenido3=testGUIAmbulancias.getEmpresaAmbulancia().listadeIps().toArray();
 		dspIPS = new JComboBox<Object>(contenido3);
 		dspIPS.setBounds(200, 76, 153, 20);
 		add(dspIPS);
