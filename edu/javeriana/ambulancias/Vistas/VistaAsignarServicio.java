@@ -127,11 +127,12 @@ public class VistaAsignarServicio extends JPanel {
 				 codigoServicio=Long.valueOf(this.tableServicios.getValueAt(posServicios, 0).toString());
 				 codigoAmbulancia = Integer.valueOf(this.tableAmbulancia.getValueAt(posAmbulancia, 0).toString());
 				
-				if( this.tableServicios.getValueAt(posServicios, 3)!=Servicio.TipoServicio.DOMICILIO)
+				if( this.tableServicios.getValueAt(posServicios, 3)!=Servicio.TipoServicio.DOMICILIO){
 					if( posIPS==-1){
 						throw new Exception("No ha seleccionado la IPS");
 					}
-				nombreIPS = this.tableIPS.getValueAt(posIPS, 0).toString();
+					nombreIPS = this.tableIPS.getValueAt(posIPS, 0).toString();
+				}
 			}
 
 			String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
