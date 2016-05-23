@@ -95,9 +95,9 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	public void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {
 		try{
 			int pos = this.table.getSelectedRow();
-			//System.out.println(pos+" + "+table.getValueAt(pos, 0));
+			////System.out.println(pos+" + "+table.getValueAt(pos, 0));
 			int codigo=Integer.valueOf( table.getValueAt(pos, 0).toString());
-			//System.out.println("-- "+codigo);
+			////System.out.println("-- "+codigo);
 			int carrera = Integer.valueOf(this.txtCarrera.getText());
 			int calle = Integer.valueOf(this.txtCalle.getText());
 			empresaAmbulancia.registrarPosAmbulancia(codigo, calle, carrera);
@@ -133,7 +133,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	
 	/*private void imprimir(Vector<Object> data2) {
 		for( Object o:data2)
-			System.out.println(o.toString());
+			//System.out.println(o.toString());
 		
 	}*/
 }

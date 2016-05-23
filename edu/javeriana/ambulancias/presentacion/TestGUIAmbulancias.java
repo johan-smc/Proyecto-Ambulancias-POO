@@ -58,6 +58,7 @@ public class TestGUIAmbulancias extends JFrame {
 	
 	public  void setEmpresaAmbulancia(IServicioAmbulancias empresaAmbulancia) {
 		this.empresaAmbulancia = empresaAmbulancia;
+		this.empresaAmbulancia.setConsecutivoServicio();
 	}
 	
 	public static int getW()

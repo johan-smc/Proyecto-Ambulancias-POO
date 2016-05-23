@@ -6,26 +6,25 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
-import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.concurrent.SynchronousQueue;
-import java.awt.event.ActionEvent;
 
 public class VistaRegistrarServicio extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField bxtPaciente;
 	private JTextField bxttelefono;
 	private JTextField bxtCalle;
 	private JTextField bxtCarrera;
 	private JTextField bxtNumero;
-	private JComboBox dspServicio;
-	private JComboBox dspDireccion;
+	private JComboBox<String> dspServicio;
+	private JComboBox<String> dspDireccion;
 	private String contenido[]={"DOMICILIO","EMERGENCIA","URGENCIA"};
 	private String contenido2[]={"CALLE","CARRERA"};
 	private JButton bttnRegistrar=null;
@@ -94,13 +93,13 @@ public class VistaRegistrarServicio extends JPanel {
 		add(bxtNumero);
 		
 		
-		dspServicio = new JComboBox(contenido);
+		dspServicio = new JComboBox<String>(contenido);
 		dspServicio.setBounds(111, 125, 86, 20);
 		add(dspServicio);
 		
 		
 		
-		dspDireccion = new JComboBox(contenido2);
+		dspDireccion = new JComboBox<String>(contenido2);
 		dspDireccion.setBounds(111, 191, 95, 20);
 		add(dspDireccion);
 		
@@ -126,7 +125,7 @@ public class VistaRegistrarServicio extends JPanel {
 		{
 
 			
-			System.out.println(( (String) (dspServicio.getItemAt(dspServicio.getSelectedIndex()))));
+			//System.out.println(( (String) (dspServicio.getItemAt(dspServicio.getSelectedIndex()))));
 			empresaAmbulancia.agregarServicio(bxtPaciente.getText(),( dspServicio.getItemAt(dspServicio.getSelectedIndex()).toString()),bxttelefono.getText(), ( dspDireccion.getItemAt(dspDireccion.getSelectedIndex()).toString()), Integer.parseInt(bxtCalle.getText()), Integer.parseInt(bxtCarrera.getText()),Integer.parseInt( bxtNumero.getText()));
 			JOptionPane.showMessageDialog(null, "Se registro existosamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
 			

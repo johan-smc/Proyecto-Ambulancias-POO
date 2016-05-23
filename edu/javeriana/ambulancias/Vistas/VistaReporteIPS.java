@@ -1,31 +1,31 @@
 package co.edu.javeriana.ambulancias.Vistas;
 
 import javax.swing.JPanel;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
-import java.awt.List;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
-import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class VistaReporteIPS extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable tabladeService;
 	private JComboBox<Object> dspIPS;
 	private String[] nombresServicios={
 			"Codigo","Hora solicitud","Paciente","Tipo Servicio","Telefono","Direccion","Estado","IPS","Ambulancia"
 			};
-	
+	private JScrollPane scrollPane=null;
 	
 
 	/**
@@ -61,16 +61,16 @@ public class VistaReporteIPS extends JPanel {
 		///////////////////////////////////////////
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		 scrollPane = new JScrollPane();
 		scrollPane.setBounds(50, 159, 349, 117);
 		add(scrollPane);
 		
 		////////////////////////////////////////////
 		
 		tabladeService = new JTable();
-		scrollPane.setRowHeaderView(tabladeService);
+		scrollPane.setViewportView(tabladeService);
 		
-		System.out.println("------------------------------");
+		//System.out.println("------------------------------");
 		Object[] contenido3=testGUIAmbulancias.getEmpresaAmbulancia().listadeIps().toArray();
 		dspIPS = new JComboBox<Object>(contenido3);
 		dspIPS.setBounds(200, 76, 153, 20);
@@ -79,9 +79,9 @@ public class VistaReporteIPS extends JPanel {
 	}
 	private void MostrarServices(IServicioAmbulancias empresaambulancia) {
 		
-		System.out.println(dspIPS.getItemAt(((dspIPS.getSelectedIndex()))));
+		////System.out.println(dspIPS.getItemAt(((dspIPS.getSelectedIndex()))));
 		tabladeService=new JTable(empresaambulancia.datosVistaIPS(((String)dspIPS.getItemAt(((dspIPS.getSelectedIndex()))))), nombresServicios);
-		
+		scrollPane.setViewportView(tabladeService);
 	}
 	
 	public void actualizarIPS(IServicioAmbulancias empresaAmbulancias)
@@ -92,7 +92,7 @@ public class VistaReporteIPS extends JPanel {
 		for(String temp: contenido3)
 		{
 			dspIPS.addItem(temp);
-			System.out.println(temp);
+			//System.out.println(temp);
 		}
 	}
 }

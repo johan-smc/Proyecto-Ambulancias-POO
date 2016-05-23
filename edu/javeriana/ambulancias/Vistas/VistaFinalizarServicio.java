@@ -5,7 +5,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
-import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 
 import java.util.Arrays;
@@ -14,20 +13,27 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class VistaFinalizarServicio extends JPanel {
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable tableServicios=null;
 	private Vector<String> columNameServicios=null;
 	private Vector<Object> dataServicios=null;
 	private JScrollPane scrollPaneServicios=null;
+	private JButton btnFinalizar=null;
 	private String[] nombresServicios={
 			"Codigo","Hora solicitud","Paciente","Tipo Servicio","Telefono","Direccion","Estado","IPS","Ambulancia"
 			};
+	public JButton getBtnFinalizar() {
+		return btnFinalizar;
+	}
 	/**
 	 * Create the panel.
 	 */
@@ -45,14 +51,8 @@ public class VistaFinalizarServicio extends JPanel {
 		
 		
 		
-		JButton btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Finalicemos(testGUIAmbulancias.getEmpresaAmbulancia());
-			}
-
-			
-		});
+		 btnFinalizar = new JButton("Finalizar");
+		
 		btnFinalizar.setBounds(60, 59, 89, 23);
 		add(btnFinalizar);
 		
@@ -61,12 +61,13 @@ public class VistaFinalizarServicio extends JPanel {
 		add(btnRegresar);
 
 	}
-	private void Finalicemos(IServicioAmbulancias empresaAmbulancia) {
+	public void Finalicemos(IServicioAmbulancias empresaAmbulancia) {
 		if(tableServicios.getSelectedRow()==-1)
 				{
 					JOptionPane.showMessageDialog(this, "No ha seleccionado la Ambulancia","No ha selecionado",JOptionPane.WARNING_MESSAGE);
 				}else
 				{
+					
 					empresaAmbulancia.finAServicio(((Long) tableServicios.getValueAt(tableServicios.getSelectedRow(), 0)));
 					JOptionPane.showMessageDialog(this, "Exito","Exito",JOptionPane.INFORMATION_MESSAGE);
 					actualizarServicios(empresaAmbulancia);
@@ -79,7 +80,7 @@ public class VistaFinalizarServicio extends JPanel {
 	private JTable infoTablaServicios(IServicioAmbulancias empresaAmbulancia) {
 		if(this.columNameServicios==null)
 			this.columNameServicios=new Vector<String>(Arrays.asList(this.nombresServicios));
-		this.dataServicios=  empresaAmbulancia.reporteServicios();
+		this.dataServicios=  empresaAmbulancia.reporteServiciosFinalizados();
 		return new JTable(this.dataServicios,this.columNameServicios);
 	}
 	public void actualizarServicios(IServicioAmbulancias empresaAmbulancia) {

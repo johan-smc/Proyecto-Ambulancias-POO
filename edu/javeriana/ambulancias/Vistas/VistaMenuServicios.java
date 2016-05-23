@@ -24,14 +24,14 @@ public class VistaMenuServicios extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnSalvarDatosSistema=null;
 	private JButton btnCargar =null;
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public VistaMenuServicios(TestGUIAmbulancias testGUIAmbulancias) {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 		setLayout(null);
-		
+
 		 btnSalvarDatosSistema = new JButton("Salvar datos sistema");
 		btnSalvarDatosSistema.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -40,7 +40,7 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnSalvarDatosSistema.setBounds(75, 378, 167, 29);
 		add(btnSalvarDatosSistema);
-		
+
 		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
 		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +49,7 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnRegistrarPosicionAmbulancia.setBounds(52, 60, 340, 29);
 		add(btnRegistrarPosicionAmbulancia);
-		
+
 		JButton btnAsignarAUn = new JButton("Asignar a un servicio un ambulancia y IPS");
 		btnAsignarAUn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -58,7 +58,7 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnAsignarAUn.setBounds(52, 101, 340, 29);
 		add(btnAsignarAUn);
-		
+
 		JButton btnReporteServiciosCon = new JButton("Reporte servicios con IPS y Ambulancia");
 		btnReporteServiciosCon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnReporteServiciosCon.setBounds(52, 142, 340, 29);
 		add(btnReporteServiciosCon);
-		
+
 		JButton btnIngresarIpsO = new JButton("Ingresar IPS o Ambulancia");
 		btnIngresarIpsO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -76,7 +76,7 @@ public class VistaMenuServicios extends JPanel {
 		});
 		btnIngresarIpsO.setBounds(52, 25, 340, 29);
 		add(btnIngresarIpsO);
-		
+
 		 btnCargar = new JButton("Cargar Datos");
 		/*btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,7 +87,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnCargar);
 
 	}
-	
+
 	public void cargarDatos(TestGUIAmbulancias testGUIAmbulancias) {
 		JFileChooser chooser = new JFileChooser("./");
 		int returnVal = chooser.showOpenDialog(this);
@@ -104,16 +104,16 @@ public class VistaMenuServicios extends JPanel {
 			}
 			catch( IOException e)
 			{
-				System.out.println(e.getMessage());
-				System.out.println(e.toString());
-				System.out.println(e.getLocalizedMessage());
+				//System.out.println(e.getMessage());
+				//System.out.println(e.toString());
+				//System.out.println(e.getLocalizedMessage());
 				JOptionPane.showMessageDialog(this,"No se pudo escribir le archivo","Error escribiendo el archivo", JOptionPane.ERROR_MESSAGE);
 			}
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(),"Problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
+
 	}
 
 	protected void salvarDatos(IServicioAmbulancias empresaAmbulancia) {
@@ -133,16 +133,16 @@ public class VistaMenuServicios extends JPanel {
 			}
 			catch( IOException e)
 			{
-				System.out.println(e.getMessage());
-				System.out.println(e.toString());
-				System.out.println(e.getLocalizedMessage());
+				//System.out.println(e.getMessage());
+				//System.out.println(e.toString());
+				//System.out.println(e.getLocalizedMessage());
 				JOptionPane.showMessageDialog(this,"No se pudo escribir le archivo","Error escribiendo el archivo", JOptionPane.ERROR_MESSAGE);
 			}
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(),"Problema archivo", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
+
 	}
 	public JButton getBtnCargar() {
 		return btnCargar;

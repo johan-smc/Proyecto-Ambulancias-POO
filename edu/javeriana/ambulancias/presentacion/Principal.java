@@ -39,7 +39,7 @@ public class Principal extends JPanel {
 	 * @param testGUIAmbulancias
 	 */
 	public Principal(TestGUIAmbulancias testGUIAmbulancias) {
-		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
+		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH()-10);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -103,7 +103,14 @@ public class Principal extends JPanel {
 
 		vistaFinalizarServicio=new VistaFinalizarServicio(testGUIAmbulancias);
 		tabbedPane.addTab("Finalizar Servicio",null,vistaFinalizarServicio , null);
+		vistaFinalizarServicio.getBtnFinalizar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				vistaFinalizarServicio.Finalicemos(testGUIAmbulancias.getEmpresaAmbulancia());
+				actulizarTablasServicio(testGUIAmbulancias);
+			}
 
+			
+		});
 		///////////////////////////////////////////////////////////////////////////////////////////
 
 		vistaRegistrarServicio=new VistaRegistrarServicio(testGUIAmbulancias);

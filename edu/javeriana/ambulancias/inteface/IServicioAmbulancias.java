@@ -35,6 +35,9 @@ public interface IServicioAmbulancias extends Serializable {
 	
 	public String[][] datosVistaIPS(String nombre);
 	public String getNombre();
+	public Vector<Object> reporteServiciosFinalizados();
+	public void setConsecutivoServicio();
+	
 
 	
 	

@@ -13,7 +13,7 @@ public class Servicio implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static long CONSECUTIVO=0;
+	private static long CONSECUTIVO=1;
 	private long codigo;
 	private GregorianCalendar horaSolicitud;
 	private String paciente;
@@ -201,5 +201,8 @@ public class Servicio implements Serializable{
 		}
 		return this.ips.reporteTable();
 	}
-
+	public static void setCONSECUTIVO(long n)
+	{
+		Servicio.CONSECUTIVO=n;
+	}
 }

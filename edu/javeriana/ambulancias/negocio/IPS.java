@@ -77,12 +77,11 @@ public class IPS implements Serializable{
 		return   new Vector<Object> (Arrays.asList(temp));
 	}
 	public String[][] matrizdetabla() {
-		
-		String[][] Tablepues = new String[8][servicios.size()];
+		int a=0;
+		String[][] Tablepues = new String[servicios.size()][9];
 		for(Servicio temp:servicios)
 		{
-			for (int a = 0; a< servicios.size(); a++) {
-				
+			
 					Tablepues[a][0]=String.valueOf( temp.getCodigo());
 					Tablepues[a][1]=Utils.hora(temp.getHoraSolicitud());
 					Tablepues[a][2]=String.valueOf( temp.getPaciente());
@@ -92,10 +91,13 @@ public class IPS implements Serializable{
 					Tablepues[a][6]=String.valueOf( temp.getEstado());
 					Tablepues[a][7]=String.valueOf( this.nombre);
 					Tablepues[a][8]=String.valueOf( temp.getAmbulancia().getCodigo());	
-			}
+					a++;
+					
+					
+			
 			
 		}
-		return null;
+		return Tablepues;
 	}
 	
 	

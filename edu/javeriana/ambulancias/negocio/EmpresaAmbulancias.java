@@ -378,6 +378,20 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 
 			return ll;
 		}
+		public Vector< Object > reporteServiciosFinalizados()
+		{
+			Vector< Object > ll = new Vector< Object >();
+
+			Collections.sort(servicios, new comparatorCodigoServicio());
+			for(Servicio temp:servicios)
+			{
+			
+					ll.add(temp.reporteTable());
+				
+			}
+
+			return ll;
+		}
 
 		public String relacionarServicio(Long servicioB,int ambulanciaB,String IPSB) throws Exception {
 
@@ -442,5 +456,11 @@ public class EmpresaAmbulancias implements IServicioAmbulancias {
 			
 					
 			return losIPS.get(nombre).matrizdetabla();
+		}
+
+		
+		public void setConsecutivoServicio() {
+			Servicio.setCONSECUTIVO(this.servicios.get(this.servicios.size()-1).getCodigo()+1);
+			
 		}
 }

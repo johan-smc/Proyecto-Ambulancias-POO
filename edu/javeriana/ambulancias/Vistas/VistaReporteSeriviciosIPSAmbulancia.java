@@ -258,7 +258,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 	private JTable infoTablaServicios(IServicioAmbulancias empresaAmbulancia) {
 		if(this.columNameServicios==null)
 			this.columNameServicios=new Vector<String>(Arrays.asList(this.nombresServicios));
-		this.dataServicios=  empresaAmbulancia.reporteServicios();
+		this.dataServicios=  empresaAmbulancia.reporteServiciosFinalizados();
 		return new JTable(this.dataServicios,this.columNameServicios);
 	}
 	public void actualizarServicios(IServicioAmbulancias empresaAmbulancia) {
