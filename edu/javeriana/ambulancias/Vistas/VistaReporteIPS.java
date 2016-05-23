@@ -14,10 +14,15 @@ import javax.swing.JTable;
 
 import co.edu.javeriana.ambulancias.inteface.IServicioAmbulancias;
 import co.edu.javeriana.ambulancias.negocio.EmpresaAmbulancias;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VistaReporteIPS extends JPanel {
 	private JTable tabladeService;
 	private JComboBox<Object> dspIPS;
+	private String[] nombresServicios={
+			"Codigo","Hora solicitud","Paciente","Tipo Servicio","Telefono","Direccion","Estado","IPS","Ambulancia"
+			};
 	
 	
 
@@ -35,8 +40,16 @@ public class VistaReporteIPS extends JPanel {
 		
 		
 		
-		JButton btnMostrar = new JButton("Mostrar");
-		btnMostrar.setBounds(171, 134, 89, 23);
+		JButton btnMostrar = new JButton("Mostrar Servicios");
+		btnMostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MostrarServices(empresaambulancia);
+			}
+
+			
+		});
+		btnMostrar.setBounds(171, 107, 144, 50);
 		add(btnMostrar);
 		
 		JLabel lblReporteDeIps = new JLabel("REporte de IPS con servicios asociados");
@@ -50,7 +63,7 @@ public class VistaReporteIPS extends JPanel {
 		scrollPane.setBounds(50, 159, 349, 117);
 		add(scrollPane);
 		
-		////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////
 		
 		tabladeService = new JTable();
 		scrollPane.setRowHeaderView(tabladeService);
@@ -62,6 +75,13 @@ public class VistaReporteIPS extends JPanel {
 		add(dspIPS);
 		
 	}
+	private void MostrarServices(IServicioAmbulancias empresaambulancia) {
+		
+		System.out.println(dspIPS.getItemAt(((dspIPS.getSelectedIndex()))));
+		tabladeService=new JTable(empresaambulancia.datosVistaIPS(((String)dspIPS.getItemAt(((dspIPS.getSelectedIndex()))))), nombresServicios);
+		
+	}
+	
 	public void actualizarIPS(IServicioAmbulancias empresaAmbulancias)
 	{	
 		String contenido3[] = new String [empresaAmbulancias.listadeIps().size()]; 
