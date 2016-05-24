@@ -44,7 +44,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnSalvarDatosSistema);
 
 		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
-		btnRegistrarPosicionAmbulancia.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnRegistrarPosicionAmbulancia.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(2);
@@ -54,7 +54,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnRegistrarPosicionAmbulancia);
 
 		JButton btnAsignarAUn = new JButton("Asignar a un servicio un ambulancia y IPS");
-		btnAsignarAUn.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnAsignarAUn.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnAsignarAUn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(3);
@@ -64,7 +64,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnAsignarAUn);
 
 		JButton btnReporteServiciosCon = new JButton("Reporte servicios con IPS y Ambulancia");
-		btnReporteServiciosCon.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnReporteServiciosCon.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnReporteServiciosCon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(4);
@@ -74,7 +74,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnReporteServiciosCon);
 
 		JButton btnIngresarIpsO = new JButton("Ingresar IPS o Ambulancia");
-		btnIngresarIpsO.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnIngresarIpsO.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnIngresarIpsO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(1);
@@ -94,7 +94,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnCargar);
 		
 		JButton btnFinalizarServicio = new JButton("Finalizar servicio");
-		btnFinalizarServicio.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnFinalizarServicio.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnFinalizarServicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(5);
@@ -104,7 +104,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnFinalizarServicio);
 		
 		JButton btnRegistrarServicio = new JButton("Registrar servicio");
-		btnRegistrarServicio.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnRegistrarServicio.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnRegistrarServicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(6);
@@ -114,7 +114,7 @@ public class VistaMenuServicios extends JPanel {
 		add(btnRegistrarServicio);
 		
 		JButton btnReporteIps = new JButton("Reporte IPS");
-		btnReporteIps.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnReporteIps.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnReporteIps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(7);

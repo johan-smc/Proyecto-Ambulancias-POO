@@ -17,6 +17,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 
@@ -54,165 +55,187 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
 		scrollPaneServicios = new JScrollPane();
-		scrollPaneServicios.setBounds(6, 53, 694, 92);
+		scrollPaneServicios.setBounds(6, 107, 694, 92);
 		add(scrollPaneServicios);
 
 		tableServicios =  infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneServicios.setViewportView(tableServicios);
 
 		JLabel lblServicios = new JLabel("Servicios");
-		lblServicios.setBounds(6, 25, 61, 16);
+		lblServicios.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblServicios.setBounds(6, 70, 132, 26);
 		add(lblServicios);
 
 		JButton btnMostrarIpsY = new JButton("Mostrar IPS y Ambulancia asignada");
+		btnMostrarIpsY.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnMostrarIpsY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarIPSAmbulancia();
 			}
 		});
-		btnMostrarIpsY.setBounds(231, 157, 263, 29);
+		btnMostrarIpsY.setBounds(203, 210, 340, 70);
 		add(btnMostrarIpsY);
 
 		JLabel lblIps = new JLabel("IPS");
-		lblIps.setBounds(6, 224, 61, 16);
+		lblIps.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblIps.setBounds(6, 273, 61, 16);
 		add(lblIps);
 
 		JLabel lblAmbulancia = new JLabel("Ambulancia");
-		lblAmbulancia.setBounds(6, 349, 74, 16);
+		lblAmbulancia.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAmbulancia.setBounds(6, 383, 117, 26);
 		add(lblAmbulancia);
 
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(6, 252, 61, 16);
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNombre.setBounds(6, 306, 61, 16);
 		add(lblNombre);
 
 		lblTipoAtencion = new JLabel("Tipo atencion");
-		lblTipoAtencion.setBounds(231, 252, 94, 16);
+		lblTipoAtencion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTipoAtencion.setBounds(231, 306, 94, 16);
 		add(lblTipoAtencion);
 
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(446, 252, 61, 16);
+		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDireccion.setBounds(446, 306, 61, 16);
 		add(lblDireccion);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 241, 694, 12);
+		separator.setBounds(6, 300, 694, 12);
 		add(separator);
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(6, 264, 694, 12);
+		separator_1.setBounds(6, 327, 694, 12);
 		add(separator_1);
 
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(6, 402, 694, 12);
+		separator_2.setBounds(16, 449, 694, 12);
 		add(separator_2);
 
 		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(6, 378, 694, 12);
+		separator_3.setBounds(6, 420, 694, 12);
 		add(separator_3);
 
 		JLabel lblCodigo = new JLabel("Codigo");
-		lblCodigo.setBounds(6, 387, 61, 16);
+		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCodigo.setBounds(6, 429, 61, 16);
 		add(lblCodigo);
 
 		JLabel lblTipo = new JLabel("Tipo");
-		lblTipo.setBounds(63, 387, 61, 16);
+		lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTipo.setBounds(63, 429, 61, 16);
 		add(lblTipo);
 
 		JLabel lblPlaca = new JLabel("Placa");
-		lblPlaca.setBounds(109, 387, 61, 16);
+		lblPlaca.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPlaca.setBounds(117, 429, 61, 16);
 		add(lblPlaca);
 
 		JLabel lblMedicoOEnfermero = new JLabel("Medico o enfermero");
-		lblMedicoOEnfermero.setBounds(163, 387, 132, 16);
+		lblMedicoOEnfermero.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblMedicoOEnfermero.setBounds(163, 429, 132, 16);
 		add(lblMedicoOEnfermero);
 
 		JLabel lblTipoUci = new JLabel("Tipo UCI");
-		lblTipoUci.setBounds(302, 387, 61, 16);
+		lblTipoUci.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTipoUci.setBounds(304, 429, 61, 16);
 		add(lblTipoUci);
 
 		JLabel lblHoraPosicion = new JLabel("Hora Posicion");
-		lblHoraPosicion.setBounds(375, 387, 94, 16);
+		lblHoraPosicion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHoraPosicion.setBounds(375, 429, 94, 16);
 		add(lblHoraPosicion);
 
 		JLabel lblCalle = new JLabel("Calle");
-		lblCalle.setBounds(481, 387, 61, 16);
+		lblCalle.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCalle.setBounds(482, 429, 61, 16);
 		add(lblCalle);
 
 		JLabel lblCarrera = new JLabel("Carrera");
-		lblCarrera.setBounds(554, 387, 61, 16);
+		lblCarrera.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCarrera.setBounds(545, 429, 61, 16);
 		add(lblCarrera);
 
 		JLabel lblTarifa = new JLabel("Tarifa");
-		lblTarifa.setBounds(627, 387, 61, 16);
+		lblTarifa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTarifa.setBounds(627, 429, 61, 16);
 		add(lblTarifa);
 
 		txtCodigo = new JTextField();
-		txtCodigo.setBounds(6, 415, 47, 26);
+		txtCodigo.setBounds(6, 456, 47, 26);
 		add(txtCodigo);
 		txtCodigo.setColumns(10);
 
 		txtTipo = new JTextField();
-		txtTipo.setBounds(52, 415, 61, 26);
+		txtTipo.setBounds(52, 456, 61, 26);
 		add(txtTipo);
 		txtTipo.setColumns(10);
 
 		txtPlaca = new JTextField();
-		txtPlaca.setBounds(109, 415, 54, 26);
+		txtPlaca.setBounds(109, 456, 54, 26);
 		add(txtPlaca);
 		txtPlaca.setColumns(10);
 
 		txtMedicoOEnfermero = new JTextField();
-		txtMedicoOEnfermero.setBounds(163, 415, 132, 26);
+		txtMedicoOEnfermero.setBounds(163, 456, 132, 26);
 		add(txtMedicoOEnfermero);
 		txtMedicoOEnfermero.setColumns(10);
 
 		txtTipouci = new JTextField();
-		txtTipouci.setBounds(294, 415, 69, 26);
+		txtTipouci.setBounds(294, 456, 69, 26);
 		add(txtTipouci);
 		txtTipouci.setColumns(10);
 
 		txtHoraposicion = new JTextField();
-		txtHoraposicion.setBounds(363, 415, 106, 26);
+		txtHoraposicion.setBounds(363, 456, 106, 26);
 		add(txtHoraposicion);
 		txtHoraposicion.setColumns(10);
 
 		txtCalle = new JTextField();
-		txtCalle.setBounds(469, 415, 61, 26);
+		txtCalle.setBounds(469, 456, 61, 26);
 		add(txtCalle);
 		txtCalle.setColumns(10);
 
 		txtCarrera = new JTextField();
-		txtCarrera.setBounds(528, 415, 87, 26);
+		txtCarrera.setBounds(528, 456, 87, 26);
 		add(txtCarrera);
 		txtCarrera.setColumns(10);
 
 		txtTarifa = new JTextField();
-		txtTarifa.setBounds(614, 415, 74, 26);
+		txtTarifa.setBounds(614, 456, 74, 26);
 		add(txtTarifa);
 		txtTarifa.setColumns(10);
 
 		txtNombreips = new JTextField();
-		txtNombreips.setBounds(6, 280, 223, 26);
+		txtNombreips.setBounds(6, 333, 223, 39);
 		add(txtNombreips);
 		txtNombreips.setColumns(10);
 
 		txtTipoAtencionIPS = new JTextField();
-		txtTipoAtencionIPS.setBounds(231, 280, 213, 26);
+		txtTipoAtencionIPS.setBounds(231, 333, 213, 39);
 		add(txtTipoAtencionIPS);
 		txtTipoAtencionIPS.setColumns(10);
 
 		txtDireccionips = new JTextField();
-		txtDireccionips.setBounds(446, 280, 241, 26);
+		txtDireccionips.setBounds(446, 333, 241, 39);
 		add(txtDireccionips);
 		txtDireccionips.setColumns(10);
 
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(0);
 			}
 		});
-		btnRegresar.setBounds(425, 502, 117, 29);
+		btnRegresar.setBounds(456, 493, 232, 108);
 		add(btnRegresar);
+		
+		JLabel lblReporteServicios = new JLabel("Reporte servicios con IPS y Ambulancia");
+		lblReporteServicios.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblReporteServicios.setBounds(6, 11, 682, 50);
+		add(lblReporteServicios);
 
 	}
 

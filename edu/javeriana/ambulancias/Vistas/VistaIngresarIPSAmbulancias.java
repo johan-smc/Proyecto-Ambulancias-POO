@@ -47,7 +47,7 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 			}
 		});*/
 		setLayout(null);
-		btnIngresarAmbulancia.setBounds(75, 170, 262, 231);
+		btnIngresarAmbulancia.setBounds(58, 170, 279, 231);
 		this.add(btnIngresarAmbulancia);
 
 		 btnIngresarIps = new JButton("Ingresar IPS");
@@ -57,7 +57,7 @@ public class VistaIngresarIPSAmbulancias extends JPanel {
 				ingresarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 		});*/
-		btnIngresarIps.setBounds(373, 170, 262, 231);
+		btnIngresarIps.setBounds(373, 170, 279, 231);
 		this.add(btnIngresarIps);
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
