@@ -25,8 +25,8 @@ public class VistaRegistrarServicio extends JPanel {
 	private JTextField bxtCalle;
 	private JTextField bxtCarrera;
 	private JTextField bxtNumero;
-	private JComboBox dspServicio;
-	private JComboBox dspDireccion;
+	private JComboBox<Object> dspServicio;
+	private JComboBox<Object> dspDireccion;
 	private String contenido[]={"DOMICILIO","EMERGENCIA","URGENCIA"};
 	private String contenido2[]={"CALLE","CARRERA"};
 	private JButton bttnRegistrar=null;
@@ -109,14 +109,14 @@ public class VistaRegistrarServicio extends JPanel {
 		add(bxtNumero);
 		
 		
-		dspServicio = new JComboBox(contenido);
+		dspServicio = new JComboBox<Object>(contenido);
 		dspServicio.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		dspServicio.setBounds(195, 156, 177, 42);
 		add(dspServicio);
 		
 		
 		
-		dspDireccion = new JComboBox(contenido2);
+		dspDireccion = new JComboBox<Object>(contenido2);
 		dspDireccion.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		dspDireccion.setBounds(191, 313, 181, 42);
 		add(dspDireccion);
