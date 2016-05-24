@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class VistaAsignarServicio extends JPanel {
 
@@ -49,65 +50,76 @@ public class VistaAsignarServicio extends JPanel {
 			};
 	//
 	private JButton btnAgregarServicio=null;
+	private TestGUIAmbulancias testGUIAmbulancias=null;
 	/**
 	 * Create the panel.
 	 */
 	public VistaAsignarServicio(TestGUIAmbulancias testGUIAmbulancias) {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
-
+		this.testGUIAmbulancias=testGUIAmbulancias;
 		setLayout(null);
 
 		scrollPaneIPS = new JScrollPane();
-		scrollPaneIPS.setBounds(6, 34, 452, 107);
+		scrollPaneIPS.setBounds(48, 126, 634, 81);
 		add(scrollPaneIPS);
 
 		tableIPS = infoTablaIPS(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneIPS.setViewportView(tableIPS);
 
 		 scrollPaneAmbulancia = new JScrollPane();
-		scrollPaneAmbulancia.setBounds(6, 169, 452, 99);
+		scrollPaneAmbulancia.setBounds(48, 394, 634, 81);
 		add(scrollPaneAmbulancia);
 
 		tableAmbulancia = infoTablaAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneAmbulancia.setViewportView(tableAmbulancia);
 
 		 scrollPaneServicios = new JScrollPane();
-		scrollPaneServicios.setBounds(6, 296, 452, 99);
+		scrollPaneServicios.setBounds(48, 256, 634, 81);
 		add(scrollPaneServicios);
 
 		tableServicios = infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPaneServicios.setViewportView(tableServicios);
 
 		JLabel lblIps = new JLabel("IPS");
-		lblIps.setBounds(22, 6, 61, 16);
+		lblIps.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblIps.setBounds(22, 89, 61, 25);
 		add(lblIps);
 
 		JLabel lblAmbulancias = new JLabel("Ambulancias");
-		lblAmbulancias.setBounds(16, 153, 89, 16);
+		lblAmbulancias.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblAmbulancias.setBounds(22, 219, 162, 25);
 		add(lblAmbulancias);
 
 		JLabel lblServicios = new JLabel("Servicios");
-		lblServicios.setBounds(22, 280, 61, 16);
+		lblServicios.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblServicios.setBounds(22, 349, 182, 33);
 		add(lblServicios);
 
 		 btnAgregarServicio = new JButton("Asignar Servicio");
+		 btnAgregarServicio.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		/*btnAgregarServicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				asignarServicio(testGUIAmbulancias.getEmpresaAmbulancia());
 			}
 		});*/
-		btnAgregarServicio.setBounds(6, 407, 146, 29);
+		btnAgregarServicio.setBounds(80, 487, 232, 108);
 		add(btnAgregarServicio);
 
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(0);
 			}
 		});
-		btnRegresar.setBounds(357, 407, 117, 29);
+		btnRegresar.setBounds(381, 487, 232, 108);
 		add(btnRegresar);
+		
+		JLabel lblNewLabel = new JLabel("Asignar Servicio");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 35));
+		lblNewLabel.setBounds(22, 24, 440, 53);
+		add(lblNewLabel);
 
 	}
 
@@ -117,7 +129,7 @@ public class VistaAsignarServicio extends JPanel {
 	}
 
 
-	public void asignarServicio(IServicioAmbulancias empresaAmbulancia) {
+	public void asignarServicio() {
 		try{
 			int posIPS=this.tableIPS.getSelectedRow();
 			int posAmbulancia=this.tableAmbulancia.getSelectedRow();
@@ -142,7 +154,7 @@ public class VistaAsignarServicio extends JPanel {
 				}
 			}
 
-			String resultado = empresaAmbulancia.relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
+			String resultado = testGUIAmbulancias.getEmpresaAmbulancia().relacionarServicio(codigoServicio, codigoAmbulancia, nombreIPS);
 
 			JOptionPane.showMessageDialog(this,resultado,"Asignado correctamente",JOptionPane.INFORMATION_MESSAGE);
 

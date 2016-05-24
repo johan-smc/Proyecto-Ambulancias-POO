@@ -44,15 +44,17 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 	private JTextField txtNombreips;
 	private JTextField txtTipoAtencionIPS;
 	private JTextField txtDireccionips;
+	private TestGUIAmbulancias testGUIAmbulancias=null;
 	/**
 	 * Create the panel.
 	 */
 	public VistaReporteSeriviciosIPSAmbulancia(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
+		this.testGUIAmbulancias=testGUIAmbulancias;
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
 
 		scrollPaneServicios = new JScrollPane();
-		scrollPaneServicios.setBounds(6, 53, 468, 92);
+		scrollPaneServicios.setBounds(6, 53, 694, 92);
 		add(scrollPaneServicios);
 
 		tableServicios =  infoTablaServicios(testGUIAmbulancias.getEmpresaAmbulancia());
@@ -65,10 +67,10 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		JButton btnMostrarIpsY = new JButton("Mostrar IPS y Ambulancia asignada");
 		btnMostrarIpsY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarIPSAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
+				mostrarIPSAmbulancia();
 			}
 		});
-		btnMostrarIpsY.setBounds(99, 157, 263, 29);
+		btnMostrarIpsY.setBounds(231, 157, 263, 29);
 		add(btnMostrarIpsY);
 
 		JLabel lblIps = new JLabel("IPS");
@@ -76,7 +78,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		add(lblIps);
 
 		JLabel lblAmbulancia = new JLabel("Ambulancia");
-		lblAmbulancia.setBounds(6, 317, 74, 16);
+		lblAmbulancia.setBounds(6, 349, 74, 16);
 		add(lblAmbulancia);
 
 		JLabel lblNombre = new JLabel("Nombre");
@@ -84,122 +86,122 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 		add(lblNombre);
 
 		lblTipoAtencion = new JLabel("Tipo atencion");
-		lblTipoAtencion.setBounds(133, 252, 94, 16);
+		lblTipoAtencion.setBounds(231, 252, 94, 16);
 		add(lblTipoAtencion);
 
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(301, 252, 61, 16);
+		lblDireccion.setBounds(446, 252, 61, 16);
 		add(lblDireccion);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 241, 468, 12);
+		separator.setBounds(6, 241, 694, 12);
 		add(separator);
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(6, 264, 468, 12);
+		separator_1.setBounds(6, 264, 694, 12);
 		add(separator_1);
 
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(6, 339, 468, 12);
+		separator_2.setBounds(6, 402, 694, 12);
 		add(separator_2);
 
 		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(6, 363, 468, 12);
+		separator_3.setBounds(6, 378, 694, 12);
 		add(separator_3);
 
 		JLabel lblCodigo = new JLabel("Codigo");
-		lblCodigo.setBounds(6, 345, 61, 16);
+		lblCodigo.setBounds(6, 387, 61, 16);
 		add(lblCodigo);
 
 		JLabel lblTipo = new JLabel("Tipo");
-		lblTipo.setBounds(54, 345, 61, 16);
+		lblTipo.setBounds(63, 387, 61, 16);
 		add(lblTipo);
 
 		JLabel lblPlaca = new JLabel("Placa");
-		lblPlaca.setBounds(90, 345, 61, 16);
+		lblPlaca.setBounds(109, 387, 61, 16);
 		add(lblPlaca);
 
 		JLabel lblMedicoOEnfermero = new JLabel("Medico o enfermero");
-		lblMedicoOEnfermero.setBounds(133, 345, 61, 16);
+		lblMedicoOEnfermero.setBounds(163, 387, 132, 16);
 		add(lblMedicoOEnfermero);
 
 		JLabel lblTipoUci = new JLabel("Tipo UCI");
-		lblTipoUci.setBounds(205, 345, 61, 16);
+		lblTipoUci.setBounds(302, 387, 61, 16);
 		add(lblTipoUci);
 
 		JLabel lblHoraPosicion = new JLabel("Hora Posicion");
-		lblHoraPosicion.setBounds(263, 345, 61, 16);
+		lblHoraPosicion.setBounds(375, 387, 94, 16);
 		add(lblHoraPosicion);
 
 		JLabel lblCalle = new JLabel("Calle");
-		lblCalle.setBounds(327, 345, 61, 16);
+		lblCalle.setBounds(481, 387, 61, 16);
 		add(lblCalle);
 
 		JLabel lblCarrera = new JLabel("Carrera");
-		lblCarrera.setBounds(362, 345, 61, 16);
+		lblCarrera.setBounds(554, 387, 61, 16);
 		add(lblCarrera);
 
 		JLabel lblTarifa = new JLabel("Tarifa");
-		lblTarifa.setBounds(413, 345, 61, 16);
+		lblTarifa.setBounds(627, 387, 61, 16);
 		add(lblTarifa);
 
 		txtCodigo = new JTextField();
-		txtCodigo.setBounds(6, 373, 47, 26);
+		txtCodigo.setBounds(6, 415, 47, 26);
 		add(txtCodigo);
 		txtCodigo.setColumns(10);
 
 		txtTipo = new JTextField();
-		txtTipo.setBounds(47, 373, 61, 26);
+		txtTipo.setBounds(52, 415, 61, 26);
 		add(txtTipo);
 		txtTipo.setColumns(10);
 
 		txtPlaca = new JTextField();
-		txtPlaca.setBounds(99, 373, 54, 26);
+		txtPlaca.setBounds(109, 415, 54, 26);
 		add(txtPlaca);
 		txtPlaca.setColumns(10);
 
 		txtMedicoOEnfermero = new JTextField();
-		txtMedicoOEnfermero.setBounds(143, 373, 94, 26);
+		txtMedicoOEnfermero.setBounds(163, 415, 132, 26);
 		add(txtMedicoOEnfermero);
 		txtMedicoOEnfermero.setColumns(10);
 
 		txtTipouci = new JTextField();
-		txtTipouci.setBounds(231, 373, 61, 26);
+		txtTipouci.setBounds(294, 415, 69, 26);
 		add(txtTipouci);
 		txtTipouci.setColumns(10);
 
 		txtHoraposicion = new JTextField();
-		txtHoraposicion.setBounds(285, 373, 47, 26);
+		txtHoraposicion.setBounds(363, 415, 106, 26);
 		add(txtHoraposicion);
 		txtHoraposicion.setColumns(10);
 
 		txtCalle = new JTextField();
-		txtCalle.setBounds(324, 373, 47, 26);
+		txtCalle.setBounds(469, 415, 61, 26);
 		add(txtCalle);
 		txtCalle.setColumns(10);
 
 		txtCarrera = new JTextField();
-		txtCarrera.setBounds(362, 373, 47, 26);
+		txtCarrera.setBounds(528, 415, 87, 26);
 		add(txtCarrera);
 		txtCarrera.setColumns(10);
 
 		txtTarifa = new JTextField();
-		txtTarifa.setBounds(400, 373, 74, 26);
+		txtTarifa.setBounds(614, 415, 74, 26);
 		add(txtTarifa);
 		txtTarifa.setColumns(10);
 
 		txtNombreips = new JTextField();
-		txtNombreips.setBounds(6, 280, 135, 26);
+		txtNombreips.setBounds(6, 280, 223, 26);
 		add(txtNombreips);
 		txtNombreips.setColumns(10);
 
 		txtTipoAtencionIPS = new JTextField();
-		txtTipoAtencionIPS.setBounds(133, 280, 159, 26);
+		txtTipoAtencionIPS.setBounds(231, 280, 213, 26);
 		add(txtTipoAtencionIPS);
 		txtTipoAtencionIPS.setColumns(10);
 
 		txtDireccionips = new JTextField();
-		txtDireccionips.setBounds(285, 280, 159, 26);
+		txtDireccionips.setBounds(446, 280, 241, 26);
 		add(txtDireccionips);
 		txtDireccionips.setColumns(10);
 
@@ -209,19 +211,19 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 				Principal.vistaWiew(0);
 			}
 		});
-		btnRegresar.setBounds(362, 411, 117, 29);
+		btnRegresar.setBounds(425, 502, 117, 29);
 		add(btnRegresar);
 
 	}
 
 
-	protected void mostrarIPSAmbulancia(IServicioAmbulancias empresaAmbulancia) {
+	protected void mostrarIPSAmbulancia() {
 		try{
 			int posServicio=this.tableServicios.getSelectedRow();
 			if(posServicio==-1)
 				throw new Exception("No selecciono servicio");
 			long codigoServicio=Long.valueOf(this.tableServicios.getValueAt(posServicio, 0).toString());
-			Vector<Object> info=empresaAmbulancia.reporteServicioAmbulancia(codigoServicio);
+			Vector<Object> info=testGUIAmbulancias.getEmpresaAmbulancia().reporteServicioAmbulancia(codigoServicio);
 			if(info==null)
 				throw new Exception("No tiene ambulancia relacionada");
 			this.txtCodigo.setText(info.get(0).toString());
@@ -233,7 +235,7 @@ public class VistaReporteSeriviciosIPSAmbulancia extends JPanel {
 			this.txtCalle.setText(info.get(6).toString());
 			this.txtCarrera.setText(info.get(7).toString());
 			this.txtTarifa.setText(info.get(8).toString());
-			info=empresaAmbulancia.reporteServicioIPS(codigoServicio);
+			info=testGUIAmbulancias.getEmpresaAmbulancia().reporteServicioIPS(codigoServicio);
 			if(info!=null)
 			{
 				this.txtNombreips.setText(info.get(0).toString());

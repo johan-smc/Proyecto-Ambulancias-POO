@@ -33,7 +33,7 @@ public class Principal extends JPanel {
 	private  VistaFinalizarServicio vistaFinalizarServicio;
 	private VistaRegistrarServicio vistaRegistrarServicio;
 	private  VistaReporteIPS vistaReporteIPS;
-
+	private TestGUIAmbulancias testGUIAmbulancias=null;
 	/**
 	 * Create the panel.
 	 * @param testGUIAmbulancias
@@ -42,6 +42,7 @@ public class Principal extends JPanel {
 		this.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH()-10);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(null);
+		this.testGUIAmbulancias=testGUIAmbulancias;
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, TestGUIAmbulancias.getW(), TestGUIAmbulancias.getH());
 		add(tabbedPane);
@@ -53,10 +54,10 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Menu de servicios", null,vistaMenuServicios , null);
 		this.vistaMenuServicios.getBtnCargar().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vistaMenuServicios.cargarDatos(testGUIAmbulancias);
-				actulizarTablasAmbulancias(testGUIAmbulancias);
-				actulizarTablasIPS(testGUIAmbulancias);
-				actulizarTablasServicio(testGUIAmbulancias);
+				vistaMenuServicios.cargarDatos();
+				actulizarTablasAmbulancias();
+				actulizarTablasIPS();
+				actulizarTablasServicio();
 			}
 		});
 		///////////////////////////////////////////////////////////////////////////////////////////
@@ -66,14 +67,14 @@ public class Principal extends JPanel {
 		
 		this.vistaIngresarIPSAmbulancias.getBtnIngresarAmbulancia().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vistaIngresarIPSAmbulancias.ingresarAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
-				actulizarTablasAmbulancias(testGUIAmbulancias);
+				vistaIngresarIPSAmbulancias.ingresarAmbulancia();
+				actulizarTablasAmbulancias();
 			}
 		});
 		this.vistaIngresarIPSAmbulancias.getBtnIngresarIps().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vistaIngresarIPSAmbulancias.ingresarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
-				actulizarTablasIPS(testGUIAmbulancias);
+				vistaIngresarIPSAmbulancias.ingresarIPS();
+				actulizarTablasIPS();
 			}
 		});
 		///////////////////////////////////////////////////////////////////////////////////////////
@@ -82,8 +83,7 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Registrar posicion ambulancias", null,vistaRegistrarPosicionAmbulancia, null);
 		this.vistaRegistrarPosicionAmbulancia.getBtnActualizar().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vistaRegistrarPosicionAmbulancia.agregarPosicion(testGUIAmbulancias.getEmpresaAmbulancia());
-				actulizarTablasAmbulancias(testGUIAmbulancias);
+				actulizarTablasAmbulancias();
 			}
 		});
 		///////////////////////////////////////////////////////////////////////////////////////////
@@ -92,8 +92,8 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Asignar un Servicio", null,vistaAsignarServicio, null);
 		this.vistaAsignarServicio.getBtnAgregarServicio().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vistaAsignarServicio.asignarServicio(testGUIAmbulancias.getEmpresaAmbulancia());
-				actulizarTablasServicio(testGUIAmbulancias);
+				vistaAsignarServicio.asignarServicio();
+				actulizarTablasServicio();
 			}
 		});
 		///////////////////////////////////////////////////////////////////////////////////////////
@@ -105,8 +105,8 @@ public class Principal extends JPanel {
 		tabbedPane.addTab("Finalizar Servicio",null,vistaFinalizarServicio , null);
 		vistaFinalizarServicio.getBtnFinalizar().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				vistaFinalizarServicio.Finalicemos(testGUIAmbulancias.getEmpresaAmbulancia());
-				actulizarTablasServicio(testGUIAmbulancias);
+				vistaFinalizarServicio.Finalicemos();
+				actulizarTablasServicio();
 			}
 
 			
@@ -118,8 +118,8 @@ public class Principal extends JPanel {
 		this.vistaRegistrarServicio.getBttnRegistrar().addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						vistaRegistrarServicio.Registremos(testGUIAmbulancias.getEmpresaAmbulancia());
-						actulizarTablasServicio(testGUIAmbulancias);
+						vistaRegistrarServicio.Registremos();
+						actulizarTablasServicio();
 					}
 				});
 		
@@ -131,17 +131,17 @@ public class Principal extends JPanel {
 		
 	}
 
-	public  void actulizarTablasAmbulancias(TestGUIAmbulancias testGUIAmbulancias) {
+	public  void actulizarTablasAmbulancias() {
 		vistaRegistrarPosicionAmbulancia.actualizarTabla(testGUIAmbulancias.getEmpresaAmbulancia());
 		vistaAsignarServicio.actualizarAmbulancia(testGUIAmbulancias.getEmpresaAmbulancia());
 	}
 
-	public  void actulizarTablasIPS(TestGUIAmbulancias testGUIAmbulancias) {
+	public  void actulizarTablasIPS() {
 		vistaAsignarServicio.actualizarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
 		vistaReporteIPS.actualizarIPS(testGUIAmbulancias.getEmpresaAmbulancia());
 
 	}
-	public  void actulizarTablasServicio(TestGUIAmbulancias testGUIAmbulancias) {
+	public  void actulizarTablasServicio() {
 		vistaAsignarServicio.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		vistaReporteSeriviciosIPSAmbulancia.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());
 		vistaFinalizarServicio.actualizarServicios(testGUIAmbulancias.getEmpresaAmbulancia());

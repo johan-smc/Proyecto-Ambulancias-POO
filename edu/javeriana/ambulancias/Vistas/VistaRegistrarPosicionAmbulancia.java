@@ -19,6 +19,7 @@ import co.edu.javeriana.ambulancias.presentacion.Principal;
 import co.edu.javeriana.ambulancias.presentacion.TestGUIAmbulancias;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class VistaRegistrarPosicionAmbulancia extends JPanel {
 
@@ -36,6 +37,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 			"Codigo","Tipo","Placa","Medico o Enfermero","Tipo UCI","Hora posicion","Calle","Carrera"
 			};
 	private JButton btnActualizar =null;
+	private TestGUIAmbulancias testGUIAmbulancias=null;
 	
 	/**
 	 * Create the panel.
@@ -43,56 +45,68 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	public VistaRegistrarPosicionAmbulancia(TestGUIAmbulancias testGUIAmbulancias) {
 		setLayout(null);
 		this.setBounds(0, 0, TestGUIAmbulancias.getW()-20, TestGUIAmbulancias.getH()-55);
-
+		this.testGUIAmbulancias=testGUIAmbulancias;
 		 scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 6, 438, 105);
+		scrollPane.setBounds(31, 79, 664, 146);
 		add(scrollPane);
 
 		table = infoTabla(testGUIAmbulancias.getEmpresaAmbulancia());
 		scrollPane.setViewportView(table);
 
 		JButton btnRegistrarPosicionAmbulancia = new JButton("Registrar posicion ambulancia");
-		/*btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
+		btnRegistrarPosicionAmbulancia.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnRegistrarPosicionAmbulancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				agregarPosicion(testGUIAmbulancias.getEmpresaAmbulancia());
+				agregarPosicion();
 			}
-		});*/
-		btnRegistrarPosicionAmbulancia.setBounds(16, 123, 234, 29);
+		});
+		btnRegistrarPosicionAmbulancia.setBounds(193, 237, 305, 108);
 		add(btnRegistrarPosicionAmbulancia);
 
 		JLabel lblCalle = new JLabel("Calle");
-		lblCalle.setBounds(26, 164, 61, 16);
+		lblCalle.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblCalle.setBounds(75, 367, 109, 29);
 		add(lblCalle);
 
 		txtCalle = new JTextField();
-		txtCalle.setBounds(121, 159, 82, 26);
+		txtCalle.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		txtCalle.setBounds(234, 357, 264, 50);
 		add(txtCalle);
 		txtCalle.setColumns(10);
 
 		JLabel lblCarrera = new JLabel("Carrera");
-		lblCarrera.setBounds(26, 209, 61, 16);
+		lblCarrera.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblCarrera.setBounds(75, 428, 109, 33);
 		add(lblCarrera);
 
 		txtCarrera = new JTextField();
-		txtCarrera.setBounds(121, 204, 82, 26);
+		txtCarrera.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		txtCarrera.setBounds(234, 420, 264, 50);
 		add(txtCarrera);
 		txtCarrera.setColumns(10);
 
 		 btnActualizar = new JButton("Actualizar");
+		 btnActualizar.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		
-		btnActualizar.setBounds(16, 249, 117, 29);
+		btnActualizar.setBounds(50, 488, 232, 108);
 		add(btnActualizar);
 		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Principal.vistaWiew(0);
 			}
 		});
-		btnRegresar.setBounds(357, 407, 117, 29);
+		btnRegresar.setBounds(398, 488, 232, 108);
 		add(btnRegresar);
+		
+		JLabel lblAmbulancias = new JLabel("Ambulancias");
+		lblAmbulancias.setFont(new Font("Lucida Grande", Font.PLAIN, 35));
+		lblAmbulancias.setBounds(31, 19, 334, 48);
+		add(lblAmbulancias);
 
 	}
-	public void agregarPosicion(IServicioAmbulancias empresaAmbulancia) {
+	public void agregarPosicion() {
 		try{
 			int pos = this.table.getSelectedRow();
 			////System.out.println(pos+" + "+table.getValueAt(pos, 0));
@@ -100,7 +114,7 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 			////System.out.println("-- "+codigo);
 			int carrera = Integer.valueOf(this.txtCarrera.getText());
 			int calle = Integer.valueOf(this.txtCalle.getText());
-			empresaAmbulancia.registrarPosAmbulancia(codigo, calle, carrera);
+			testGUIAmbulancias.getEmpresaAmbulancia().registrarPosAmbulancia(codigo, calle, carrera);
 			JOptionPane.showMessageDialog(this,"La posicion se guardo correctamente", "Exitoso",JOptionPane.INFORMATION_MESSAGE);
 		}
 		catch( NumberFormatException e)
@@ -129,11 +143,4 @@ public class VistaRegistrarPosicionAmbulancia extends JPanel {
 	public JButton getBtnActualizar() {
 		return btnActualizar;
 	}
-	
-	
-	/*private void imprimir(Vector<Object> data2) {
-		for( Object o:data2)
-			//System.out.println(o.toString());
-		
-	}*/
 }
